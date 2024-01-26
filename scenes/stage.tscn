@@ -18,8 +18,8 @@ height = 1.6
 [node name="Stage" type="Node3D"]
 script = ExtResource("1_8q0qf")
 player_path = NodePath("Comedian")
-throw_point1_path = NodePath("ThrowPoint")
-throw_point2_path = NodePath("ThrowPoint2")
+throw_point1_path = NodePath("")
+throw_point2_path = NodePath("")
 
 [node name="Platform" type="StaticBody3D" parent="."]
 
@@ -62,9 +62,3 @@ shape = SubResource("CapsuleShape3D_jhgu1")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Comedian"]
 transform = Transform3D(1, 0, 0, 0, 1.6, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="ThrowPoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6)
-
-[node name="ThrowPoint2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)
