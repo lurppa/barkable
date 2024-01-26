@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://nji7udnyfblo"]
+[gd_scene load_steps=7 format=3 uid="uid://nji7udnyfblo"]
 
+[ext_resource type="Script" path="res://scripts/stage.gd" id="1_8q0qf"]
 [ext_resource type="Script" path="res://scripts/comedian.gd" id="1_n1s5x"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ui3wm"]
@@ -15,6 +16,7 @@ size = Vector3(1, 1, 2.97937)
 height = 1.6
 
 [node name="Stage" type="Node3D"]
+script = ExtResource("1_8q0qf")
 
 [node name="Platform" type="StaticBody3D" parent="."]
 
@@ -54,6 +56,7 @@ shape = SubResource("BoxShape3D_1wk48")
 [node name="Comedian" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50514, 0)
 script = ExtResource("1_n1s5x")
+fall_trigger_path = NodePath("../Platform/Walls/FrontTrigger")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Comedian"]
 shape = SubResource("CapsuleShape3D_jhgu1")

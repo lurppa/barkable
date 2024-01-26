@@ -2,10 +2,20 @@ extends CharacterBody3D
 
 
 const SPEED = 3.0
-const JUMP_VELOCITY = 4.5
+
+@export_node_path var fall_trigger_path
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+@onready var fall_trigger = get_node(fall_trigger_path)
+
+
+func _ready():
+	var helper = func(body):
+		if body == self:
+			_fall_trigger_entered()
+	fall_trigger.connect("body_entered", helper)
 
 
 func _physics_process(delta):
@@ -29,3 +39,7 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+
+
+func _fall_trigger_entered():
+	print("Fall trigger triggered :)")
