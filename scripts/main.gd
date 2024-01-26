@@ -11,6 +11,8 @@ const STARTING_COMEDY_SCORE = 50.0
 var comedy_score:
 	set(val):
 		comedy_score = val
+		if comedy_score <= 0.0:
+			$Menu/GameOver.visible = true
 		dialog.set_comedy_level(comedy_score)
 
 
@@ -18,12 +20,18 @@ func _ready():
 	comedy_score = STARTING_COMEDY_SCORE
 	dialog.connect("dialog_chosen", _on_dialog_chosen)
 	stage.connect("item_hit_player", _on_item_hit_player)
+	$Menu/StartGame/GoodDialogButton.connect("pressed", _start_game)
+
+
+func _start_game():
+	$Menu/StartGame.visible = false
 	_show_dialog()
 
 
 func _show_dialog():
 	await get_tree().create_timer(3.0).timeout
-	dialog.show_dialog(true)
+	if not $Menu/GameOver.visible:
+		dialog.show_dialog(true)
 
 
 func _on_dialog_chosen(val):
