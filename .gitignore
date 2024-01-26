@@ -13,3 +13,4 @@ export_presets.cfg
 .mono/
 data_*/
 mono_crash.*.json
+Godot_v4.2.1-stable_win64.exe
