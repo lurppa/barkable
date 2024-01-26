@@ -26,6 +26,7 @@ stage_path = NodePath("Stage")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.97054)
 throw_point1_path = NodePath("../ThrowPoint")
 throw_point2_path = NodePath("../ThrowPoint2")
+throw_items = null
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.96593, 0.258802, 0, -0.258802, 0.96593, -0.216831, 2.60555, 2.97223)
