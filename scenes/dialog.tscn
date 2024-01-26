@@ -3,6 +3,9 @@
 [ext_resource type="Script" path="res://scripts/dialog_controller.gd" id="1_na6wk"]
 
 [sub_resource type="FontFile" id="FontFile_bx7qq"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/36/0/ascent = 0.0
 cache/0/36/0/descent = 0.0
 cache/0/36/0/underline_position = 0.0
@@ -47,6 +50,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="GoodDialogButton" type="Button" parent="ButtonHolder"]
+layout_mode = 0
 offset_left = 132.0
 offset_top = 266.0
 offset_right = 541.0
@@ -74,6 +78,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="BadDialogButton" type="Button" parent="ButtonHolder"]
+layout_mode = 0
 offset_left = 575.0
 offset_top = 265.0
 offset_right = 984.0
