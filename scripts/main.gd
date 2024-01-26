@@ -1,11 +1,12 @@
 extends Node3D
 
+@export_node_path var stage_path
 
-# Called when the node enters the scene tree for the first time.
+@onready var stage = get_node(stage_path)
+
+
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+	await get_tree().create_timer(5.0).timeout
+	stage.throw_items = true
+	await get_tree().create_timer(2.0).timeout
+	stage.throw_items = false

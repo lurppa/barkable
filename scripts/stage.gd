@@ -7,23 +7,21 @@ const THROW_VELOCITY = 10.0
 @export_node_path var player_path
 @export_node_path var throw_point1_path
 @export_node_path var throw_point2_path
-@export var debug: bool = false:
-	set(_val):
+@export var throw_items: bool = false:
+	set(val):
+		throw_items = val
 		if is_node_ready():
-			throw_item()
+			_timeout()
 
 @onready var player = get_node(player_path)
 @onready var throw_point1 = get_node(throw_point1_path)
 @onready var throw_point2 = get_node(throw_point2_path)
 
 
-func _ready():
-	_timeout()
-
-
 func _timeout():
-	throw_item()
-	get_tree().create_timer(1.0).connect("timeout", _timeout)
+	if throw_items:
+		throw_item()
+		get_tree().create_timer(1.0).connect("timeout", _timeout)
 
 
 func throw_item():

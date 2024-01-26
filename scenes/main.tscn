@@ -19,6 +19,7 @@ material = SubResource("StandardMaterial3D_3a2er")
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_b1maf")
+stage_path = NodePath("Stage")
 
 [node name="Stage" parent="." instance=ExtResource("2_vo661")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.97054)
