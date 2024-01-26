@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://rxwvnp1r6vaq" path="res://art/materials/curtainBillboard.tres" id="2_obykb"]
 [ext_resource type="PackedScene" uid="uid://nji7udnyfblo" path="res://scenes/stage.tscn" id="2_vo661"]
 [ext_resource type="SpriteFrames" uid="uid://qlsu52cc0ufw" path="res://art/player/textures/bottom_spritesheep.tres" id="5_ynjrs"]
-[ext_resource type="PackedScene" uid="uid://lhydvnatyetp" path="res://scenes/dialog.tscn" id="6_gm7m2"]
+[ext_resource type="PackedScene" path="res://scenes/dialog.tscn" id="6_gm7m2"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_tgd07"]
 size = Vector2(10, 10)
@@ -21,12 +21,13 @@ material = SubResource("StandardMaterial3D_3a2er")
 [node name="Main" type="Node3D"]
 script = ExtResource("1_b1maf")
 stage_path = NodePath("Stage")
+dialog_path = NodePath("Dialog")
 
 [node name="Stage" parent="." instance=ExtResource("2_vo661")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.97054)
 throw_point1_path = NodePath("../ThrowPoint")
 throw_point2_path = NodePath("../ThrowPoint2")
-throw_items = null
+throw_items = false
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.96593, 0.258802, 0, -0.258802, 0.96593, -0.216831, 2.60555, 2.97223)

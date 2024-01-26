@@ -1,5 +1,7 @@
 extends Node3D
 
+signal item_hit_player(item)
+
 const THROW_ITEM = preload("res://scenes/thrown_item.tscn")
 const TARGET_OFFSET = Vector3(0, 10, 0)
 const THROW_VELOCITY = 10.0
@@ -25,7 +27,7 @@ func throw_multiple_items():
 func start_throwing(count_of_items:int):
 	for i in range(count_of_items):
 		print(str(i) + ' toss')
-		get_tree().create_timer(float(i/2)).connect("timeout", throw_item)
+		get_tree().create_timer(i/2.0).connect("timeout", throw_item)
 
 
 func throw_item():
@@ -38,9 +40,5 @@ func throw_item():
 	var item = THROW_ITEM.instantiate()
 	item.position = throw_point
 	item.linear_velocity = dir_to_player * THROW_VELOCITY
-	item.connect("hit_player", _on_item_hit_player)
+	item.connect("hit_player", func(item2): emit_signal("item_hit_player", item2))
 	add_child(item)
-
-
-func _on_item_hit_player(item):
-	print("%s hit the player!" % item.name)
