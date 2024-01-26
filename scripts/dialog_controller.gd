@@ -1,21 +1,28 @@
 extends Node
 
 func _ready():
-	$GoodDialogButton.pressed.connect(good_button_pressed)
-	$BadDialogButton.pressed.connect(bad_button_pressed)
+	
+	$ButtonHolder/GoodDialogButton.pressed.connect(good_button_pressed)
+	$ButtonHolder/BadDialogButton.pressed.connect(bad_button_pressed)
+	$ComedyLevel.value = 50
+	$ButtonHolder.visible = false
 	start_timer()
 	
+	
 func _on_timer_timeout():
-	self.visible = true
+	$ButtonHolder.visible = true
 
 func good_button_pressed():
 	print('good was pressed')
-	self.visible = false
+	$ButtonHolder.visible = false
+	$ComedyLevel.value += 1
 	start_timer()
+	
 
 func bad_button_pressed():
 	print('bad was pressed')
-	self.visible = false
+	$ButtonHolder.visible = false
+	$ComedyLevel.value -= 1
 	start_timer()
 	
 func start_timer():

@@ -32,7 +32,7 @@ shadow_offset = Vector2(1, 6.18)
 [node name="Dialog" type="CanvasLayer"]
 script = ExtResource("1_na6wk")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ButtonHolder" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0.129412)
 anchors_preset = 8
 anchor_left = 0.5
@@ -46,16 +46,14 @@ offset_bottom = 333.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="GoodDialogButton" type="Button" parent="."]
-offset_left = 127.0
-offset_top = 260.0
-offset_right = 536.0
-offset_bottom = 414.0
+[node name="GoodDialogButton" type="Button" parent="ButtonHolder"]
+offset_left = 132.0
+offset_top = 266.0
+offset_right = 541.0
+offset_bottom = 420.0
 metadata/_edit_group_ = true
 
-[node name="ButtonText" type="Label" parent="GoodDialogButton"]
+[node name="ButtonText" type="Label" parent="ButtonHolder/GoodDialogButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -75,14 +73,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="BadDialogButton" type="Button" parent="."]
-offset_left = 570.0
-offset_top = 259.0
-offset_right = 979.0
-offset_bottom = 413.0
+[node name="BadDialogButton" type="Button" parent="ButtonHolder"]
+offset_left = 575.0
+offset_top = 265.0
+offset_right = 984.0
+offset_bottom = 419.0
 metadata/_edit_group_ = true
 
-[node name="ButtonText2" type="Label" parent="BadDialogButton"]
+[node name="ButtonText2" type="Label" parent="ButtonHolder/BadDialogButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -102,7 +100,27 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
+
+[node name="ComedyLevel" type="ProgressBar" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -333.0
+offset_top = 12.0
+offset_right = 335.0
+offset_bottom = 39.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="ComedyLevel"]
+layout_mode = 0
+offset_left = 289.0
+offset_top = 43.0
+offset_right = 390.0
+offset_bottom = 66.0
+text = "comedy level"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
