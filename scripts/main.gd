@@ -7,6 +7,7 @@ extends Node3D
 
 func _ready():
 	await get_tree().create_timer(5.0).timeout
-	stage.throw_items = true
-	await get_tree().create_timer(2.0).timeout
-	stage.throw_items = false
+	#await get_tree().create_timer(5.0).timeout
+	#stage.throw_items = true
+	#await get_tree().create_timer(2.0).timeout
+	#stage.throw_items = false

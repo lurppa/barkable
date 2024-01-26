@@ -11,17 +11,21 @@ const THROW_VELOCITY = 10.0
 	set(val):
 		throw_items = val
 		if is_node_ready():
-			_timeout()
+			throw_multiple_items()
 
 @onready var player = get_node(player_path)
 @onready var throw_point1 = get_node(throw_point1_path)
 @onready var throw_point2 = get_node(throw_point2_path)
 
 
-func _timeout():
-	if throw_items:
-		throw_item()
-		get_tree().create_timer(1.0).connect("timeout", _timeout)
+func throw_multiple_items():
+	start_throwing(5)
+	
+
+func start_throwing(count_of_items:int):
+	for i in range(count_of_items):
+		print(str(i) + ' toss')
+		get_tree().create_timer(float(i/2)).connect("timeout", throw_item)
 
 
 func throw_item():

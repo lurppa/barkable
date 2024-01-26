@@ -6,7 +6,7 @@ func _ready():
 	$ButtonHolder/BadDialogButton.pressed.connect(bad_button_pressed)
 	$ComedyLevel.value = 50
 	$ButtonHolder.visible = false
-	start_timer()
+	show_dialog_with_timer()
 	
 	
 func _on_timer_timeout():
@@ -16,14 +16,16 @@ func good_button_pressed():
 	print('good was pressed')
 	$ButtonHolder.visible = false
 	$ComedyLevel.value += 1
-	start_timer()
+	$"../Stage".throw_multiple_items()
+	show_dialog_with_timer()
 	
 
 func bad_button_pressed():
 	print('bad was pressed')
 	$ButtonHolder.visible = false
 	$ComedyLevel.value -= 1
-	start_timer()
+	$"../Stage".throw_multiple_items()
+	show_dialog_with_timer()
 	
-func start_timer():
-	get_tree().create_timer(3).connect("timeout", _on_timer_timeout)
+func show_dialog_with_timer():
+	get_tree().create_timer(5).connect("timeout", _on_timer_timeout)
