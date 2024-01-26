@@ -34,4 +34,9 @@ func throw_item():
 	var item = THROW_ITEM.instantiate()
 	item.position = throw_point
 	item.linear_velocity = dir_to_player * THROW_VELOCITY
+	item.connect("hit_player", _on_item_hit_player)
 	add_child(item)
+
+
+func _on_item_hit_player(item):
+	print("%s hit the player!" % item.name)
