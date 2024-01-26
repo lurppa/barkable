@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo2vqtg0xnepl"]
+
+[ext_resource type="Script" path="res://scripts/thrown_item.gd" id="1_m0ls2"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_umsyo"]
+radius = 0.202791
+
+[node name="ThrownItem" type="RigidBody3D"]
+script = ExtResource("1_m0ls2")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+radius = 0.2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_umsyo")
