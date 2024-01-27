@@ -25,7 +25,8 @@ func _ready():
 	stage.connect("item_hit_player", _on_item_hit_player)
 	$Menu/StartGame/GoodDialogButton.connect("pressed", _start_game)
 	$Menu/GameOver/GoodDialogButton.connect("pressed", _reset_game)
-
+	stage.lock_player()
+	stage.player.anim_play("idle")
 
 func _start_game():
 	$Menu/StartGame.visible = false
@@ -38,13 +39,13 @@ func _show_dialog():
 	await get_tree().create_timer(3.0).timeout
 	if not $Menu/GameOver.visible:
 		stage.lock_player()
+		stage.player.anim_play("idle")
 		dialog.show_dialog(true)
 
 
 func _on_dialog_chosen(val):
 	comedy_score += val
-	if val < 0.0: # It was a bad joke
-		stage.throw_multiple_items()
+	stage.throw_multiple_items(val < 0.0)
 	stage.unlock_player()
 	await get_tree().create_timer(3.0).timeout
 	_show_dialog()

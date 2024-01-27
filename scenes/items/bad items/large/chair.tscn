@@ -7,12 +7,12 @@
 radius = 0.202791
 
 [node name="ThrownItem" type="RigidBody3D"]
-mass = 2.0
-gravity_scale = 0.95
+gravity_scale = 0.2
 max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("1_hmstp")
 score_affect = -10.0
+throw_speed_modifier = 0.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(2.4, 0, 0, 0, 2.4, 0, 0, 0, 2.4, 0, 0, 0)

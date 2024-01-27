@@ -1,8 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2mrod3qas5ag"]
+[gd_scene load_steps=8 format=3 uid="uid://d2mrod3qas5ag"]
 
 [ext_resource type="Script" path="res://scripts/stage.gd" id="1_8q0qf"]
-[ext_resource type="PackedScene" uid="uid://cbu16uy86btl2" path="res://scenes/items/bad items/bad_item_placeholder.tscn" id="2_7ke73"]
-[ext_resource type="PackedScene" uid="uid://bo2vqtg0xnepl" path="res://scenes/items/good_item_placeholder.tscn" id="3_ksrj4"]
 [ext_resource type="PackedScene" uid="uid://jdq3ts6q2lmj" path="res://scenes/stage/player/comedian.tscn" id="4_5g6cu"]
 [ext_resource type="Texture2D" uid="uid://cn5kw3l6c327s" path="res://art/Textures/wood.png" id="4_s8fne"]
 
@@ -21,7 +19,6 @@ size = Vector3(1, 3, 2.97937)
 [node name="Stage" type="Node3D"]
 script = ExtResource("1_8q0qf")
 player_path = NodePath("Comedian")
-throwable_items = Array[PackedScene]([ExtResource("2_7ke73"), ExtResource("3_ksrj4")])
 front_of_stage_path = NodePath("FrontOfStage")
 
 [node name="Platform" type="StaticBody3D" parent="." groups=["stage"]]
