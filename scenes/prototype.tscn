@@ -1,0 +1,96 @@
+[gd_scene load_steps=8 format=3 uid="uid://bu23ta1ku1gtq"]
+
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="1_p4mv3"]
+[ext_resource type="PackedScene" uid="uid://ccj2hdg614r6x" path="res://scenes/main.tscn" id="1_tbc6p"]
+[ext_resource type="PackedScene" uid="uid://br3nycjpo7pys" path="res://scenes/comedian.tscn" id="2_w3bos"]
+[ext_resource type="Script" path="res://scripts/stage_camera_trigger.gd" id="2_xuwo3"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_0uy2b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x7o74"]
+size = Vector3(6.55579, 3.24622, 2.86499)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t8gpf"]
+size = Vector3(54.0936, 1, 21.7646)
+
+[node name="Prototype" type="Node3D"]
+
+[node name="Main" parent="." instance=ExtResource("1_tbc6p")]
+script = null
+
+[node name="Menu" parent="Main" index="0"]
+visible = false
+
+[node name="CollisionShape3D4" parent="Main/Stage/Platform/Walls/StaticBody3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0246758, -22.6529, -2.05959)
+
+[node name="Comedian" parent="Main/Stage" index="1"]
+visible = false
+
+[node name="StageCameraTrigger" type="Area3D" parent="Main/Stage" index="2"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_xuwo3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Main/Stage/StageCameraTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0326538, 1.12311, 0.0045166)
+shape = SubResource("BoxShape3D_x7o74")
+
+[node name="Camera3D" parent="Main" index="2"]
+transform = Transform3D(0.484811, 0, -0.874629, 0, 0.999996, 0, 0.874622, 0, 0.484815, -9.53618, 1.50514, -9.18578)
+fov = 73.9218
+
+[node name="PhantomCameraHost" type="Node" parent="Main/Camera3D" index="0"]
+script = ExtResource("3_0uy2b")
+
+[node name="Comedian" parent="." instance=ExtResource("2_w3bos")]
+transform = Transform3D(0.484809, 0, -0.87462, 0, 1, 0, 0.87462, 0, 0.484809, -6.91232, 1.50514, -10.6402)
+collision_layer = 2
+fall_trigger_path = NodePath("../Main/Stage/Platform/Walls/FrontTrigger")
+
+[node name="CameraHolder" type="Node3D" parent="Comedian"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="PhantomCamera3D" type="Node3D" parent="Comedian/CameraHolder"]
+transform = Transform3D(1, 0, 1.19211e-07, 0, 0.999996, 0, -1.1921e-07, 0, 1.00001, 0, 0, 0)
+script = ExtResource("1_p4mv3")
+priority_override = false
+priority = 1
+follow_mode = 1
+follow_target = NodePath("..")
+follow_parameters/damping = false
+look_at_mode = 2
+look_at_target = NodePath("../..")
+look_at_parameters/look_at_target_offset = Vector3(0, 0, 0)
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0
+camera_3D_resource = null
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.26604, 0)
+
+[node name="ground" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.693634, 1.41184, -11.9954)
+shape = SubResource("BoxShape3D_t8gpf")
+
+[node name="CrowdCamera" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.56944, 2.50016)
+
+[node name="PhantomCamera3D" type="Node3D" parent="CrowdCamera"]
+transform = Transform3D(0.88502, -0.0332863, 0.464362, 0, 0.997441, 0.0714984, -0.465553, -0.0632776, 0.882755, 0, 0, 0)
+script = ExtResource("1_p4mv3")
+priority_override = false
+priority = 0
+follow_mode = 0
+look_at_mode = 2
+look_at_target = NodePath("../../Comedian")
+look_at_parameters/look_at_target_offset = Vector3(0, 0, 0)
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0
+camera_3D_resource = null
+
+[connection signal="body_entered" from="Main/Stage/StageCameraTrigger" to="Main/Stage/StageCameraTrigger" method="_on_body_entered"]
+
+[editable path="Main"]
+[editable path="Main/Stage"]
