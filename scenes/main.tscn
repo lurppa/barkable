@@ -188,5 +188,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6.73233)
 [node name="AudienceImages" type="Node3D" parent="."]
 
 [node name="audience1" type="AnimatedSprite3D" parent="AudienceImages"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03335, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.90235, 1.03335, 0)
 sprite_frames = ExtResource("6_wc8vx")

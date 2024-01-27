@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b1mtrqg141lb5"
-path.s3tc="res://.godot/imported/jerry_ManCasual3Color.png-816227665ed3b130c6f80fd2ea158704.s3tc.ctex"
+path.s3tc="res://.godot/imported/jerry_ManCasual3Color.png-06743f56916c826d15c715036d1f133e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://scenes/jerry_ManCasual3Color.png"
-dest_files=["res://.godot/imported/jerry_ManCasual3Color.png-816227665ed3b130c6f80fd2ea158704.s3tc.ctex"]
+source_file="res://jerry_ManCasual3Color.png"
+dest_files=["res://.godot/imported/jerry_ManCasual3Color.png-06743f56916c826d15c715036d1f133e.s3tc.ctex"]
 
 [params]
 
