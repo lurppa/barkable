@@ -7,7 +7,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jhgu1"]
 height = 1.6
 
-[node name="Comedian" type="CharacterBody3D" node_paths=PackedStringArray("ragdoll_skeleton", "capsule_collider", "animation_player") groups=["player"]]
+[node name="Comedian" type="CharacterBody3D" node_paths=PackedStringArray("ragdoll_skeleton", "capsule_collider") groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50514, 0)
 script = ExtResource("1_ch0s7")
 moveSpeed = 50.0
@@ -15,7 +15,6 @@ rotationSpeed = 300.0
 fall_trigger_path = NodePath("../Platform/Walls/FrontTrigger")
 ragdoll_skeleton = NodePath("jerry_animated/ManCasual3Armature/Skeleton3D")
 capsule_collider = NodePath("CollisionShape3D")
-animation_player = NodePath("jerry_animated/AnimationPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_jhgu1")
