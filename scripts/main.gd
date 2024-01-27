@@ -5,17 +5,17 @@ const STARTING_COMEDY_SCORE = 1.0
 
 @export_node_path var stage_path
 @export_node_path var dialog_path
+@export_node_path var curtains_path
 
 @onready var stage = get_node(stage_path)
 @onready var dialog = get_node(dialog_path)
-
+@onready var curtains = get_node(curtains_path)
 
 var comedy_score:
 	set(val):
 		comedy_score = val
 		if comedy_score <= 0.0:
-			$Menu/GameOver.visible = true
-			stage.player._pass_out()
+			_on_game_lost()
 		dialog.set_comedy_level(comedy_score)
 
 
@@ -29,10 +29,13 @@ func _ready():
 
 func _start_game():
 	$Menu/StartGame.visible = false
+	curtains.open()
 	_show_dialog()
+
 
 func _reset_game():
 	get_tree().reload_current_scene()
+
 
 func _show_dialog():
 	await get_tree().create_timer(3.0).timeout
@@ -52,3 +55,10 @@ func _on_dialog_chosen(val):
 
 func _on_item_hit_player(item):
 	comedy_score += item.score_affect
+
+
+func _on_game_lost():
+	$Menu/GameOver.visible = true
+	stage.player._pass_out()
+	await get_tree().create_timer(2.0).timeout
+	curtains.close()
