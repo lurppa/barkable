@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://nji7udnyfblo"]
+[gd_scene load_steps=11 format=3 uid="uid://nji7udnyfblo"]
 
 [ext_resource type="Script" path="res://scripts/stage.gd" id="1_8q0qf"]
 [ext_resource type="PackedScene" uid="uid://cbu16uy86btl2" path="res://scenes/items/bad_item_placeholder.tscn" id="2_7ke73"]
 [ext_resource type="PackedScene" uid="uid://bo2vqtg0xnepl" path="res://scenes/items/good_item_placeholder.tscn" id="3_ksrj4"]
 [ext_resource type="PackedScene" uid="uid://cf64rti5r85hv" path="res://scenes/comedian.tscn" id="4_5g6cu"]
+[ext_resource type="Material" uid="uid://rxwvnp1r6vaq" path="res://art/materials/curtainBillboard.tres" id="5_q4nxy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ui3wm"]
 size = Vector3(6, 1, 3)
@@ -13,6 +14,15 @@ size = Vector3(5.91791, 3, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lu5u5"]
 size = Vector3(1, 3, 2.97937)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3a2er"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_qx6bi"]
+lightmap_size_hint = Vector2i(7, 7)
+material = SubResource("StandardMaterial3D_3a2er")
+size = Vector2(1, 3)
+subdivide_width = 4
+subdivide_depth = 3
 
 [node name="Stage" type="Node3D"]
 script = ExtResource("1_8q0qf")
@@ -56,3 +66,53 @@ fall_trigger_path = NodePath("../Platform/Walls/FallTrigger")
 
 [node name="FrontOfStage" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0.464)
+
+[node name="Curtain" type="SoftBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -2.635, 2.26959, -0.622622)
+material_override = ExtResource("5_q4nxy")
+mesh = SubResource("QuadMesh_qx6bi")
+linear_stiffness = 0.13
+pinned_points = [5, 4, 3, 2, 1, 0]
+attachments/0/point_index = 5
+attachments/0/spatial_attachment_path = NodePath("")
+attachments/0/offset = Vector3(0, 0, 0)
+attachments/1/point_index = 4
+attachments/1/spatial_attachment_path = NodePath("")
+attachments/1/offset = Vector3(0, 0, 0)
+attachments/2/point_index = 3
+attachments/2/spatial_attachment_path = NodePath("")
+attachments/2/offset = Vector3(0, 0, 0)
+attachments/3/point_index = 2
+attachments/3/spatial_attachment_path = NodePath("")
+attachments/3/offset = Vector3(0, 0, 0)
+attachments/4/point_index = 1
+attachments/4/spatial_attachment_path = NodePath("")
+attachments/4/offset = Vector3(0, 0, 0)
+attachments/5/point_index = 0
+attachments/5/spatial_attachment_path = NodePath("")
+attachments/5/offset = Vector3(0, 0, 0)
+
+[node name="Curtain2" type="SoftBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.40688, 2.26959, -0.615732)
+material_override = ExtResource("5_q4nxy")
+mesh = SubResource("QuadMesh_qx6bi")
+linear_stiffness = 0.13
+pinned_points = [29, 28, 27, 26, 25, 24]
+attachments/0/point_index = 29
+attachments/0/spatial_attachment_path = NodePath("")
+attachments/0/offset = Vector3(0, 0, 0)
+attachments/1/point_index = 28
+attachments/1/spatial_attachment_path = NodePath("")
+attachments/1/offset = Vector3(0, 0, 0)
+attachments/2/point_index = 27
+attachments/2/spatial_attachment_path = NodePath("")
+attachments/2/offset = Vector3(0, 0, 0)
+attachments/3/point_index = 26
+attachments/3/spatial_attachment_path = NodePath("")
+attachments/3/offset = Vector3(0, 0, 0)
+attachments/4/point_index = 25
+attachments/4/spatial_attachment_path = NodePath("")
+attachments/4/offset = Vector3(0, 0, 0)
+attachments/5/point_index = 24
+attachments/5/spatial_attachment_path = NodePath("")
+attachments/5/offset = Vector3(0, 0, 0)
