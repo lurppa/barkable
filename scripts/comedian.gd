@@ -46,10 +46,7 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
-	if input_dir.y != 0:
-		anim_play("panic_run", input_dir.y<0)
-	else:
-		anim_play("panic")
+	anim_panic(input_dir.y)
 		# var calcrot = atan2(input_dir.y*2,input_dir.x*2) * 57.29 
 	#	rotation_degrees.y = calcrot
 	rotation_degrees.y += input_dir.x * rotationSpeed * delta
@@ -69,6 +66,12 @@ func _pass_out():
 	
 func _sanity() -> bool:
 	return !dead
+	
+func anim_panic(walkspeed):
+	if walkspeed != 0:
+		anim_play("panic_run", walkspeed<0)
+	else:
+		anim_play("panic")
 	
 func anim_play(name,backwards = false):
 	if (animation_player.current_animation != name):

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://6qm3qblaon8"]
+
+[ext_resource type="Script" path="res://scripts/thrown_item.gd" id="1_ryrmb"]
+[ext_resource type="PackedScene" uid="uid://bbt8v8hnoy7uw" path="res://models/items/tomato.glb" id="2_r8u3g"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_umsyo"]
+radius = 0.202791
+
+[node name="ThrownItem" type="RigidBody3D"]
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_ryrmb")
+score_affect = -10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_umsyo")
+
+[node name="tomato2" parent="." instance=ExtResource("2_r8u3g")]
+transform = Transform3D(0.66, 0, 0, 0, 0.66, 0, 0, 0, 0.66, 4.31313, -1.06295, -0.760973)

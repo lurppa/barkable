@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b1g6gso078lli"
-path="res://.godot/imported/plantpot.glb-e69d9f92c736a0405231575bc0f35ee0.scn"
+uid="uid://b66n7srk6sf2c"
+path="res://.godot/imported/bottle.glb-710bc3d316b11b6979011691b44e4d9c.scn"
 
 [deps]
 
-source_file="res://art/raw/plantpot.glb"
-dest_files=["res://.godot/imported/plantpot.glb-e69d9f92c736a0405231575bc0f35ee0.scn"]
+source_file="res://models/items/bottle.glb"
+dest_files=["res://.godot/imported/bottle.glb-710bc3d316b11b6979011691b44e4d9c.scn"]
 
 [params]
 
