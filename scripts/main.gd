@@ -24,12 +24,15 @@ func _ready():
 	dialog.connect("dialog_chosen", _on_dialog_chosen)
 	stage.connect("item_hit_player", _on_item_hit_player)
 	$Menu/StartGame/GoodDialogButton.connect("pressed", _start_game)
+	$Menu/GameOver/GoodDialogButton.connect("pressed", _reset_game)
 
 
 func _start_game():
 	$Menu/StartGame.visible = false
 	_show_dialog()
 
+func _reset_game():
+	get_tree().reload_current_scene()
 
 func _show_dialog():
 	await get_tree().create_timer(3.0).timeout
