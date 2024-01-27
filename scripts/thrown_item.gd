@@ -4,6 +4,9 @@ signal hit_player(item)
 
 const ALIVE_FOR = 1.0
 
+# Affects how much this item affects score if hit by player
+@export var score_affect: float = 0.0
+
 
 func _ready():
 	var helper = func(body):

@@ -16,11 +16,11 @@ var dead = false;
 @onready var fall_trigger = get_node(fall_trigger_path)
 
 
-func _ready():
-	var helper = func(body):
-		if body == self:
-			_fall_trigger_entered()
-	fall_trigger.connect("body_entered", helper)
+# func _ready():
+# 	var helper = func(body):
+# 		if body == self:
+# 			_fall_trigger_entered()
+# 	fall_trigger.connect("body_entered", helper)
 
 
 func _physics_process(delta):

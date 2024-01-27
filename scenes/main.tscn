@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ccj2hdg614r6x"]
+[gd_scene load_steps=15 format=3 uid="uid://ccj2hdg614r6x"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_b1maf"]
 [ext_resource type="Material" uid="uid://rxwvnp1r6vaq" path="res://art/materials/curtainBillboard.tres" id="2_obykb"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://p211uedohlog" path="res://art/Textures/audience1.png" id="4_t5mm8"]
 [ext_resource type="PackedScene" uid="uid://dc8411dbc438i" path="res://scenes/dialog.tscn" id="6_gm7m2"]
 [ext_resource type="SpriteFrames" uid="uid://dxr0p8ymbjnov" path="res://art/sprites/audience.tres" id="6_wc8vx"]
+[ext_resource type="Script" path="res://scripts/meta_controller_component.gd" id="7_bg5nr"]
 
 [sub_resource type="FontFile" id="FontFile_bx7qq"]
 subpixel_positioning = 0
@@ -190,3 +191,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6.73233)
 [node name="audience1" type="AnimatedSprite3D" parent="AudienceImages"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03335, 0)
 sprite_frames = ExtResource("6_wc8vx")
+
+[node name="MetaControllerComponent" type="Node" parent="."]
+script = ExtResource("7_bg5nr")

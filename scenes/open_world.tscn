@@ -27,7 +27,8 @@ shape = SubResource("BoxShape3D_pc2de")
 [node name="Comedian" parent="." instance=ExtResource("1_rktyb")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 6.02124e-08, -6.33815e-08, 0, 0.724999, 0.688749, 8.74228e-08, 0.688749, -0.724999, 0, 3.40514, -2)
+transform = Transform3D(-1, 6.02124e-08, -6.33814e-08, 0, 0.724999, 0.688749, 8.74228e-08, 0.688749, -0.724999, 0, 3.40514, -2)
+fov = 74.3087
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("2_kks11")

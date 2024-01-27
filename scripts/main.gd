@@ -1,4 +1,5 @@
 extends Node3D
+# Handles game loop and orchestrates other modules to work in order.
 
 const STARTING_COMEDY_SCORE = 10.0
 
@@ -7,6 +8,7 @@ const STARTING_COMEDY_SCORE = 10.0
 
 @onready var stage = get_node(stage_path)
 @onready var dialog = get_node(dialog_path)
+
 
 var comedy_score:
 	set(val):
@@ -43,6 +45,5 @@ func _on_dialog_chosen(val):
 	_show_dialog()
 
 
-func _on_item_hit_player(_item):
-	comedy_score -= 10.0
-
+func _on_item_hit_player(item):
+	comedy_score += item.score_affect
