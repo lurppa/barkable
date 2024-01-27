@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://ccj2hdg614r6x"]
+[gd_scene load_steps=10 format=3 uid="uid://ccj2hdg614r6x"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_b1maf"]
 [ext_resource type="Material" uid="uid://cwpb8b3ksvtb4" path="res://art/materials/audienceBillboard.tres" id="2_1141y"]
 [ext_resource type="Material" uid="uid://rxwvnp1r6vaq" path="res://art/materials/curtainBillboard.tres" id="2_obykb"]
 [ext_resource type="PackedScene" uid="uid://nji7udnyfblo" path="res://scenes/stage.tscn" id="2_vo661"]
+[ext_resource type="SpriteFrames" uid="uid://qlsu52cc0ufw" path="res://art/player/textures/bottom_spritesheep.tres" id="5_ynjrs"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_tgd07"]
 size = Vector2(10, 10)
@@ -139,6 +140,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89912, 0, 0)
 material_override = ExtResource("2_1141y")
 mesh = SubResource("QuadMesh_er3e1")
 skeleton = NodePath("../..")
+
+[node name="Player" type="Node3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.0183155, 1.29673, -3.4268)
+visible = false
+
+[node name="bottomSprite" type="AnimatedSprite3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+pixel_size = 0.0075
+sprite_frames = ExtResource("5_ynjrs")
+animation = &"idle"
 
 [node name="ThrowPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6.73233)
