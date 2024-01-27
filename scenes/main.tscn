@@ -1,12 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://ccj2hdg614r6x"]
+[gd_scene load_steps=14 format=3 uid="uid://ccj2hdg614r6x"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_b1maf"]
 [ext_resource type="Material" uid="uid://rxwvnp1r6vaq" path="res://art/materials/curtainBillboard.tres" id="2_obykb"]
 [ext_resource type="PackedScene" uid="uid://nji7udnyfblo" path="res://scenes/stage.tscn" id="2_vo661"]
-[ext_resource type="Texture2D" uid="uid://p211uedohlog" path="res://art/Textures/audience1.png" id="4_t5mm8"]
+[ext_resource type="PackedScene" uid="uid://bqmwo30x358hn" path="res://scenes/audience/audience.tscn" id="5_tr2a0"]
 [ext_resource type="PackedScene" uid="uid://dc8411dbc438i" path="res://scenes/dialog.tscn" id="6_gm7m2"]
-[ext_resource type="SpriteFrames" uid="uid://dxr0p8ymbjnov" path="res://art/sprites/audience.tres" id="6_wc8vx"]
-[ext_resource type="Script" path="res://scripts/meta_controller_component.gd" id="7_bg5nr"]
+[ext_resource type="Script" path="res://scripts/meta_controller_component.gd" id="6_oa1a8"]
 
 [sub_resource type="FontFile" id="FontFile_bx7qq"]
 subpixel_positioning = 0
@@ -41,6 +40,9 @@ shadow_offset = Vector2(1, 6.18)
 [sub_resource type="PlaneMesh" id="PlaneMesh_tgd07"]
 size = Vector2(10, 10)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0b7tw"]
+albedo_color = Color(0, 0, 0, 1)
+
 [sub_resource type="Environment" id="Environment_568cv"]
 ambient_light_color = Color(0.658824, 0.658824, 0.658824, 1)
 
@@ -49,11 +51,6 @@ ambient_light_color = Color(0.658824, 0.658824, 0.658824, 1)
 [sub_resource type="QuadMesh" id="QuadMesh_er3e1"]
 lightmap_size_hint = Vector2i(7, 7)
 material = SubResource("StandardMaterial3D_3a2er")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v7srx"]
-transparency = 1
-albedo_texture = ExtResource("4_t5mm8")
-billboard_keep_scale = true
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_b1maf")
@@ -150,18 +147,62 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.97054)
 throw_point1_path = NodePath("../ThrowPoint")
 throw_point2_path = NodePath("../ThrowPoint2")
 
+[node name="MainSpotLight" type="SpotLight3D" parent="Stage"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0337095, 3.83772, -0.0937908)
+light_color = Color(0.67451, 0.67451, 0.67451, 1)
+light_energy = 15.803
+light_indirect_energy = 4.63
+light_volumetric_fog_energy = 0.0
+spot_range = 12.125
+spot_angle = 21.0
+
+[node name="MainSpotLight2" type="SpotLight3D" parent="Stage"]
+transform = Transform3D(1, 0, 0, 0, 0.860333, -0.509732, 0, 0.509732, 0.860333, 0.00699139, 0.754075, 1.30782)
+light_color = Color(0.67451, 0.67451, 0.67451, 1)
+light_energy = 15.803
+light_indirect_energy = 4.63
+light_volumetric_fog_energy = 0.0
+spot_range = 2.475
+spot_angle = 32.57
+
+[node name="MainSpotLight3" type="SpotLight3D" parent="Stage"]
+transform = Transform3D(0.707107, 0.360435, 0.608347, 0, 0.860333, -0.509732, -0.707107, 0.360435, 0.608347, 1.3098, 0.754075, 1.30782)
+light_color = Color(0.67451, 0.67451, 0.67451, 1)
+light_energy = 15.803
+light_indirect_energy = 4.63
+light_volumetric_fog_energy = 0.0
+spot_range = 2.475
+spot_angle = 32.57
+
+[node name="MainSpotLight4" type="SpotLight3D" parent="Stage"]
+transform = Transform3D(0.707107, -0.360435, -0.608347, 0, 0.860333, -0.509732, 0.707107, 0.360435, 0.608347, -1.11065, 0.754075, 1.30782)
+light_color = Color(0.67451, 0.67451, 0.67451, 1)
+light_energy = 15.803
+light_indirect_energy = 4.63
+light_volumetric_fog_energy = 0.0
+spot_range = 2.475
+spot_angle = 32.57
+
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.96593, 0.258802, 0, -0.258802, 0.96593, -0.216831, 2.60555, 2.97223)
+transform = Transform3D(1, 0, 0, 0, 0.96593, 0.258802, 0, -0.258802, 0.96593, -0.216831, 2.60555, 2.50134)
 fov = 50.0
 
 [node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("PlaneMesh_tgd07")
+surface_material_override/0 = SubResource("StandardMaterial3D_0b7tw")
+
+[node name="BG" type="MeshInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 1, 0, 0, -12)
+mesh = SubResource("PlaneMesh_tgd07")
+surface_material_override/0 = SubResource("StandardMaterial3D_0b7tw")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_568cv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 3, 0)
+visible = false
 
 [node name="Curtain" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, 0, 0, 2.837, 0, 0, 0, 1, -2.635, 1.92728, -2.86039)
@@ -173,11 +214,6 @@ transform = Transform3D(1, 0, 0, 0, 2.83705, 0, 0, 0, 1, 2.40688, 1.92728, -2.85
 material_override = ExtResource("2_obykb")
 mesh = SubResource("QuadMesh_er3e1")
 
-[node name="Audience3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.912, 2.34224, 0.669344, -0.906105)
-material_override = SubResource("StandardMaterial3D_v7srx")
-mesh = SubResource("QuadMesh_er3e1")
-
 [node name="ThrowPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6.73233)
 
@@ -186,11 +222,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6.73233)
 
 [node name="Dialog" parent="." instance=ExtResource("6_gm7m2")]
 
-[node name="AudienceImages" type="Node3D" parent="."]
-
-[node name="audience1" type="AnimatedSprite3D" parent="AudienceImages"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03335, 0)
-sprite_frames = ExtResource("6_wc8vx")
+[node name="audience" parent="." instance=ExtResource("5_tr2a0")]
 
 [node name="MetaControllerComponent" type="Node" parent="."]
-script = ExtResource("7_bg5nr")
+script = ExtResource("6_oa1a8")

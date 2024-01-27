@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq5pnpmd3w74o"]
+
+[ext_resource type="PackedScene" uid="uid://lhqadv5rbbyr" path="res://scenes/audience/audience_member.tscn" id="1_53wbv"]
+[ext_resource type="SpriteFrames" uid="uid://bxlkafqymf4id" path="res://art/Textures/audience_f.tres" id="2_20p8o"]
+
+[node name="audience_row" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58049, 0, 0)
+
+[node name="audience_member" parent="." instance=ExtResource("1_53wbv")]
+
+[node name="audience_member2" parent="." instance=ExtResource("1_53wbv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.794033, 0.51, 0)
+sprite_frames = ExtResource("2_20p8o")
+
+[node name="audience_member3" parent="." instance=ExtResource("1_53wbv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.778903, 0.51, 0)
+
+[node name="audience_member4" parent="." instance=ExtResource("1_53wbv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60685, 0.51, 0)
+sprite_frames = ExtResource("2_20p8o")
+
+[node name="audience_member5" parent="." instance=ExtResource("1_53wbv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.57334, 0.51, 0)
+
+[editable path="audience_member2"]

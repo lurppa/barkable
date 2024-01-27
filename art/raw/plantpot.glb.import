@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cn7sq0u3jfms8"
-path="res://.godot/imported/suitman.glb-2488bca3fda7a1dc3558f8e212874cbc.scn"
+uid="uid://b1g6gso078lli"
+path="res://.godot/imported/plantpot.glb-e69d9f92c736a0405231575bc0f35ee0.scn"
 
 [deps]
 
-source_file="res://models/suitman.glb"
-dest_files=["res://.godot/imported/suitman.glb-2488bca3fda7a1dc3558f8e212874cbc.scn"]
+source_file="res://art/raw/plantpot.glb"
+dest_files=["res://.godot/imported/plantpot.glb-e69d9f92c736a0405231575bc0f35ee0.scn"]
 
 [params]
 

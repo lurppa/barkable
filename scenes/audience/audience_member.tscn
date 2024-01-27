@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://lhqadv5rbbyr"]
+
+[ext_resource type="SpriteFrames" uid="uid://dxr0p8ymbjnov" path="res://art/sprites/audience.tres" id="1_kn6ye"]
+
+[node name="audience_member" type="AnimatedSprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51, 0)
+pixel_size = 0.003
+sprite_frames = ExtResource("1_kn6ye")
