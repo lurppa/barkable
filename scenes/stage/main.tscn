@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://c1ky3pnkcfhnj" path="res://scenes/items/bad items/large/plantpot.tscn" id="7_wvk6e"]
 [ext_resource type="PackedScene" uid="uid://lbs7f5s2cxwr" path="res://scenes/items/bad items/large/toilet.tscn" id="8_sembv"]
 [ext_resource type="PackedScene" uid="uid://bo2vqtg0xnepl" path="res://scenes/items/good_item_placeholder.tscn" id="9_6srqn"]
-[ext_resource type="Material" uid="uid://bl1aem8gvrdo6" path="res://art/materials/curtainEdge.tres" id="9_ti5ui"]
+[ext_resource type="Material" path="res://art/materials/curtainEdge.tres" id="9_ti5ui"]
 
 [sub_resource type="FontFile" id="FontFile_bx7qq"]
 subpixel_positioning = 0
@@ -74,6 +74,7 @@ material = SubResource("StandardMaterial3D_3a2er")
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_b1maf")
+STARTING_COMEDY_SCORE = 50.0
 stage_path = NodePath("Stage")
 dialog_path = NodePath("Dialog")
 

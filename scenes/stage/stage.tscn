@@ -64,6 +64,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0246758, 1.92539, -2.05959)
 shape = SubResource("BoxShape3D_1wk48")
 
 [node name="Comedian" parent="." instance=ExtResource("4_5g6cu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0977592, 1.26738, 0.0946021)
 fall_trigger_path = NodePath("../Platform/Walls/FallTrigger")
 
 [node name="FrontOfStage" type="Marker3D" parent="."]
