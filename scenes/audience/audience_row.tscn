@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cq5pnpmd3w74o"]
 
 [ext_resource type="PackedScene" uid="uid://lhqadv5rbbyr" path="res://scenes/audience/audience_member.tscn" id="1_53wbv"]
-[ext_resource type="SpriteFrames" uid="uid://bxlkafqymf4id" path="res://art/Textures/audience_f.tres" id="2_20p8o"]
+[ext_resource type="SpriteFrames" path="res://art/sprites/audience_f.tres" id="2_20p8o"]
 
 [node name="audience_row" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58049, 0, 0)

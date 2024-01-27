@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ccj2hdg614r6x"]
+[gd_scene load_steps=24 format=3 uid="uid://ccj2hdg614r6x"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_b1maf"]
 [ext_resource type="PackedScene" uid="uid://d2mrod3qas5ag" path="res://scenes/stage/stage.tscn" id="2_vo661"]
@@ -10,12 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://bqmwo30x358hn" path="res://scenes/audience/audience.tscn" id="5_tr2a0"]
 [ext_resource type="PackedScene" uid="uid://dc8411dbc438i" path="res://scenes/dialog.tscn" id="6_gm7m2"]
 [ext_resource type="Script" path="res://scripts/meta_controller_component.gd" id="6_oa1a8"]
-[ext_resource type="PackedScene" uid="uid://dr76ui6pipxj7" path="res://scenes/stage/curtains.tscn" id="11_5thl5"]
 [ext_resource type="PackedScene" uid="uid://c52n6jpt5x8yd" path="res://scenes/items/bad items/large/chair.tscn" id="6_w1yu1"]
 [ext_resource type="PackedScene" uid="uid://c1ky3pnkcfhnj" path="res://scenes/items/bad items/large/plantpot.tscn" id="7_wvk6e"]
 [ext_resource type="PackedScene" uid="uid://lbs7f5s2cxwr" path="res://scenes/items/bad items/large/toilet.tscn" id="8_sembv"]
 [ext_resource type="PackedScene" uid="uid://bo2vqtg0xnepl" path="res://scenes/items/good_item_placeholder.tscn" id="9_6srqn"]
-[ext_resource type="Material" path="res://art/materials/curtainEdge.tres" id="9_ti5ui"]
+[ext_resource type="PackedScene" uid="uid://dr76ui6pipxj7" path="res://scenes/stage/curtains.tscn" id="11_5thl5"]
 
 [sub_resource type="FontFile" id="FontFile_bx7qq"]
 subpixel_positioning = 0
