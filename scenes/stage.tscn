@@ -20,8 +20,6 @@ height = 1.6
 [node name="Stage" type="Node3D"]
 script = ExtResource("1_8q0qf")
 player_path = NodePath("Comedian")
-throw_point1_path = NodePath("")
-throw_point2_path = NodePath("")
 throwable_items = Array[PackedScene]([ExtResource("2_kaw48"), ExtResource("3_64gnu")])
 
 [node name="Platform" type="StaticBody3D" parent="." groups=["stage"]]

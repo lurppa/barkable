@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bo2vqtg0xnepl"]
+[gd_scene load_steps=7 format=3 uid="uid://bo2vqtg0xnepl"]
 
+[ext_resource type="PhysicsMaterial" uid="uid://bv13rm7j3rth6" path="res://scenes/items/item_physics_material.tres" id="1_nd2x4"]
 [ext_resource type="Script" path="res://scripts/thrown_item.gd" id="1_t7qg5"]
 [ext_resource type="Texture2D" uid="uid://dyqdqe4d8eo3p" path="res://art/Textures/thumbs_up.png" id="2_hfmng"]
 
@@ -12,9 +13,11 @@ billboard_mode = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_quk8v"]
 material = SubResource("StandardMaterial3D_2r6s8")
-size = Vector2(0.2, 0.2)
+size = Vector2(0.4, 0.4)
 
 [node name="ThrownItem" type="RigidBody3D"]
+mass = 0.1
+physics_material_override = ExtResource("1_nd2x4")
 max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("1_t7qg5")
