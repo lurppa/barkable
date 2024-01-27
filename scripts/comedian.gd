@@ -8,6 +8,7 @@ const SPEED = 3.0
 @export_node_path var fall_trigger_path
 @export var ragdoll_skeleton : Skeleton3D
 @export var capsule_collider : CollisionShape3D
+@export var animation_player : AnimationPlayer
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -46,7 +47,7 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
-	#if input_dir.distance_squared_to(Vector2(0,0)) != 0:
+	anim_panic(input_dir.y)
 		# var calcrot = atan2(input_dir.y*2,input_dir.x*2) * 57.29 
 	#	rotation_degrees.y = calcrot
 	rotation_degrees.y += input_dir.x * rotationSpeed * delta
@@ -68,3 +69,16 @@ func _pass_out():
 
 func _sanity() -> bool:
 	return !dead
+	
+func anim_panic(walkspeed):
+	if walkspeed != 0:
+		anim_play("panic_run", walkspeed<0)
+	else:
+		anim_play("panic")
+	
+func anim_play(name,backwards = false):
+	if (animation_player.current_animation != name):
+		if (backwards):
+			animation_player.play(name)
+		else:
+			animation_player.play_backwards(name)
