@@ -38,7 +38,7 @@ func throw_item():
 	# Instantiate a random item with values calculated earlier
 	var item = throwable_items[randf() * len(throwable_items)].instantiate()
 	item.position = throw_point
-	item.linear_velocity = dir_to_player * THROW_VELOCITY
+	item.linear_velocity = dir_to_player * THROW_VELOCITY * item.throw_speed_modifier
 	item.connect("hit_player", func(item2): emit_signal("item_hit_player", item2))
 	add_child(item)
 
