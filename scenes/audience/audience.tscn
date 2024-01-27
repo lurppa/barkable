@@ -1,8 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqmwo30x358hn"]
+[gd_scene load_steps=19 format=3 uid="uid://bqmwo30x358hn"]
 
 [ext_resource type="PackedScene" uid="uid://cq5pnpmd3w74o" path="res://scenes/audience/audience_row.tscn" id="1_14c86"]
+[ext_resource type="PackedScene" path="res://scenes/random_sound_player.tscn" id="2_22lm7"]
+[ext_resource type="AudioStream" uid="uid://krh3v12a3f4g" path="res://sounds/audience/negative/boo.wav" id="3_pegm2"]
+[ext_resource type="AudioStream" uid="uid://bruf8gr4k7uog" path="res://sounds/audience/negative/couching.wav" id="4_e25h7"]
+[ext_resource type="AudioStream" uid="uid://b1uojy1710w6u" path="res://sounds/audience/negative/cough 2.wav" id="5_poj1g"]
+[ext_resource type="AudioStream" uid="uid://pvblcjmm0era" path="res://sounds/audience/negative/not funny 2.wav" id="6_v4ncb"]
+[ext_resource type="AudioStream" uid="uid://dj723tulvm0fk" path="res://sounds/audience/negative/not funny.wav" id="7_l6y30"]
+[ext_resource type="AudioStream" uid="uid://bu0lb0b7k86p2" path="res://sounds/audience/negative/seriously 1.wav" id="8_jv53w"]
+[ext_resource type="AudioStream" uid="uid://kmcbrg1wf7o3" path="res://sounds/audience/negative/seroiusly 2.wav" id="9_sjv0s"]
+[ext_resource type="AudioStream" uid="uid://cd8yeuomer10v" path="res://sounds/audience/negative/audience shouting 1.wav" id="10_v72kd"]
+[ext_resource type="AudioStream" uid="uid://b6q38rj2daalb" path="res://sounds/audience/booing/boo 1.wav" id="10_xyy06"]
+[ext_resource type="AudioStream" uid="uid://bk2mv4qb4i3dd" path="res://sounds/audience/booing/boo 2.wav" id="11_0l8p0"]
+[ext_resource type="AudioStream" uid="uid://bv0p1ea0nuorq" path="res://sounds/audience/negative/audience shouting 2.wav" id="11_orog8"]
+[ext_resource type="AudioStream" uid="uid://dv4qokja366wq" path="res://sounds/audience/negative/audience shouting 3.wav" id="12_5f2wh"]
+[ext_resource type="AudioStream" uid="uid://bavxjgxvnh3d1" path="res://sounds/audience/booing/boo 3.wav" id="12_swqk8"]
+[ext_resource type="AudioStream" uid="uid://ct08fp4isumto" path="res://sounds/audience/negative/audience shouting 4.wav" id="13_dma8q"]
+[ext_resource type="AudioStream" uid="uid://cgm0m2akm42ma" path="res://sounds/audience/booing/boo 4.wav" id="13_v5sjm"]
+[ext_resource type="AudioStream" uid="uid://dqsdgw1lcijm4" path="res://sounds/audience/negative/audience shouting 5.wav" id="14_mt1xt"]
 
-[node name="audience" type="Node3D"]
+[node name="Audience" type="Node3D"]
 
 [node name="audience_row" parent="." instance=ExtResource("1_14c86")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 2.30697, 0, -0.880114)
@@ -15,3 +32,55 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38951, 0, -0.290933)
 
 [node name="audience_row4" parent="." instance=ExtResource("1_14c86")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 2.51238, 0, -0.290933)
+
+[node name="Negative" parent="." instance=ExtResource("2_22lm7")]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Negative"]
+stream = ExtResource("3_pegm2")
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="Negative"]
+stream = ExtResource("4_e25h7")
+
+[node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="Negative"]
+stream = ExtResource("5_poj1g")
+
+[node name="AudioStreamPlayer3D4" type="AudioStreamPlayer3D" parent="Negative"]
+stream = ExtResource("6_v4ncb")
+
+[node name="AudioStreamPlayer3D5" type="AudioStreamPlayer3D" parent="Negative"]
+stream = ExtResource("7_l6y30")
+
+[node name="AudioStreamPlayer3D6" type="AudioStreamPlayer3D" parent="Negative"]
+stream = ExtResource("8_jv53w")
+
+[node name="AudioStreamPlayer3D7" type="AudioStreamPlayer3D" parent="Negative"]
+stream = ExtResource("9_sjv0s")
+
+[node name="AudioStreamPlayer3D8" type="AudioStreamPlayer3D" parent="Negative"]
+stream = ExtResource("10_v72kd")
+
+[node name="AudioStreamPlayer3D9" type="AudioStreamPlayer3D" parent="Negative"]
+stream = ExtResource("11_orog8")
+
+[node name="AudioStreamPlayer3D10" type="AudioStreamPlayer3D" parent="Negative"]
+stream = ExtResource("12_5f2wh")
+
+[node name="AudioStreamPlayer3D11" type="AudioStreamPlayer3D" parent="Negative"]
+stream = ExtResource("13_dma8q")
+
+[node name="AudioStreamPlayer3D12" type="AudioStreamPlayer3D" parent="Negative"]
+stream = ExtResource("14_mt1xt")
+
+[node name="Booing" parent="." instance=ExtResource("2_22lm7")]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Booing"]
+stream = ExtResource("10_xyy06")
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="Booing"]
+stream = ExtResource("11_0l8p0")
+
+[node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="Booing"]
+stream = ExtResource("12_swqk8")
+
+[node name="AudioStreamPlayer3D4" type="AudioStreamPlayer3D" parent="Booing"]
+stream = ExtResource("13_v5sjm")

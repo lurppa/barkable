@@ -48,6 +48,10 @@ func _show_dialog():
 
 func _on_dialog_chosen(val):
 	comedy_score += val
+	await get_tree().create_timer(1.0).timeout
+	$Audience/Negative.play()
+	await get_tree().create_timer(1.0).timeout
+	$Audience/Booing.play()
 	stage.throw_multiple_items(val < 0.0)
 	stage.unlock_player()
 	await get_tree().create_timer(3.0).timeout

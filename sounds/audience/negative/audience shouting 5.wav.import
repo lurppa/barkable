@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dqsdgw1lcijm4"
+path="res://.godot/imported/audience shouting 5.wav-264de23e609c41df1d5c6c380d34fd10.sample"
+
+[deps]
+
+source_file="res://sounds/audience/negative/audience shouting 5.wav"
+dest_files=["res://.godot/imported/audience shouting 5.wav-264de23e609c41df1d5c6c380d34fd10.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
