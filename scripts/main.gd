@@ -1,6 +1,6 @@
 extends Node3D
 
-const STARTING_COMEDY_SCORE = 0.0
+const STARTING_COMEDY_SCORE = 10.0
 
 @export_node_path var stage_path
 @export_node_path var dialog_path
