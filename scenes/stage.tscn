@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://nji7udnyfblo"]
+[gd_scene load_steps=8 format=3 uid="uid://nji7udnyfblo"]
 
 [ext_resource type="Script" path="res://scripts/stage.gd" id="1_8q0qf"]
 [ext_resource type="Script" path="res://scripts/comedian.gd" id="1_n1s5x"]
+[ext_resource type="PackedScene" uid="uid://bo2vqtg0xnepl" path="res://scenes/items/basic_item.tscn" id="2_qc3tk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ui3wm"]
 size = Vector3(6, 1, 3)
@@ -20,6 +21,7 @@ script = ExtResource("1_8q0qf")
 player_path = NodePath("Comedian")
 throw_point1_path = NodePath("")
 throw_point2_path = NodePath("")
+throwable_items = Array[PackedScene]([ExtResource("2_qc3tk")])
 
 [node name="Platform" type="StaticBody3D" parent="." groups=["stage"]]
 
