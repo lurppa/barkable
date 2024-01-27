@@ -1,12 +1,15 @@
-[gd_scene load_steps=19 format=3 uid="uid://ccj2hdg614r6x"]
+[gd_scene load_steps=22 format=3 uid="uid://ccj2hdg614r6x"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_b1maf"]
 [ext_resource type="Material" uid="uid://rxwvnp1r6vaq" path="res://art/materials/curtainBillboard.tres" id="2_obykb"]
 [ext_resource type="PackedScene" uid="uid://d2mrod3qas5ag" path="res://scenes/stage/stage.tscn" id="2_vo661"]
 [ext_resource type="Texture2D" uid="uid://kcapb53jlbeh" path="res://art/Textures/CurtainBackground.png" id="3_a7hrh"]
+[ext_resource type="PackedScene" uid="uid://dho75wjw3lpdb" path="res://scenes/items/bad items/small/badegg.tscn" id="3_ig4ll"]
+[ext_resource type="PackedScene" uid="uid://bsegc7ynhiuw3" path="res://scenes/items/bad items/small/bottle.tscn" id="4_c4yai"]
 [ext_resource type="Texture2D" uid="uid://bgq5tncga5465" path="res://art/Textures/bgwall.png" id="4_w4ekb"]
+[ext_resource type="PackedScene" uid="uid://6qm3qblaon8" path="res://scenes/items/bad items/small/tomato.tscn" id="5_eela6"]
 [ext_resource type="PackedScene" uid="uid://bqmwo30x358hn" path="res://scenes/audience/audience.tscn" id="5_tr2a0"]
-[ext_resource type="PackedScene" path="res://scenes/dialog.tscn" id="6_gm7m2"]
+[ext_resource type="PackedScene" uid="uid://dc8411dbc438i" path="res://scenes/dialog.tscn" id="6_gm7m2"]
 [ext_resource type="Script" path="res://scripts/meta_controller_component.gd" id="6_oa1a8"]
 
 [sub_resource type="FontFile" id="FontFile_bx7qq"]
@@ -158,6 +161,7 @@ autowrap_mode = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.97054)
 throw_point1_path = NodePath("../ThrowPoint")
 throw_point2_path = NodePath("../ThrowPoint2")
+throwable_items = Array[PackedScene]([ExtResource("3_ig4ll"), ExtResource("4_c4yai"), ExtResource("5_eela6")])
 
 [node name="MainSpotLight" type="SpotLight3D" parent="Stage"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0337095, 3.83772, -0.0937908)

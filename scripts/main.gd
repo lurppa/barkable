@@ -6,7 +6,7 @@ const STARTING_COMEDY_SCORE = 1.0
 @export_node_path var stage_path
 @export_node_path var dialog_path
 
-@onready var stage = get_node(sage_path)
+@onready var stage = get_node(stage_path)
 @onready var dialog = get_node(dialog_path)
 
 
