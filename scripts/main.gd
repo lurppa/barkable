@@ -1,8 +1,7 @@
 extends Node3D
 
-const STARTING_COMEDY_SCORE = 50.0
+const STARTING_COMEDY_SCORE = 0.0
 
-@export var comedian_playerr : Comedian
 @export_node_path var stage_path
 @export_node_path var dialog_path
 
@@ -14,6 +13,7 @@ var comedy_score:
 		comedy_score = val
 		if comedy_score <= 0.0:
 			$Menu/GameOver.visible = true
+			stage.player._pass_out()
 		dialog.set_comedy_level(comedy_score)
 
 
