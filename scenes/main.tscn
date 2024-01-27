@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ccj2hdg614r6x"]
+[gd_scene load_steps=13 format=3 uid="uid://ccj2hdg614r6x"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_b1maf"]
 [ext_resource type="Material" uid="uid://rxwvnp1r6vaq" path="res://art/materials/curtainBillboard.tres" id="2_obykb"]
@@ -38,6 +38,9 @@ shadow_offset = Vector2(1, 6.18)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_tgd07"]
 size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0b7tw"]
+albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Environment" id="Environment_568cv"]
 ambient_light_color = Color(0.658824, 0.658824, 0.658824, 1)
@@ -184,7 +187,14 @@ transform = Transform3D(1, 0, 0, 0, 0.96593, 0.258802, 0, -0.258802, 0.96593, -0
 fov = 50.0
 
 [node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("PlaneMesh_tgd07")
+surface_material_override/0 = SubResource("StandardMaterial3D_0b7tw")
+
+[node name="BG" type="MeshInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 1, 0, 0, -12)
+mesh = SubResource("PlaneMesh_tgd07")
+surface_material_override/0 = SubResource("StandardMaterial3D_0b7tw")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_568cv")
