@@ -1,20 +1,22 @@
 [gd_scene load_steps=4 format=3 uid="uid://lbs7f5s2cxwr"]
 
 [ext_resource type="Script" path="res://scripts/thrown_item.gd" id="1_eswgm"]
-[ext_resource type="PackedScene" uid="uid://ijjt6jb8nrp1" path="res://models/items/chair.glb" id="2_8ptl1"]
+[ext_resource type="PackedScene" uid="uid://couun6hb15hhl" path="res://models/items/toilet.glb" id="2_gj247"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_umsyo"]
 radius = 0.202791
 
 [node name="ThrownItem" type="RigidBody3D"]
+gravity_scale = 0.4
 max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("1_eswgm")
 score_affect = -10.0
-
-[node name="chair" parent="." instance=ExtResource("2_8ptl1")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 1.97011, -0.893066, 0.901931)
+throw_speed_modifier = 0.6
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(2.4, 0, 0, 0, 2.4, 0, 0, 0, 2.4, 0, 0, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("SphereShape3D_umsyo")
+
+[node name="toilet" parent="." instance=ExtResource("2_gj247")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.859196, -0.411317, -1.59957)
