@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byiooewfhk84l"
-path.s3tc="res://.godot/imported/top_mouthopen.png-4e3540e967cb316164a3aac6efd4b5ca.s3tc.ctex"
+uid="uid://b7dh1pewhuyxy"
+path.s3tc="res://.godot/imported/audience2.png-034f10dab39e2cca7cbbccff6f5160cd.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://art/player/textures/top_mouthopen.png"
-dest_files=["res://.godot/imported/top_mouthopen.png-4e3540e967cb316164a3aac6efd4b5ca.s3tc.ctex"]
+source_file="res://art/Textures/audience2.png"
+dest_files=["res://.godot/imported/audience2.png-034f10dab39e2cca7cbbccff6f5160cd.s3tc.ctex"]
 
 [params]
 
