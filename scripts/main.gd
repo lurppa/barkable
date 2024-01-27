@@ -1,5 +1,5 @@
 extends Node3D
-# Handles game loop and orchestrates other modules to work in order.
+# Handles game loop and orchestrates other objects to work in correct order.
 
 const STARTING_COMEDY_SCORE = 10.0
 
@@ -34,13 +34,15 @@ func _start_game():
 func _show_dialog():
 	await get_tree().create_timer(3.0).timeout
 	if not $Menu/GameOver.visible:
+		stage.lock_player()
 		dialog.show_dialog(true)
 
 
 func _on_dialog_chosen(val):
 	comedy_score += val
-	if val < 0.0:
+	if val < 0.0: # It was a bad joke
 		stage.throw_multiple_items()
+	stage.unlock_player()
 	await get_tree().create_timer(3.0).timeout
 	_show_dialog()
 

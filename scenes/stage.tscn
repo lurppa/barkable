@@ -18,6 +18,7 @@ size = Vector3(1, 3, 2.97937)
 script = ExtResource("1_8q0qf")
 player_path = NodePath("Comedian")
 throwable_items = Array[PackedScene]([ExtResource("2_7ke73"), ExtResource("3_ksrj4")])
+front_of_stage_path = NodePath("FrontOfStage")
 
 [node name="Platform" type="StaticBody3D" parent="." groups=["stage"]]
 
@@ -29,10 +30,10 @@ shape = SubResource("BoxShape3D_ui3wm")
 
 [node name="Walls" type="Node3D" parent="Platform"]
 
-[node name="FrontTrigger" type="Area3D" parent="Platform/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.9919)
+[node name="FallTrigger" type="Area3D" parent="Platform/Walls"]
+transform = Transform3D(1, 0, 0, 0, -0.00371758, -0.999993, 0, 0.999993, -0.00371758, 0, -0.91281, 1.07047)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform/Walls/FrontTrigger"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform/Walls/FallTrigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0246758, 1.92539, -0.0595913)
 shape = SubResource("BoxShape3D_1wk48")
 
@@ -51,3 +52,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0246758, 1.92539, -2.05959)
 shape = SubResource("BoxShape3D_1wk48")
 
 [node name="Comedian" parent="." instance=ExtResource("4_5g6cu")]
+fall_trigger_path = NodePath("../Platform/Walls/FallTrigger")
+
+[node name="FrontOfStage" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0.464)

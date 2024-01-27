@@ -10,10 +10,12 @@ const THROW_X_RANDOMNESS = 1.0
 @export_node_path var throw_point1_path
 @export_node_path var throw_point2_path
 @export var throwable_items: Array[PackedScene]
+@export_node_path var front_of_stage_path
 
 @onready var player = get_node(player_path)
 @onready var throw_point1 = get_node(throw_point1_path)
 @onready var throw_point2 = get_node(throw_point2_path)
+@onready var front_of_stage = get_node(front_of_stage_path)
 
 
 func throw_multiple_items():
@@ -39,3 +41,16 @@ func throw_item():
 	item.linear_velocity = dir_to_player * THROW_VELOCITY
 	item.connect("hit_player", func(item2): emit_signal("item_hit_player", item2))
 	add_child(item)
+
+
+# Locks player and moves them to the front of the stage
+func lock_player():
+	player.disable_movement = true
+	get_tree().create_tween() \
+			.tween_property(player, "transform", front_of_stage.transform, 1.0) \
+			.set_ease(Tween.EASE_IN_OUT) \
+			.set_trans(Tween.TRANS_CUBIC)
+
+
+func unlock_player():
+	player.disable_movement = false
