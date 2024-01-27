@@ -7,7 +7,7 @@
 radius = 0.202791
 
 [node name="ThrownItem" type="RigidBody3D"]
-gravity_scale = 0.2
+gravity_scale = 0.3
 max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("1_hmstp")
