@@ -7,7 +7,7 @@ const SPEED = 3.0
 
 @export_node_path var fall_trigger_path
 @export var ragdoll_skeleton : Skeleton3D
-@export var capsule_collider : CollisionObject3D
+@export var capsule_collider : CollisionShape3D
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -60,7 +60,7 @@ func _pass_out():
 	if not _sanity():
 		return
 	ragdoll_skeleton.physical_bones_start_simulation();
-	get_node("CollisionShape3D").disabled = true;
+	capsule_collider.disabled = true;
 	dead = true;
 	
 func _sanity() -> bool:
