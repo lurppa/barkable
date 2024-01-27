@@ -2,18 +2,16 @@
 
 [ext_resource type="PhysicsMaterial" uid="uid://bv13rm7j3rth6" path="res://scenes/items/item_physics_material.tres" id="1_nd2x4"]
 [ext_resource type="Script" path="res://scripts/thrown_item.gd" id="1_t7qg5"]
-[ext_resource type="Texture2D" uid="uid://dyqdqe4d8eo3p" path="res://art/Textures/thumbs_up.png" id="2_hfmng"]
+[ext_resource type="PackedScene" uid="uid://wgcobtyh3mg6" path="res://models/items/rose.glb" id="3_vlku5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_umsyo"]
 radius = 0.202791
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2r6s8"]
-albedo_texture = ExtResource("2_hfmng")
-billboard_mode = 1
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1nk34"]
+albedo_color = Color(0, 0.545098, 0, 1)
 
-[sub_resource type="QuadMesh" id="QuadMesh_quk8v"]
-material = SubResource("StandardMaterial3D_2r6s8")
-size = Vector2(0.4, 0.4)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y0exd"]
+albedo_color = Color(0.686275, 0.101961, 0.298039, 1)
 
 [node name="ThrownItem2" type="RigidBody3D"]
 mass = 0.1
@@ -21,14 +19,19 @@ physics_material_override = ExtResource("1_nd2x4")
 max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("1_t7qg5")
-score_affect = 10.0
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
-visible = false
-radius = 0.2
+score_affect = 3.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_umsyo")
 
-[node name="Billboard" type="MeshInstance3D" parent="."]
-mesh = SubResource("QuadMesh_quk8v")
+[node name="rose" parent="." instance=ExtResource("3_vlku5")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.476349, -0.284742, 0.0372854)
+
+[node name="Plane_001" parent="rose" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_1nk34")
+
+[node name="Torus" parent="rose" index="1"]
+transform = Transform3D(0.923312, 0, 0, 0, 0.923312, 0, 0, 0, 0.923312, -5.17668, 4.54508, -0.410456)
+surface_material_override/0 = SubResource("StandardMaterial3D_y0exd")
+
+[editable path="rose"]

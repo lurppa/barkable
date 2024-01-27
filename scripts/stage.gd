@@ -9,7 +9,8 @@ const THROW_X_RANDOMNESS = 1.0
 @export_node_path var player_path
 @export_node_path var throw_point1_path
 @export_node_path var throw_point2_path
-@export var throwable_items: Array[PackedScene]
+@export var throwable_bads: Array[PackedScene]
+@export var throwable_goods: Array[PackedScene]
 @export_node_path var front_of_stage_path
 
 @onready var player = get_node(player_path)
@@ -18,11 +19,13 @@ const THROW_X_RANDOMNESS = 1.0
 @onready var front_of_stage = get_node(front_of_stage_path)
 
 
-func throw_multiple_items():
-	start_throwing(5)
+func throw_multiple_items( good:bool):
+	start_throwing(5,good)
 
+var good_items:bool = false;
 
-func start_throwing(count_of_items: int):
+func start_throwing(count_of_items: int, good:bool):
+	good_items = good;
 	for i in range(count_of_items):
 		get_tree().create_timer(i/2.0).connect("timeout", throw_item)
 
@@ -35,10 +38,12 @@ func throw_item():
 	var horizontal_offset = Vector3(THROW_X_RANDOMNESS * 2 * randf() - THROW_X_RANDOMNESS, 0, 0)
 	var dir_to_player = (player.position + horizontal_offset + TARGET_OFFSET - throw_point).normalized()
 
+	var array = throwable_goods if good_items else throwable_bads;
 	# Instantiate a random item with values calculated earlier
-	var item = throwable_items[randf() * len(throwable_items)].instantiate()
+	var item = array[randf() * len(array)].instantiate()
 	item.position = throw_point
-	item.linear_velocity = dir_to_player * THROW_VELOCITY
+	item.linear_velocity = dir_to_player * THROW_VELOCITY * item.throw_speed_modifier
+	item.rotation_degrees = Vector3(randf() * 1000,randf()*1000,randf()*1000)
 	item.connect("hit_player", func(item2): emit_signal("item_hit_player", item2))
 	add_child(item)
 

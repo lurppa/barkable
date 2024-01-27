@@ -6,7 +6,7 @@ const ALIVE_FOR = 1.0
 
 # Affects how much this item affects score if hit by player
 @export var score_affect: float = 0.0
-
+@export var throw_speed_modifier: float = 1.0
 
 func _ready():
 	var helper = func(body):

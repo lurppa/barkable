@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw7mq74caam7"]
+
+[ext_resource type="PackedScene" uid="uid://wgcobtyh3mg6" path="res://models/items/rose.glb" id="1_n0kp1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_meqas"]
+albedo_color = Color(0, 0.403922, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o1wxo"]
+albedo_color = Color(0.843137, 0.0980392, 0.0980392, 1)
+
+[node name="rose" instance=ExtResource("1_n0kp1")]
+
+[node name="Plane_001" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_meqas")
+
+[node name="Torus" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_o1wxo")

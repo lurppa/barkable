@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dkbw5ntx818tl"]
+
+[ext_resource type="Texture2D" uid="uid://cb7b6uwudb46o" path="res://models/comic/jerry_animated_ManCasual3Color.png" id="1_8wnvx"]
+
+[resource]
+albedo_texture = ExtResource("1_8wnvx")

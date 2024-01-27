@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsegc7ynhiuw3"]
+
+[ext_resource type="Script" path="res://scripts/thrown_item.gd" id="1_i0ym1"]
+[ext_resource type="PackedScene" uid="uid://b66n7srk6sf2c" path="res://models/items/bottle.glb" id="2_toyy1"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_umsyo"]
+radius = 0.202791
+
+[node name="ThrownItem" type="RigidBody3D"]
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_i0ym1")
+score_affect = -10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_umsyo")
+
+[node name="bottle" parent="." instance=ExtResource("2_toyy1")]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 2.64041, -0.641501, -2.61545)
