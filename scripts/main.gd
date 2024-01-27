@@ -44,6 +44,5 @@ func _on_dialog_chosen(val):
 	_show_dialog()
 
 
-func _on_item_hit_player(_item):
-	comedy_score -= 10.0
-
+func _on_item_hit_player(item):
+	comedy_score += item.score_affect
