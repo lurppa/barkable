@@ -1,9 +1,43 @@
 [gd_scene load_steps=9 format=3 uid="uid://ccj2hdg614r6x"]
 
+
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_b1maf"]
 [ext_resource type="Material" uid="uid://cwpb8b3ksvtb4" path="res://art/materials/audienceBillboard.tres" id="2_1141y"]
 [ext_resource type="Material" uid="uid://rxwvnp1r6vaq" path="res://art/materials/curtainBillboard.tres" id="2_obykb"]
 [ext_resource type="PackedScene" uid="uid://nji7udnyfblo" path="res://scenes/stage.tscn" id="2_vo661"]
+
+[ext_resource type="SpriteFrames" uid="uid://qlsu52cc0ufw" path="res://art/player/textures/bottom_spritesheep.tres" id="5_ynjrs"]
+[ext_resource type="PackedScene" uid="uid://dc8411dbc438i" path="res://scenes/dialog.tscn" id="6_gm7m2"]
+
+[sub_resource type="FontFile" id="FontFile_bx7qq"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/36/0/ascent = 0.0
+cache/0/36/0/descent = 0.0
+cache/0/36/0/underline_position = 0.0
+cache/0/36/0/underline_thickness = 0.0
+cache/0/36/0/scale = 1.0
+cache/0/36/0/kerning_overrides/36/0 = Vector2(0, 0)
+cache/0/36/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/36/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_i6pg1"]
+line_spacing = 5.0
+font = SubResource("FontFile_bx7qq")
+font_size = 36
+font_color = Color(0, 0, 0, 1)
+outline_size = 10
+outline_color = Color(0.996078, 0.996078, 0.996078, 1)
+shadow_size = 9
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(1, 6.18)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_tgd07"]
 size = Vector2(10, 10)
@@ -19,6 +53,92 @@ material = SubResource("StandardMaterial3D_3a2er")
 [node name="Main" type="Node3D"]
 script = ExtResource("1_b1maf")
 stage_path = NodePath("Stage")
+dialog_path = NodePath("Dialog")
+
+[node name="Menu" type="CanvasLayer" parent="."]
+
+[node name="StartGame" type="ColorRect" parent="Menu"]
+self_modulate = Color(1, 1, 1, 0.313726)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -581.0
+offset_top = -330.0
+offset_right = 587.0
+offset_bottom = 333.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GoodDialogButton" type="Button" parent="Menu/StartGame"]
+layout_mode = 0
+offset_left = 378.0
+offset_top = 266.0
+offset_right = 787.0
+offset_bottom = 420.0
+metadata/_edit_group_ = true
+
+[node name="ButtonText" type="Label" parent="Menu/StartGame/GoodDialogButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -246.5
+offset_top = -78.5
+offset_right = 246.5
+offset_bottom = 78.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start :)"
+label_settings = SubResource("LabelSettings_i6pg1")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="GameOver" type="ColorRect" parent="Menu"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.313726)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -581.0
+offset_top = -330.0
+offset_right = 587.0
+offset_bottom = 333.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GoodDialogButton" type="Button" parent="Menu/GameOver"]
+layout_mode = 0
+offset_left = 378.0
+offset_top = 266.0
+offset_right = 787.0
+offset_bottom = 420.0
+metadata/_edit_group_ = true
+
+[node name="ButtonText" type="Label" parent="Menu/GameOver/GoodDialogButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -246.5
+offset_top = -78.5
+offset_right = 246.5
+offset_bottom = 78.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over :c"
+label_settings = SubResource("LabelSettings_i6pg1")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Stage" parent="." instance=ExtResource("2_vo661")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.97054)
@@ -48,96 +168,121 @@ transform = Transform3D(1, 0, 0, 0, 2.83705, 0, 0, 0, 1, 2.40688, 1.92728, -2.85
 material_override = ExtResource("2_obykb")
 mesh = SubResource("QuadMesh_er3e1")
 
-[node name="Audience3" type="MeshInstance3D" parent="."]
+[node name="Player" type="Node3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.0183155, 1.29673, -3.4268)
+visible = false
+
+[node name="bottomSprite" type="AnimatedSprite3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+pixel_size = 0.0075
+sprite_frames = ExtResource("5_ynjrs")
+animation = &"idle"
+
+[node name="ThrowPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6.73233)
+
+[node name="ThrowPoint2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6.73233)
+
+[node name="Dialog" parent="." instance=ExtResource("6_gm7m2")]
+
+[node name="AudienceImages" type="Node3D" parent="."]
+
+[node name="Audience3" type="MeshInstance3D" parent="AudienceImages"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.912, 2.34224, 0.669344, -0.906105)
 material_override = ExtResource("2_1141y")
 mesh = SubResource("QuadMesh_er3e1")
+skeleton = NodePath("../..")
 
-[node name="Audience4" type="MeshInstance3D" parent="Audience3"]
+[node name="Audience4" type="MeshInstance3D" parent="AudienceImages/Audience3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85419, 0, 0)
 material_override = ExtResource("2_1141y")
 mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="Audience5" type="MeshInstance3D" parent="Audience3"]
+[node name="Audience5" type="MeshInstance3D" parent="AudienceImages/Audience3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83068, 0, 0)
 material_override = ExtResource("2_1141y")
 mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="Audience6" type="MeshInstance3D" parent="Audience3"]
+[node name="Audience6" type="MeshInstance3D" parent="AudienceImages/Audience3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89912, 0, 0)
 material_override = ExtResource("2_1141y")
 mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="Audience4" type="MeshInstance3D" parent="."]
+[node name="Audience4" type="MeshInstance3D" parent="AudienceImages"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.912, -1.90463, 0.669344, -0.906105)
 material_override = ExtResource("2_1141y")
 mesh = SubResource("QuadMesh_er3e1")
+skeleton = NodePath("../..")
 
-[node name="Audience4" type="MeshInstance3D" parent="Audience4"]
+[node name="Audience4" type="MeshInstance3D" parent="AudienceImages/Audience4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85419, 0, 0)
 material_override = ExtResource("2_1141y")
 mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="Audience5" type="MeshInstance3D" parent="Audience4"]
+[node name="Audience5" type="MeshInstance3D" parent="AudienceImages/Audience4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83068, 0, 0)
 material_override = ExtResource("2_1141y")
 mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="Audience6" type="MeshInstance3D" parent="Audience4"]
+[node name="Audience6" type="MeshInstance3D" parent="AudienceImages/Audience4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89912, 0, 0)
 material_override = ExtResource("2_1141y")
 mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="Audience5" type="MeshInstance3D" parent="."]
+[node name="Audience5" type="MeshInstance3D" parent="AudienceImages"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.912, -2.19206, 0.669344, -0.528721)
 material_override = ExtResource("2_1141y")
 mesh = SubResource("QuadMesh_er3e1")
+skeleton = NodePath("../..")
 
-[node name="Audience4" type="MeshInstance3D" parent="Audience5"]
+[node name="Audience4" type="MeshInstance3D" parent="AudienceImages/Audience5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85419, 0, 0)
 material_override = ExtResource("2_1141y")
 mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="Audience5" type="MeshInstance3D" parent="Audience5"]
+[node name="Audience5" type="MeshInstance3D" parent="AudienceImages/Audience5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83068, 0, 0)
 material_override = ExtResource("2_1141y")
 mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="Audience6" type="MeshInstance3D" parent="Audience5"]
+[node name="Audience6" type="MeshInstance3D" parent="AudienceImages/Audience5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89912, 0, 0)
 material_override = ExtResource("2_1141y")
 mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="Audience6" type="MeshInstance3D" parent="."]
+[node name="Audience6" type="MeshInstance3D" parent="AudienceImages"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.912, 2.61045, 0.669344, -0.528721)
 material_override = ExtResource("2_1141y")
 mesh = SubResource("QuadMesh_er3e1")
+skeleton = NodePath("../..")
 
-[node name="Audience4" type="MeshInstance3D" parent="Audience6"]
+[node name="Audience4" type="MeshInstance3D" parent="AudienceImages/Audience6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85419, 0, 0)
 material_override = ExtResource("2_1141y")
 mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="Audience5" type="MeshInstance3D" parent="Audience6"]
+[node name="Audience5" type="MeshInstance3D" parent="AudienceImages/Audience6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83068, 0, 0)
 material_override = ExtResource("2_1141y")
 mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="Audience6" type="MeshInstance3D" parent="Audience6"]
+[node name="Audience6" type="MeshInstance3D" parent="AudienceImages/Audience6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89912, 0, 0)
 material_override = ExtResource("2_1141y")
 mesh = SubResource("QuadMesh_er3e1")
+
 skeleton = NodePath("../..")
 
 [node name="ThrowPoint" type="Node3D" parent="."]
@@ -145,3 +290,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6.73233)
 
 [node name="ThrowPoint2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6.73233)
+=======
+skeleton = NodePath("../../..")
+

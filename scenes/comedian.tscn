@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://br3nycjpo7pys"]
+
+[ext_resource type="Script" path="res://scripts/comedian.gd" id="1_msiyj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jhgu1"]
+height = 1.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tsoy0"]
+albedo_color = Color(1, 0.235294, 1, 1)
+
+[node name="Comedian" type="CharacterBody3D" groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50514, 0)
+script = ExtResource("1_msiyj")
+fall_trigger_path = NodePath("../Platform/Walls/FrontTrigger")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_jhgu1")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.6, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.305, -0.599)
+layers = 2
+material_override = SubResource("StandardMaterial3D_tsoy0")
+size = Vector3(0.1, 0.1, 0.5)
