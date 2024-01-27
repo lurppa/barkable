@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ccj2hdg614r6x"]
+[gd_scene load_steps=14 format=3 uid="uid://ccj2hdg614r6x"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_b1maf"]
 [ext_resource type="Material" uid="uid://cwpb8b3ksvtb4" path="res://art/materials/audienceBillboard.tres" id="2_1141y"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://nji7udnyfblo" path="res://scenes/stage.tscn" id="2_vo661"]
 [ext_resource type="SpriteFrames" uid="uid://qlsu52cc0ufw" path="res://art/player/textures/bottom_spritesheep.tres" id="5_ynjrs"]
 [ext_resource type="PackedScene" uid="uid://dc8411dbc438i" path="res://scenes/dialog.tscn" id="6_gm7m2"]
+[ext_resource type="Script" path="res://scripts/meta_controller_component.gd" id="7_blwi3"]
 
 [sub_resource type="FontFile" id="FontFile_bx7qq"]
 subpixel_positioning = 0
@@ -281,3 +282,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89912, 0, 0)
 material_override = ExtResource("2_1141y")
 mesh = SubResource("QuadMesh_er3e1")
 skeleton = NodePath("../../..")
+
+[node name="MetaControllerComponent" type="Node" parent="."]
+script = ExtResource("7_blwi3")
