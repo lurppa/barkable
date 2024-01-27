@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://c15yq6aibcl0t"]
+
+[ext_resource type="PackedScene" uid="uid://cf64rti5r85hv" path="res://scenes/comedian.tscn" id="1_rktyb"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_kks11"]
+[ext_resource type="Script" path="res://scripts/StagePlaceholder.gd" id="3_f5ycm"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="3_qntux"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pc2de"]
+size = Vector3(9, 1, 7)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ncrho"]
+albedo_color = Color(0.419608, 0.768627, 0.580392, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1upbf"]
+size = Vector3(9, 2, 6)
+
+[node name="OpenWorld" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 2)
+size = Vector3(9, 1, 7)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 2)
+shape = SubResource("BoxShape3D_pc2de")
+
+[node name="Comedian" parent="." instance=ExtResource("1_rktyb")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 6.02124e-08, -6.33815e-08, 0, 0.724999, 0.688749, 8.74228e-08, 0.688749, -0.724999, 0, 3.40514, -2)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
+script = ExtResource("2_kks11")
+
+[node name="StagePlaceholder" type="CSGBox3D" parent="." node_paths=PackedStringArray("stage_camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.42248, -0.0284543, 9.116)
+size = Vector3(9, 1, 7)
+material = SubResource("StandardMaterial3D_ncrho")
+script = ExtResource("3_f5ycm")
+stage_camera = NodePath("StageCameraHolder/PhantomCamera3D")
+
+[node name="Area3D" type="Area3D" parent="StagePlaceholder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="AreaTrigger" type="CollisionShape3D" parent="StagePlaceholder/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5)
+shape = SubResource("BoxShape3D_1upbf")
+
+[node name="StageCameraHolder" type="Node3D" parent="StagePlaceholder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, 5)
+
+[node name="PhantomCamera3D" type="Node3D" parent="StagePlaceholder/StageCameraHolder"]
+transform = Transform3D(0.971844, -0.0394459, 0.232302, 0, 0.985888, 0.167408, -0.235627, -0.162695, 0.958129, 0, 0, 0)
+script = ExtResource("3_qntux")
+priority_override = false
+priority = 0
+follow_mode = 0
+look_at_mode = 2
+look_at_target = NodePath("../../../Comedian")
+look_at_parameters/look_at_target_offset = Vector3(0, 0, 0)
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0
+camera_3D_resource = null
+
+[node name="StageColliderPlaceholder" type="CollisionShape3D" parent="StagePlaceholder"]
+shape = SubResource("BoxShape3D_pc2de")
+
+[connection signal="body_entered" from="StagePlaceholder/Area3D" to="StagePlaceholder" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="StagePlaceholder/Area3D" to="StagePlaceholder" method="_on_area_3d_body_exited"]
