@@ -16,4 +16,4 @@ score_affect = -10.0
 shape = SubResource("SphereShape3D_umsyo")
 
 [node name="tomato2" parent="." instance=ExtResource("2_r8u3g")]
-transform = Transform3D(0.66, 0, 0, 0, 0.66, 0, 0, 0, 0.66, 4.31313, -1.06295, -0.760973)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 3.278, -0.828439, -0.580227)
