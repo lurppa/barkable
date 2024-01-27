@@ -1,7 +1,6 @@
-[gd_scene load_steps=27 format=3 uid="uid://ccj2hdg614r6x"]
+[gd_scene load_steps=24 format=3 uid="uid://ccj2hdg614r6x"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_b1maf"]
-[ext_resource type="Material" uid="uid://rxwvnp1r6vaq" path="res://art/materials/curtainBillboard.tres" id="2_obykb"]
 [ext_resource type="PackedScene" uid="uid://d2mrod3qas5ag" path="res://scenes/stage/stage.tscn" id="2_vo661"]
 [ext_resource type="Texture2D" uid="uid://kcapb53jlbeh" path="res://art/Textures/CurtainBackground.png" id="3_a7hrh"]
 [ext_resource type="PackedScene" uid="uid://dho75wjw3lpdb" path="res://scenes/items/bad items/small/badegg.tscn" id="3_ig4ll"]
@@ -15,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c1ky3pnkcfhnj" path="res://scenes/items/bad items/large/plantpot.tscn" id="7_wvk6e"]
 [ext_resource type="PackedScene" uid="uid://lbs7f5s2cxwr" path="res://scenes/items/bad items/large/toilet.tscn" id="8_sembv"]
 [ext_resource type="PackedScene" uid="uid://bo2vqtg0xnepl" path="res://scenes/items/good_item_placeholder.tscn" id="9_6srqn"]
-[ext_resource type="Material" path="res://art/materials/curtainEdge.tres" id="9_ti5ui"]
+[ext_resource type="PackedScene" uid="uid://dr76ui6pipxj7" path="res://scenes/stage/curtains.tscn" id="11_5thl5"]
 
 [sub_resource type="FontFile" id="FontFile_bx7qq"]
 subpixel_positioning = 0
@@ -66,17 +65,12 @@ albedo_texture = ExtResource("4_w4ekb")
 [sub_resource type="Environment" id="Environment_568cv"]
 ambient_light_color = Color(0.658824, 0.658824, 0.658824, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3a2er"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_er3e1"]
-lightmap_size_hint = Vector2i(7, 7)
-material = SubResource("StandardMaterial3D_3a2er")
-
 [node name="Main" type="Node3D"]
 script = ExtResource("1_b1maf")
 STARTING_COMEDY_SCORE = 50.0
 stage_path = NodePath("Stage")
 dialog_path = NodePath("Dialog")
+curtains_path = NodePath("Curtains")
 
 [node name="Menu" type="CanvasLayer" parent="."]
 
@@ -233,7 +227,7 @@ mesh = SubResource("PlaneMesh_mxlwu")
 surface_material_override/0 = SubResource("StandardMaterial3D_cgfe7")
 
 [node name="BGcurt3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.5, 0, 0, 0, 1, 0, 0, 0, 1, -0.0691948, 2.51538, -5.26544)
+transform = Transform3D(1.5, 0, 0, 0, 1, 0, 0, 0, 1, -0.0691948, 2.51538, -5.35576)
 gi_lightmap_scale = 3
 mesh = SubResource("PlaneMesh_mxlwu")
 surface_material_override/0 = SubResource("StandardMaterial3D_7k0b7")
@@ -244,26 +238,6 @@ environment = SubResource("Environment_568cv")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 3, 0)
 visible = false
-
-[node name="Curtain" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, 0, 0, 0, -3.5, -8.74228e-08, 0, -3.0598e-07, 1, -2.52466, 2.11401, -3.42868)
-material_override = ExtResource("2_obykb")
-mesh = SubResource("QuadMesh_er3e1")
-
-[node name="Curtain3" type="MeshInstance3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 1, 2.025, 2.955, -3.429)
-material_override = ExtResource("9_ti5ui")
-mesh = SubResource("QuadMesh_er3e1")
-
-[node name="Curtain4" type="MeshInstance3D" parent="."]
-transform = Transform3D(-2, 0, 0, 0, 2, 0, 0, 0, 1, -2.025, 2.955, -3.429)
-material_override = ExtResource("9_ti5ui")
-mesh = SubResource("QuadMesh_er3e1")
-
-[node name="Curtain2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 3.5, 0, 0, 0, 1, 2.525, 2.114, -3.422)
-material_override = ExtResource("2_obykb")
-mesh = SubResource("QuadMesh_er3e1")
 
 [node name="ThrowPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6.73233)
@@ -278,3 +252,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.112713)
 
 [node name="MetaControllerComponent" type="Node" parent="."]
 script = ExtResource("6_oa1a8")
+
+[node name="Curtains" parent="." instance=ExtResource("11_5thl5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.422966, -1.83624)
