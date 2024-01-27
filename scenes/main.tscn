@@ -166,15 +166,97 @@ transform = Transform3D(1, 0, 0, 0, 2.83705, 0, 0, 0, 1, 2.40688, 1.92728, -2.85
 material_override = ExtResource("2_obykb")
 mesh = SubResource("QuadMesh_er3e1")
 
-[node name="Player" type="Node3D" parent="."]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.0183155, 1.29673, -3.4268)
-visible = false
+[node name="Audience3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.912, 2.34224, 0.669344, -0.906105)
+material_override = ExtResource("2_1141y")
+mesh = SubResource("QuadMesh_er3e1")
 
-[node name="bottomSprite" type="AnimatedSprite3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-pixel_size = 0.0075
-sprite_frames = ExtResource("5_ynjrs")
-animation = &"idle"
+[node name="Audience4" type="MeshInstance3D" parent="Audience3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85419, 0, 0)
+material_override = ExtResource("2_1141y")
+mesh = SubResource("QuadMesh_er3e1")
+skeleton = NodePath("../..")
+
+[node name="Audience5" type="MeshInstance3D" parent="Audience3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83068, 0, 0)
+material_override = ExtResource("2_1141y")
+mesh = SubResource("QuadMesh_er3e1")
+skeleton = NodePath("../..")
+
+[node name="Audience6" type="MeshInstance3D" parent="Audience3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89912, 0, 0)
+material_override = ExtResource("2_1141y")
+mesh = SubResource("QuadMesh_er3e1")
+skeleton = NodePath("../..")
+
+[node name="Audience4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.912, -1.90463, 0.669344, -0.906105)
+material_override = ExtResource("2_1141y")
+mesh = SubResource("QuadMesh_er3e1")
+
+[node name="Audience4" type="MeshInstance3D" parent="Audience4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85419, 0, 0)
+material_override = ExtResource("2_1141y")
+mesh = SubResource("QuadMesh_er3e1")
+skeleton = NodePath("../..")
+
+[node name="Audience5" type="MeshInstance3D" parent="Audience4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83068, 0, 0)
+material_override = ExtResource("2_1141y")
+mesh = SubResource("QuadMesh_er3e1")
+skeleton = NodePath("../..")
+
+[node name="Audience6" type="MeshInstance3D" parent="Audience4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89912, 0, 0)
+material_override = ExtResource("2_1141y")
+mesh = SubResource("QuadMesh_er3e1")
+skeleton = NodePath("../..")
+
+[node name="Audience5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.912, -2.19206, 0.669344, -0.528721)
+material_override = ExtResource("2_1141y")
+mesh = SubResource("QuadMesh_er3e1")
+
+[node name="Audience4" type="MeshInstance3D" parent="Audience5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85419, 0, 0)
+material_override = ExtResource("2_1141y")
+mesh = SubResource("QuadMesh_er3e1")
+skeleton = NodePath("../..")
+
+[node name="Audience5" type="MeshInstance3D" parent="Audience5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83068, 0, 0)
+material_override = ExtResource("2_1141y")
+mesh = SubResource("QuadMesh_er3e1")
+skeleton = NodePath("../..")
+
+[node name="Audience6" type="MeshInstance3D" parent="Audience5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89912, 0, 0)
+material_override = ExtResource("2_1141y")
+mesh = SubResource("QuadMesh_er3e1")
+skeleton = NodePath("../..")
+
+[node name="Audience6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.912, 2.61045, 0.669344, -0.528721)
+material_override = ExtResource("2_1141y")
+mesh = SubResource("QuadMesh_er3e1")
+
+[node name="Audience4" type="MeshInstance3D" parent="Audience6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85419, 0, 0)
+material_override = ExtResource("2_1141y")
+mesh = SubResource("QuadMesh_er3e1")
+skeleton = NodePath("../..")
+
+[node name="Audience5" type="MeshInstance3D" parent="Audience6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83068, 0, 0)
+material_override = ExtResource("2_1141y")
+mesh = SubResource("QuadMesh_er3e1")
+skeleton = NodePath("../..")
+
+[node name="Audience6" type="MeshInstance3D" parent="Audience6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89912, 0, 0)
+material_override = ExtResource("2_1141y")
+mesh = SubResource("QuadMesh_er3e1")
+skeleton = NodePath("../..")
 
 [node name="ThrowPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6.73233)
