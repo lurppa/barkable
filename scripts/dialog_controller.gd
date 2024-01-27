@@ -54,6 +54,7 @@ var jokes_array = [
 
 # TODO: Main should probably handle showing and hiding the dialogue
 signal dialog_chosen(score)
+signal dialog_begin()
 
 func _ready():
 	$ButtonHolder/GoodDialogButton.pressed.connect(good_button_pressed)
@@ -103,6 +104,7 @@ func hide_joke_text():
 func show_text_slowly(joke_content):
 	var joke_parts = joke_content.split("\n\n")
 	$JokeSetup.text = joke_parts[0]
+	emit_signal("dialog_begin")
 	if joke_parts.size() > 1:
 		$JokePunchline.text = joke_parts[1]
 		show_setup()

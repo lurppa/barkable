@@ -5,6 +5,7 @@ extends CharacterBody3D
 
 const SPEED = 3.0
 
+@export_node_path var dialog_path
 @export_node_path var fall_trigger_path
 @export var ragdoll_skeleton : Skeleton3D
 @export var capsule_collider : CollisionShape3D
@@ -18,7 +19,8 @@ var disable_movement = false
 @onready var fall_trigger = get_node(fall_trigger_path)
 
 
-# func _ready():
+func _ready():
+	get_node(dialog_path).connect("dialog_begin", anim_dialog_begin)
 # 	var helper = func(body):
 # 		if body == self:
 # 			_fall_trigger_entered()
@@ -69,6 +71,9 @@ func _pass_out():
 
 func _sanity() -> bool:
 	return !dead
+	
+func anim_dialog_begin():
+	anim_play("talk")
 	
 func anim_panic(walkspeed):
 	if walkspeed != 0:
