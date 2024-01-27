@@ -1,11 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://ccj2hdg614r6x"]
+[gd_scene load_steps=14 format=3 uid="uid://ccj2hdg614r6x"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_b1maf"]
-[ext_resource type="Material" uid="uid://cwpb8b3ksvtb4" path="res://art/materials/audienceBillboard.tres" id="2_1141y"]
 [ext_resource type="Material" uid="uid://rxwvnp1r6vaq" path="res://art/materials/curtainBillboard.tres" id="2_obykb"]
 [ext_resource type="PackedScene" uid="uid://nji7udnyfblo" path="res://scenes/stage.tscn" id="2_vo661"]
-[ext_resource type="SpriteFrames" uid="uid://qlsu52cc0ufw" path="res://art/player/textures/bottom_spritesheep.tres" id="5_ynjrs"]
+[ext_resource type="Texture2D" uid="uid://p211uedohlog" path="res://art/Textures/audience1.png" id="4_t5mm8"]
 [ext_resource type="PackedScene" uid="uid://dc8411dbc438i" path="res://scenes/dialog.tscn" id="6_gm7m2"]
+[ext_resource type="SpriteFrames" uid="uid://dxr0p8ymbjnov" path="res://art/sprites/audience.tres" id="6_wc8vx"]
 
 [sub_resource type="FontFile" id="FontFile_bx7qq"]
 subpixel_positioning = 0
@@ -46,7 +46,13 @@ ambient_light_color = Color(0.658824, 0.658824, 0.658824, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3a2er"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_er3e1"]
+lightmap_size_hint = Vector2i(7, 7)
 material = SubResource("StandardMaterial3D_3a2er")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v7srx"]
+transparency = 1
+albedo_texture = ExtResource("4_t5mm8")
+billboard_keep_scale = true
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_b1maf")
@@ -168,95 +174,8 @@ mesh = SubResource("QuadMesh_er3e1")
 
 [node name="Audience3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.912, 2.34224, 0.669344, -0.906105)
-material_override = ExtResource("2_1141y")
+material_override = SubResource("StandardMaterial3D_v7srx")
 mesh = SubResource("QuadMesh_er3e1")
-
-[node name="Audience4" type="MeshInstance3D" parent="Audience3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85419, 0, 0)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../..")
-
-[node name="Audience5" type="MeshInstance3D" parent="Audience3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83068, 0, 0)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../..")
-
-[node name="Audience6" type="MeshInstance3D" parent="Audience3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89912, 0, 0)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../..")
-
-[node name="Audience4" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.912, -1.90463, 0.669344, -0.906105)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-
-[node name="Audience4" type="MeshInstance3D" parent="Audience4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85419, 0, 0)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../..")
-
-[node name="Audience5" type="MeshInstance3D" parent="Audience4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83068, 0, 0)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../..")
-
-[node name="Audience6" type="MeshInstance3D" parent="Audience4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89912, 0, 0)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../..")
-
-[node name="Audience5" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.912, -2.19206, 0.669344, -0.528721)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-
-[node name="Audience4" type="MeshInstance3D" parent="Audience5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85419, 0, 0)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../..")
-
-[node name="Audience5" type="MeshInstance3D" parent="Audience5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83068, 0, 0)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../..")
-
-[node name="Audience6" type="MeshInstance3D" parent="Audience5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89912, 0, 0)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../..")
-
-[node name="Audience6" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.912, 2.61045, 0.669344, -0.528721)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-
-[node name="Audience4" type="MeshInstance3D" parent="Audience6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85419, 0, 0)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../..")
-
-[node name="Audience5" type="MeshInstance3D" parent="Audience6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83068, 0, 0)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../..")
-
-[node name="Audience6" type="MeshInstance3D" parent="Audience6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89912, 0, 0)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../..")
 
 [node name="ThrowPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6.73233)
@@ -268,98 +187,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6.73233)
 
 [node name="AudienceImages" type="Node3D" parent="."]
 
-[node name="Audience3" type="MeshInstance3D" parent="AudienceImages"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.912, 2.34224, 0.669344, -0.906105)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../..")
-
-[node name="Audience4" type="MeshInstance3D" parent="AudienceImages/Audience3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85419, 0, 0)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../../..")
-
-[node name="Audience5" type="MeshInstance3D" parent="AudienceImages/Audience3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83068, 0, 0)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../../..")
-
-[node name="Audience6" type="MeshInstance3D" parent="AudienceImages/Audience3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89912, 0, 0)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../../..")
-
-[node name="Audience4" type="MeshInstance3D" parent="AudienceImages"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.912, -1.90463, 0.669344, -0.906105)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../..")
-
-[node name="Audience4" type="MeshInstance3D" parent="AudienceImages/Audience4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85419, 0, 0)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../../..")
-
-[node name="Audience5" type="MeshInstance3D" parent="AudienceImages/Audience4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83068, 0, 0)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../../..")
-
-[node name="Audience6" type="MeshInstance3D" parent="AudienceImages/Audience4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89912, 0, 0)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../../..")
-
-[node name="Audience5" type="MeshInstance3D" parent="AudienceImages"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.912, -2.19206, 0.669344, -0.528721)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../..")
-
-[node name="Audience4" type="MeshInstance3D" parent="AudienceImages/Audience5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85419, 0, 0)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../../..")
-
-[node name="Audience5" type="MeshInstance3D" parent="AudienceImages/Audience5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83068, 0, 0)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../../..")
-
-[node name="Audience6" type="MeshInstance3D" parent="AudienceImages/Audience5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89912, 0, 0)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../../..")
-
-[node name="Audience6" type="MeshInstance3D" parent="AudienceImages"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.912, 2.61045, 0.669344, -0.528721)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../..")
-
-[node name="Audience4" type="MeshInstance3D" parent="AudienceImages/Audience6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85419, 0, 0)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../../..")
-
-[node name="Audience5" type="MeshInstance3D" parent="AudienceImages/Audience6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83068, 0, 0)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../../..")
-
-[node name="Audience6" type="MeshInstance3D" parent="AudienceImages/Audience6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89912, 0, 0)
-material_override = ExtResource("2_1141y")
-mesh = SubResource("QuadMesh_er3e1")
-skeleton = NodePath("../../..")
+[node name="audience1" type="AnimatedSprite3D" parent="AudienceImages"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03335, 0)
+sprite_frames = ExtResource("6_wc8vx")

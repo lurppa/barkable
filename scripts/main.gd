@@ -2,6 +2,7 @@ extends Node3D
 
 const STARTING_COMEDY_SCORE = 50.0
 
+@export var comedian_playerr : Comedian
 @export_node_path var stage_path
 @export_node_path var dialog_path
 

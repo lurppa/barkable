@@ -10,6 +10,7 @@ const SPEED = 3.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var dead = false;
 
 @onready var fall_trigger = get_node(fall_trigger_path)
 
@@ -22,6 +23,8 @@ func _ready():
 
 
 func _physics_process(delta):
+	if not _sanity():
+		return
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -50,3 +53,11 @@ func _physics_process(delta):
 
 func _fall_trigger_entered():
 	print("Fall trigger triggered :)")
+	_pass_out()
+	
+func _pass_out():
+	ragdoll_skeleton.physical_bones_start_simulation();
+	dead = true;
+	
+func _sanity() -> bool:
+	return !dead
