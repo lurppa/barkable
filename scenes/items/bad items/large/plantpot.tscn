@@ -7,10 +7,12 @@
 radius = 0.202791
 
 [node name="ThrownItem" type="RigidBody3D"]
+gravity_scale = 0.4
 max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("1_baefw")
 score_affect = -10.0
+throw_speed_modifier = 0.6
 
 [node name="chair" parent="." instance=ExtResource("2_ku8kh")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 1.97011, -0.893066, 0.901931)
