@@ -1,7 +1,7 @@
 extends Node3D
 # Handles game loop and orchestrates other modules to work in order.
 
-const STARTING_COMEDY_SCORE = 10.0
+const STARTING_COMEDY_SCORE = 1.0
 
 @export_node_path var stage_path
 @export_node_path var dialog_path
