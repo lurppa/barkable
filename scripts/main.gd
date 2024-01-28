@@ -3,7 +3,8 @@ extends Node3D
 
 @export var STARTING_COMEDY_SCORE = 1.0
 # Amount of items to throw more each round
-const DIFFICULTY_RAMPUP = 3
+const DIFFICULTY_RAMPUP = 4
+var current_level = 1
 
 @export_node_path var stage_path
 @export_node_path var dialog_path
@@ -77,7 +78,10 @@ func _on_dialog_chosen(_val):
 	difficulty += DIFFICULTY_RAMPUP
 	#dialog.change_headlight_state(1 if val < 0 else 2)
 	await stage.throwing_stopped
-	await get_tree().create_timer(2.0).timeout
+	if not game_over:
+		score += current_level
+		current_level +=1
+	await get_tree().create_timer(1.0).timeout
 	_show_dialog()
 
 
