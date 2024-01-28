@@ -164,6 +164,9 @@ throw_point2_path = NodePath("../ThrowPoint2")
 throwable_bads = Array[PackedScene]([ExtResource("3_ig4ll"), ExtResource("4_c4yai"), ExtResource("5_eela6"), ExtResource("6_w1yu1"), ExtResource("7_wvk6e"), ExtResource("8_sembv"), ExtResource("6_w1yu1"), ExtResource("3_ig4ll"), ExtResource("4_c4yai"), ExtResource("4_c4yai"), ExtResource("4_c4yai"), ExtResource("5_eela6"), ExtResource("5_eela6"), ExtResource("5_eela6"), ExtResource("5_eela6"), ExtResource("5_eela6"), ExtResource("5_eela6")])
 throwable_goods = Array[PackedScene]([ExtResource("9_6srqn")])
 
+[node name="Comedian" parent="Stage" index="1"]
+dialog_path = NodePath("../../Dialog")
+
 [node name="MainSpotLight" type="SpotLight3D" parent="Stage"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0337095, 3.83772, -0.0937908)
 light_color = Color(0.67451, 0.67451, 0.67451, 1)
@@ -255,3 +258,5 @@ script = ExtResource("6_oa1a8")
 
 [node name="Curtains" parent="." instance=ExtResource("11_5thl5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.422966, -1.83624)
+
+[editable path="Stage"]
