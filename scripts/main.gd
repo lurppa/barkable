@@ -11,6 +11,9 @@ extends Node3D
 @onready var dialog = get_node(dialog_path)
 @onready var curtains = get_node(curtains_path)
 
+var game_over = false
+
+
 var comedy_score:
 	set(val):
 		comedy_score = val
@@ -45,7 +48,7 @@ func _reset_game():
 
 func _show_dialog():
 	await get_tree().create_timer(3.0).timeout
-	dialog.change_headlight_state(0)
+	#dialog.change_headlight_state(0)
 	if not $Menu/GameOver.visible:
 		stage.lock_player()
 		stage.player.anim_play("idle")
@@ -53,11 +56,11 @@ func _show_dialog():
 
 
 func _on_dialog_chosen(val):
+	stage.unlock_player()
 	await get_tree().create_timer(1.0).timeout
 	$Audience/Negative.play()
 	await get_tree().create_timer(1.0).timeout
 	$Audience/Booing.play()
-	stage.unlock_player()
 	stage.start_throwing(15)
 	#dialog.change_headlight_state(1 if val < 0 else 2)
 	await stage.throwing_stopped
@@ -72,6 +75,9 @@ func _on_item_hit_player(item):
 
 
 func _on_game_lost():
+	if game_over:
+		return
+	game_over = true
 	$Menu/GameOver.visible = true
 	stage.player._pass_out()
 	await get_tree().create_timer(2.0).timeout
