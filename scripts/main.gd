@@ -60,7 +60,9 @@ func _show_dialog():
 
 func _on_dialog_chosen(_val):
 	stage.unlock_player()
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(0.5).timeout
+	stage.get_node("Budumtss").play()
+	await get_tree().create_timer(1.5).timeout
 	$Audience/Negative.play()
 	await get_tree().create_timer(1.0).timeout
 	$Audience/Booing.play()
