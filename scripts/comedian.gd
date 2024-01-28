@@ -2,8 +2,8 @@ extends CharacterBody3D
 
 signal death
 
-@export var moveSpeed : float = 2
-@export var rotationSpeed : float = 3 
+@export var moveSpeed : float = 75
+@export var rotationSpeed : float = 600
 
 const SPEED = 3.0
 

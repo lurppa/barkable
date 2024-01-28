@@ -240,3 +240,6 @@ func increase_punchline_visible_ratio():
 func change_headlight_state(val:int):
 	stagelight_applause.visible = val == STAGELIGHTS_GREEN
 	stagelight_attack.visible = val == STAGELIGHTS_RED
+	
+func set_score(val):
+	$"../Menu/ScoreDisplay".text = "score: " + str(val)

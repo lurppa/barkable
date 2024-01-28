@@ -51,10 +51,10 @@ func throw_item():
 
 
 # Locks player and moves them to the front of the stage
-func lock_player():
+func lock_player(move_speed = 1):
 	player.disable_movement = true
 	get_tree().create_tween() \
-			.tween_property(player, "transform", front_of_stage.transform, 2.0) \
+			.tween_property(player, "transform", front_of_stage.transform, move_speed) \
 			.set_ease(Tween.EASE_IN_OUT) \
 			.set_trans(Tween.TRANS_CUBIC)
 
