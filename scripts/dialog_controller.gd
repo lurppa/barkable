@@ -1,9 +1,6 @@
 extends Node
 
-var joke1
-var joke2
-
-var can_continue
+var jokes = []
 
 var typing_speed = 0.04
 var read_time = 0.03
@@ -48,6 +45,54 @@ var jokes_array = [
 		},{
 			"topic":"Letter play",
 			"content" :"What do you call a fish with no eyes? \n\nFsh!"
+		},{
+			"topic":"Chicken",
+			"content" :"Why did the chicken go to school? \n\nTo improve its eggucation!"
+		},{
+			"topic":"Banana",
+			"content" :"Why did the banana go to the doctor? \n\nIt wasn't peeling well."
+		},{
+			"topic":"Elephant",
+			"content" :"Why did the elephant get kicked out of the pool? \n\nBecause he made a big splash! "
+		},{
+			"topic":"Pizza",
+			"content" :"Why did the pizza get a job at the bank? \n\nTo make dough!"
+		},{
+			"topic":"Astronaut",
+			"content" :"What did the astronaut say when he crashed into the moon? \n\nI Apollo-gize!"
+		},{
+			"topic":"Robot",
+			"content" :"Why did the robot cross the road?\n\n To get to the other circuit board"
+		},{
+			"topic":"Penguin",
+			"content" :"What did the penguin say when he stubbed his toe?\n\n Ow, my flipper!"
+		},{
+			"topic":"Unicorn",
+			"content" :"Why did the unicorn join the track team? \n\nBecause it wanted to run for a horn of gold! "
+		},{
+			"topic":"Potato",
+			"content" :"What do you call a potato that has been in the ground too long? \n\nA couch potato!"
+		},{
+			"topic":"Guitar",
+			"content" :"What's the difference between a guitar and a fish? \n\nYou can tuna fish, but you can't guitar fish"
+		},{
+			"topic":"Balloon",
+			"content" :"What did one balloon say to the other balloon? \n\nYou blow me away!"
+		},{
+			"topic":"Coffee",
+			"content" :"What did the coffee say to the teabag? \n\nLet's leaf each other alone!"
+		},{
+			"topic":"Ninja",
+			"content" : "What\'s a ninja\'s favorite food? \n\n Shuri-kens"
+		},{
+			"topic":"T-Rex",
+			"content" :"Why was the T-rex so good at hide and seek? \n\nBecause it could always blend in with the fossils!"
+		},{
+			"topic":"Llama",
+			"content" :"What did the llama say before leaving to work? \n\n Alpaca lunch!"
+		},{
+			"topic":"Rainbow",
+			"content" :"Why did the rainbow cross the road? \n\nTo get to the pot of gold!"
 		}
 		]
 
@@ -57,17 +102,23 @@ signal dialog_chosen(score)
 signal dialog_begin()
 
 func _ready():
-	$ButtonHolder/GoodDialogButton.pressed.connect(good_button_pressed)
-	$ButtonHolder/BadDialogButton.pressed.connect(bad_button_pressed)
+	$ButtonHolder/FirstButton.pressed.connect(first_button_pressed)
+	$ButtonHolder/SecondButton.pressed.connect(second_button_pressed)
+	$ButtonHolder/ThirdButton.pressed.connect(third_button_pressed)
+	$ButtonHolder/FourthButton.pressed.connect(fourth_button_pressed)
 	$ButtonHolder.visible = false
 
 
 func show_dialog(val: bool):
-	joke1 = fetch_random_joke()
-	joke2 = fetch_random_joke()
-	print(joke1)
-	$ButtonHolder/GoodDialogButton/ButtonText.text = str(joke1['topic'])
-	$ButtonHolder/BadDialogButton/ButtonText2.text = str(joke2['topic'])
+	jokes = []
+	for i in range(4):
+		var joke = fetch_random_joke()
+		jokes.append(joke) 
+		print(joke)
+	$ButtonHolder/FirstButton/ButtonText.text = str(jokes[0]['topic'])
+	$ButtonHolder/SecondButton/ButtonText.text = str(jokes[1]['topic'])
+	$ButtonHolder/ThirdButton/ButtonText.text = str(jokes[2]['topic'])
+	$ButtonHolder/FourthButton/ButtonText.text = str(jokes[3]['topic'])
 	$ButtonHolder.visible = val
 
 
@@ -75,14 +126,20 @@ func set_comedy_level(val):
 	$ComedyLevel.value = val
 
 
-func good_button_pressed():
-	#emit_signal("dialog_chosen", 1.0)
-	display_joke_text(joke1['content'])
+func first_button_pressed():
+	display_joke_text(jokes[0]['content'])
 	$ButtonHolder.visible = false
 
-
-func bad_button_pressed():
-	display_joke_text(joke2['content'])
+func second_button_pressed():
+	display_joke_text(jokes[1]['content'])
+	$ButtonHolder.visible = false
+	
+func third_button_pressed():
+	display_joke_text(jokes[2]['content'])
+	$ButtonHolder.visible = false
+	
+func fourth_button_pressed():
+	display_joke_text(jokes[3]['content'])
 	$ButtonHolder.visible = false
 	
 func fetch_random_joke():
@@ -94,8 +151,6 @@ func display_joke_text(joke_content : String):
 	$JokePunchline.visible = true
 	$JokePunchline.visible_ratio = 0
 	show_text_slowly(joke_content)
-	
-
 	
 func hide_joke_text():
 	$JokeSetup.visible = false
