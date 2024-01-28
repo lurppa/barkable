@@ -10,7 +10,7 @@ radius = 0.202791
 max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("1_i0ym1")
-score_affect = -10.0
+score_affect = -20.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_umsyo")

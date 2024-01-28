@@ -15,7 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://c1ky3pnkcfhnj" path="res://scenes/items/bad items/large/plantpot.tscn" id="7_wvk6e"]
 [ext_resource type="PackedScene" uid="uid://lbs7f5s2cxwr" path="res://scenes/items/bad items/large/toilet.tscn" id="8_sembv"]
 [ext_resource type="PackedScene" uid="uid://bo2vqtg0xnepl" path="res://scenes/items/good_item_placeholder.tscn" id="9_6srqn"]
-[ext_resource type="PackedScene" uid="uid://dr76ui6pipxj7" path="res://scenes/stage/curtains.tscn" id="11_5thl5"]
+[ext_resource type="Script" path="res://scripts/targetedSpotlight.gd" id="10_sw7mm"]
+[ext_resource type="PackedScene" uid="uid://cebm4d3qar0nq" path="res://scenes/stage/curtains.tscn" id="11_5thl5"]
 
 [sub_resource type="FontFile" id="FontFile_bx7qq"]
 subpixel_positioning = 0
@@ -169,21 +170,224 @@ throwable_bads = Array[PackedScene]([ExtResource("3_ig4ll"), ExtResource("4_c4ya
 throwable_goods = Array[PackedScene]([ExtResource("9_6srqn")])
 
 [node name="Comedian" parent="Stage" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0977592, 1.26738, -0.663237)
 dialog_path = NodePath("../../Dialog")
 
-[node name="MainSpotLight" type="SpotLight3D" parent="Stage"]
+[node name="Physical Bone Hips" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="1"]
+transform = Transform3D(1, -3.73035e-12, 8.32667e-16, 2.59792e-13, -0.118393, -0.992967, -2.84217e-12, 0.992967, -0.118393, -1.49012e-08, 1.03007, 0.00625229)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49707e-08, -1.73715e-06, 0.0527992)
+body_offset = Transform3D(1, -2.38419e-07, -1.32336e-09, -8.31724e-15, 0.00555094, -0.999985, 2.38416e-07, 0.999985, 0.00555094, -1.49012e-08, 0.0527984, -0.000291348)
+
+[node name="Physical Bone Spine" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="2"]
+transform = Transform3D(0.999998, 2.38419e-07, -8.88102e-15, 1.04528e-08, -0.043847, -0.999028, -2.38243e-07, 0.999036, -0.0438475, -1.49012e-08, 1.18061, 0.0168071)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23517e-08, 1.46454e-06, 0.0982051)
+body_offset = Transform3D(0.999998, 1.84741e-13, 1.48326e-13, -3.54206e-12, 5.02914e-07, -0.99999, -5.37028e-11, 0.999998, -3.46452e-07, -2.23517e-08, 0.0982041, -1.43051e-06)
+
+[node name="Physical Bone Chest" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="3"]
+transform = Transform3D(1, 2.38474e-07, 5.5568e-11, -1.77495e-08, 0.0746812, -0.997206, -2.37813e-07, 0.997207, 0.0746819, -1.49012e-08, 1.3523, 0.0156078)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23521e-08, -3.86308e-06, 0.0737852)
+body_offset = Transform3D(1, -7.10543e-14, -4.84057e-12, 7.10543e-15, -1.41561e-07, -0.999999, 1.27898e-13, 1, 6.55651e-07, -2.23517e-08, 0.0737851, 3.8147e-06)
+
+[node name="Physical Bone UpperChest" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="4"]
+transform = Transform3D(1, 2.38406e-07, 1.0498e-08, -7.07803e-08, 0.33849, -0.941052, -2.28072e-07, 0.941501, 0.33829, 5.81145e-07, 1.49505, -0.0147834)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.81913e-07, -1.8127e-06, 0.0735529)
+body_offset = Transform3D(1, -1.74609e-10, 1.04371e-08, 1.04855e-08, 3.9041e-05, -1.00001, -1.08273e-10, 1.0005, 1.96695e-06, 5.81145e-07, 0.0735536, 1.66893e-06)
+
+[node name="Physical Bone Shoulder_L" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="5"]
+transform = Transform3D(-2.07578e-07, 0.434065, -0.900881, -6.55653e-07, 0.900879, 0.434066, 1.00031, 1.3113e-06, 3.42729e-07, 0.0731008, 1.52904, -0.0396647)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42161e-06, -3.39492e-06, 0.0811421)
+body_offset = Transform3D(1.00031, -2.97998e-08, 1.04313e-07, -2.0549e-07, -2.74181e-06, -1, 5.29954e-07, 0.999998, -2.23517e-06, -1.43051e-06, 0.0811421, 3.57628e-06)
+
+[node name="Physical Bone UpperArm_L" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="6"]
+transform = Transform3D(0.597802, 0.801542, -0.0111708, 0.0363226, -0.0131663, 0.999252, 0.800752, -0.597797, -0.0369917, 0.147569, 1.35585, -0.0344162)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.97283e-06, 0.000221925, 0.138073)
+body_offset = Transform3D(0.816268, -0.576167, -0.0408394, 0.575913, 0.817288, -0.0181308, 0.0438177, -0.00871781, 0.999001, 0.00577402, 0.00232717, -0.137933)
+
+[node name="Physical Bone LowerArm_L" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="7"]
+transform = Transform3D(0.00593862, 0.999905, -0.020829, 0.00630773, 0.0207913, 0.999784, 0.999979, -0.00606877, -0.00617983, 0.195492, 1.14537, -0.223883)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18037, 0.232804, 0.340341)
+body_offset = Transform3D(0.998259, -0.0588949, -0.00672084, 0.0588866, 0.998404, -0.000427234, 0.0067372, 2.79372e-05, 0.999998, -0.164058, -0.242908, -0.341562)
+
+[node name="Physical Bone Hand_L" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="8"]
+transform = Transform3D(-0.99108, -0.132825, -0.0349093, 0.00864862, -0.314148, 0.94962, -0.137048, 0.940382, 0.312328, 0.199467, 1.00854, -0.238939)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.420452, -0.0168399, 0.51086)
+body_offset = Transform3D(-0.185941, 0.932064, 0.311985, -0.983017, -0.180879, -0.0453668, 0.0141385, -0.314944, 0.949291, -0.221864, -0.393181, -0.484314)
+
+[node name="Physical Bone FingerLittle_L" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="9"]
+transform = Transform3D(-0.99954, 0.0141241, -0.0263448, -0.0277508, -0.111108, 0.993437, 0.0110994, 0.994073, 0.11141, 0.201128, 0.950433, -0.255756)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50858, 0.136234, 0.553255)
+body_offset = Transform3D(0.000331339, 0.116221, -0.993241, -0.998538, -0.0534227, -0.00658056, -0.053806, 0.992151, 0.115993, 0.533851, -0.496918, -0.226703)
+
+[node name="Physical Bone FingerLittle01_L" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="10"]
+transform = Transform3D(0.000570779, 0.971556, 0.236828, -0.0683599, -0.236236, 0.969289, 0.998022, -0.0167367, 0.0662573, 0.198993, 0.929758, -0.257655)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.152763, 0.366827, 0.688096)
+body_offset = Transform3D(0.99825, 0.00616591, 0.0646278, -0.00614179, 0.999986, -0.000604757, -0.0646529, 0.000207834, 0.997909, -0.199228, -0.365468, -0.676857)
+
+[node name="Physical Bone FingerRing_L" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="11"]
+transform = Transform3D(-1.00058, 0.015287, 0.00386259, 0.0022412, -0.104928, 0.994904, 0.0156046, 0.995123, 0.104848, 0.203219, 0.942665, -0.238945)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.496107, 0.139646, 0.576746)
+body_offset = Transform3D(0.000571392, 0.112733, -0.994053, -0.999779, -0.0425923, -0.005403, -0.0429299, 0.993474, 0.11257, 0.557857, -0.486933, -0.224957)
+
+[node name="Physical Bone FingerRing01_L" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="12"]
+transform = Transform3D(0.00782136, 0.906191, 0.422793, -0.0410891, -0.422158, 0.90559, 0.999044, -0.0244574, 0.0339372, 0.197368, 0.920906, -0.240479)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.172133, 0.228951, 0.754712)
+body_offset = Transform3D(0.998977, -0.029466, 0.0318596, 0.0294577, 0.999564, 0.000646467, -0.0318607, 0.000291036, 0.999492, -0.189255, -0.23441, -0.748911)
+
+[node name="Physical Bone FingerMiddle_L" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="13"]
+transform = Transform3D(-0.992564, 0.0113071, 0.121293, 0.120252, -0.0682444, 0.990399, 0.0194739, 0.997607, 0.066376, 0.200903, 0.938697, -0.222931)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42746, 0.158404, 0.630171)
+body_offset = Transform3D(0.000616763, 0.072697, -0.997358, -1.00001, -0.00164189, -0.00073764, -0.00169339, 0.997355, 0.0726954, 0.617254, -0.426739, -0.204519)
+
+[node name="Physical Bone FingerMiddle01_L" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="14"]
+transform = Transform3D(0.00860212, 0.886061, 0.463491, -0.0396981, -0.462839, 0.885554, 0.999183, -0.0260174, 0.0311921, 0.194757, 0.91594, -0.224189)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.173566, 0.202259, 0.769752)
+body_offset = Transform3D(0.99906, -0.0325254, 0.0289325, 0.0325203, 0.999472, 0.000642701, -0.0289396, 0.000299653, 0.999583, -0.189095, -0.208291, -0.764469)
+
+[node name="Physical Bone FingerIndex_L" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="15"]
+transform = Transform3D(-0.999863, 0.0149868, 0.00563954, 0.00528801, -0.0233517, 0.999891, 0.0151125, 0.999712, 0.0232706, 0.200607, 0.940936, -0.205881)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.498174, 0.185309, 0.564565)
+body_offset = Transform3D(0.000527224, 0.0305301, -0.999712, -0.999257, 0.0383153, 0.000642624, 0.038313, 0.998897, 0.0305295, 0.559008, -0.505267, -0.183254)
+
+[node name="Physical Bone FingerIndex01_L" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="16"]
+transform = Transform3D(0.0081058, 0.92811, 0.372453, -0.0395155, -0.372034, 0.927494, 0.999198, -0.0222421, 0.0336602, 0.197805, 0.923981, -0.206345)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.173216, 0.271289, 0.735486)
+body_offset = Transform3D(0.999096, -0.0289277, 0.0315347, 0.0289118, 0.999728, 0.000702739, -0.031539, 7.90067e-05, 0.999552, -0.188405, -0.27674, -0.729715)
+
+[node name="Physical Bone FingerThumb_L" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="17"]
+transform = Transform3D(-0.997322, 0.0131224, 0.0721004, 0.0709065, 0.421283, 0.904375, -0.0184988, 0.907279, -0.420784, 0.186915, 0.979987, -0.18693)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.443591, 0.385408, 0.414205)
+body_offset = Transform3D(-0.000657742, -0.447605, -0.894468, -0.895316, 0.3988, -0.198727, 0.445456, 0.800884, -0.400733, 0.542712, -0.468541, 0.0549183)
+
+[node name="Physical Bone FingerThumb01_L" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="18"]
+transform = Transform3D(-0.0620522, 0.992324, 0.107012, 0.248096, -0.0885168, 0.964687, 0.966749, 0.0864085, -0.240699, 0.185002, 0.959791, -0.179529)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28002, 0.466549, 0.513856)
+body_offset = Transform3D(0.922911, -0.201977, -0.327793, 0.188896, 0.979386, -0.071623, 0.335499, 0.00418317, 0.942036, 0.00423717, -0.473022, -0.579969)
+
+[node name="Physical Bone Neck" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="19"]
+transform = Transform3D(1, 2.38033e-07, -2.24169e-10, 5.73301e-08, -0.24172, -0.970346, -2.31114e-07, 0.970346, -0.24172, -1.49012e-08, 1.61097, -0.0282216)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49007e-08, 0.000188849, 0.0480927)
+body_offset = Transform3D(1, -8.52936e-11, 1.0683e-11, 1.20792e-13, -2.38419e-07, -1, 4.26326e-14, 1, -4.32134e-07, -1.49012e-08, 0.0480927, -0.000188828)
+
+[node name="Physical Bone Head" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="20"]
+transform = Transform3D(-0.989381, -0.109643, -0.0978005, -0.0078833, 0.704379, -0.709782, 0.146698, -0.701309, -0.697622, 0.00723518, 1.71018, 0.0352139)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21538e-07, -8.90344e-07, 0.0739788)
+body_offset = Transform3D(-0.989381, -0.109643, -0.0978003, 3.72529e-09, 0.665731, -0.746195, 0.146909, -0.738096, -0.658529, 0.00723517, 0.0552032, 0.0487165)
+
+[node name="Physical Bone Shoulder_R" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="21"]
+transform = Transform3D(-3.01067e-07, -0.434068, 0.90088, -6.5565e-07, 0.90088, 0.434069, -1, -7.15254e-07, -4.76837e-07, -0.0731004, 1.52904, -0.0396729)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5307e-06, -3.05349e-06, 0.0811419)
+body_offset = Transform3D(1, 1.19207e-07, -7.45055e-08, 4.36495e-09, -9.53675e-07, -1, 1.67511e-07, 1, -5.66244e-07, 9.53674e-06, 0.0811419, 3.09944e-06)
+
+[node name="Physical Bone UpperArm_R" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="22"]
+transform = Transform3D(0.542041, -0.840297, 0.00809562, -0.0270633, -0.0270913, -0.999274, 0.839863, 0.541455, -0.03743, -0.147501, 1.63179, -0.0343752)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61212e-06, -0.000218999, 0.138079)
+body_offset = Transform3D(-0.825207, -0.563755, 0.0340684, -0.564026, 0.825738, 0.000857047, -0.0286091, -0.0185114, -0.999427, -0.00482893, 6.15865e-05, 0.137996)
+
+[node name="Physical Bone LowerArm_R" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="23"]
+transform = Transform3D(0.195544, -0.980684, 0.00371197, 0.499468, 0.0963337, -0.860955, 0.843957, 0.170208, 0.508665, -0.157695, 1.85526, -0.113204)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.177517, 0.235684, 0.345754)
+body_offset = Transform3D(-0.85228, -0.118026, -0.509571, -0.140305, 0.99009, 0.00534513, 0.503887, 0.076051, -0.860411, 0.0527086, -0.260103, 0.369015)
+
+[node name="Physical Bone Hand_R" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="24"]
+transform = Transform3D(-0.998576, -0.0422519, -0.0419257, 0.0499288, -0.209145, -0.976614, 0.0325638, -0.976983, 0.210882, -0.156386, 1.98104, -0.169099)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.423298, -0.00809149, 0.520732)
+body_offset = Transform3D(-0.0820648, 0.97408, -0.210879, 0.995985, 0.0894929, 0.0263197, 0.0445658, -0.207801, -0.97716, 0.152431, -0.43458, 0.488292)
+
+[node name="Physical Bone FingerLittle_R" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="25"]
+transform = Transform3D(-0.979652, -0.200288, -0.0130603, 0.0928017, -0.394308, -0.91427, 0.17797, -0.896887, 0.404863, -0.154138, 2.03975, -0.18402)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.50276, 0.214554, 0.549913)
+body_offset = Transform3D(0.0649966, -0.395355, -0.916215, 0.968195, 0.247298, -0.0380232, 0.241614, -0.884612, 0.398846, 0.555986, -0.518919, -0.151007)
+
+[node name="Physical Bone FingerLittle01_R" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="26"]
+transform = Transform3D(0.188487, -0.946536, -0.262406, 0.434602, 0.320119, -0.841875, 0.880678, 0.044605, 0.471618, -0.151224, 2.05824, -0.193241)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.237403, 0.363662, 0.679266)
+body_offset = Transform3D(-0.873274, -0.0630376, -0.48314, -0.305995, 0.842764, 0.443103, 0.379156, 0.53495, -0.755162, 0.143787, -0.68011, 0.408428)
+
+[node name="Physical Bone FingerRing_R" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="27"]
+transform = Transform3D(-0.978402, -0.201663, -0.0414697, 0.120886, -0.39986, -0.908552, 0.166612, -0.894117, 0.415669, -0.158196, 2.03824, -0.202084)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.494986, 0.186562, 0.57539)
+body_offset = Transform3D(0.122202, -0.392244, -0.911691, 0.966601, 0.254853, 0.0199579, 0.224482, -0.883853, 0.410353, 0.537267, -0.537483, -0.182335)
+
+[node name="Physical Bone FingerRing01_R" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="28"]
+transform = Transform3D(0.196378, -0.87742, -0.437703, 0.458003, 0.476784, -0.750273, 0.867004, -0.0531314, 0.495484, -0.152711, 2.0572, -0.212535)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.225118, 0.228299, 0.749461)
+body_offset = Transform3D(-0.868159, 0.0577807, -0.492935, -0.367183, 0.593463, 0.716233, 0.333922, 0.802792, -0.493989, 0.160806, -0.754935, 0.262121)
+
+[node name="Physical Bone FingerMiddle_R" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="29"]
+transform = Transform3D(-0.968541, -0.199057, -0.149406, 0.223734, -0.433508, -0.87298, 0.10899, -0.879029, 0.464356, -0.159833, 2.03357, -0.217855)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.427553, 0.175308, 0.633037)
+body_offset = Transform3D(0.338364, -0.40072, -0.851473, 0.931872, 0.268553, 0.243967, 0.130886, -0.876098, 0.464239, 0.464595, -0.599944, -0.196254)
+
+[node name="Physical Bone FingerMiddle01_R" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="30"]
+transform = Transform3D(0.197186, -0.856627, -0.476792, 0.45915, 0.510384, -0.727122, 0.866227, -0.0755351, 0.493956, -0.153161, 2.05312, -0.229268)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.198616, 0.197354, 0.77781)
+body_offset = Transform3D(-0.868014, 0.0808596, -0.489959, -0.38183, 0.522162, 0.762618, 0.317502, 0.849009, -0.422354, 0.192736, -0.77206, 0.224017)
+
+[node name="Physical Bone FingerIndex_R" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="31"]
+transform = Transform3D(-0.978649, -0.203829, -0.0278555, 0.123306, -0.472736, -0.872535, 0.164686, -0.857308, 0.487756, -0.162818, 2.02318, -0.231232)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.501157, 0.173126, 0.578372)
+body_offset = Transform3D(0.127688, -0.465322, -0.875884, 0.98151, 0.186489, 0.0439992, 0.142875, -0.865274, 0.480512, 0.523154, -0.549625, -0.199716)
+
+[node name="Physical Bone FingerIndex01_R" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="32"]
+transform = Transform3D(0.19673, -0.900168, -0.388586, 0.459354, 0.43476, -0.774592, 0.866223, -0.0261137, 0.499017, -0.159672, 2.03771, -0.239837)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.163794, 0.268455, 0.749842)
+body_offset = Transform3D(-0.867825, 0.0321684, -0.495871, -0.347776, 0.673468, 0.652307, 0.354942, 0.738517, -0.573252, 0.221045, -0.726887, 0.289727)
+
+[node name="Physical Bone FingerThumb_R" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="33"]
+transform = Transform3D(-0.981297, -0.192373, -0.0071932, 0.16293, -0.810046, -0.563278, 0.102533, -0.553911, 0.826239, -0.153656, 1.97861, -0.229632)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.443892, 0.372323, 0.4684)
+body_offset = Transform3D(0.233851, -0.810573, -0.536925, 0.902338, -0.0247213, 0.430324, -0.362082, -0.585115, 0.725629, 0.449486, -0.5929, 0.038692)
+
+[node name="Physical Bone FingerThumb01_R" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="34"]
+transform = Transform3D(0.126857, -0.988946, -0.0767056, 0.699, 0.143994, -0.700473, 0.70378, 0.0352403, 0.70954, -0.15285, 1.99214, -0.246423)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.244075, 0.462592, 0.577425)
+body_offset = Transform3D(-0.659841, 0.26591, -0.702778, 0.00323579, 0.936282, 0.35122, 0.751398, 0.229475, -0.61866, 0.121743, -0.63513, 0.434474)
+
+[node name="Physical Bone UpperLeg_L" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="35"]
+transform = Transform3D(0.000144504, -0.999822, 0.0330837, -0.020256, 0.0330885, 0.999133, -0.999854, -0.000815074, -0.0202352, 0.0770992, 0.727227, -0.00861311)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.74237e-06, 5.70554e-08, 0.20669)
+body_offset = Transform3D(1.00006, 3.90573e-08, -1.30944e-06, 1.69501e-07, 1.17292e-06, -0.999885, -1.6822e-08, 1.00038, -3.48244e-07, 1.00136e-05, 0.206666, 1.49012e-08)
+
+[node name="Physical Bone LowerLeg_L" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="36"]
+transform = Transform3D(0.999475, 0.00168034, 0.0329431, -0.0329832, 0.0465048, 0.998394, 0.00014592, -0.998916, 0.0465348, 0.0637013, 0.321888, -0.0136924)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.30788e-07, -3.97124e-06, 0.199151)
+body_offset = Transform3D(1.00003, 7.19738e-08, 2.47245e-06, 7.53566e-08, -2.34693e-07, -1.00002, -2.67755e-08, 1, 7.86036e-07, 2.38419e-07, 0.199155, 3.8147e-06)
+
+[node name="Physical Bone Foot_L" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="37"]
+transform = Transform3D(-0.999804, 0.00145766, 0.00340923, 0.00370544, 0.394461, 0.918908, -4.45119e-06, 0.918922, -0.394459, 0.0569668, 0.0790691, -0.00407028)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.11137e-05, -6.13463e-08, 0.0478766)
+body_offset = Transform3D(0.999822, 1.06429e-08, -1.34016e-06, 1.94962e-08, 2.98023e-08, -1, 6.22651e-07, 1.00001, 1.2815e-06, 1.11759e-05, 0.0478766, 0)
+
+[node name="Physical Bone UpperLeg_R" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="38"]
+transform = Transform3D(0.000131826, 0.999452, -0.0330571, 0.0202872, 0.0330454, 0.999034, 0.999792, -0.000803154, -0.0202668, -0.0771061, 0.727235, -0.0085988)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.30835e-06, 1.9147e-06, 0.206702)
+body_offset = Transform3D(0.999998, 7.10133e-09, 3.66941e-07, -3.18512e-07, -1.31988e-07, -0.999786, -8.41159e-07, 0.999998, -9.3712e-06, -2.38419e-06, 0.206658, 2.23517e-08)
+
+[node name="Physical Bone LowerLeg_R" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="39"]
+transform = Transform3D(0.999458, -0.00166453, -0.0329093, 0.0329561, 0.0464726, 0.998436, -0.0001315, -0.998959, 0.0465072, -0.063719, 0.32187, -0.0136666)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.41115e-06, 3.03622e-06, 0.19916)
+body_offset = Transform3D(1, 1.91532e-07, 1.92291e-06, -5.12059e-06, 8.23289e-07, -1.00006, -9.06439e-07, 1.00004, -3.27453e-06, 1.02818e-06, 0.199172, -2.38419e-06)
+
+[node name="Physical Bone Foot_R" parent="Stage/Comedian/jerry_animated/ManCasual3Armature/Skeleton3D" index="40"]
+transform = Transform3D(-0.999994, -0.00146668, -0.00336949, -0.00367381, 0.394485, 0.918893, -1.87128e-05, 0.918901, -0.39449, -0.0569947, 0.0790674, -0.00404596)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.07385e-05, 4.29153e-06, 0.047876)
+body_offset = Transform3D(1, 3.37295e-07, -4.5352e-08, -1.09774e-06, 2.83122e-06, -0.999998, -1.24632e-07, 1, 0, -1.07363e-05, 0.0478759, -4.29153e-06)
+
+[node name="MainSpotLight" type="SpotLight3D" parent="Stage" node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0337095, 3.83772, -0.0937908)
-light_color = Color(0.67451, 0.67451, 0.67451, 1)
-light_energy = 15.803
+light_color = Color(1, 0.929412, 0.886275, 1)
+light_energy = 10.753
 light_indirect_energy = 4.63
 light_volumetric_fog_energy = 0.0
 light_bake_mode = 1
 spot_range = 12.125
 spot_angle = 21.0
+script = ExtResource("10_sw7mm")
+target = NodePath("../Comedian")
 
 [node name="MainSpotLight2" type="SpotLight3D" parent="Stage"]
 transform = Transform3D(1, 0, 0, 0, 0.860333, -0.509732, 0, 0.509732, 0.860333, 0.00699139, 0.754075, 1.30782)
-light_color = Color(0.67451, 0.67451, 0.67451, 1)
+light_color = Color(0.992157, 0.788235, 0.564706, 1)
 light_energy = 10.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
@@ -194,7 +398,7 @@ spot_angle = 44.12
 
 [node name="MainSpotLight3" type="SpotLight3D" parent="Stage"]
 transform = Transform3D(0.707107, 0.360435, 0.608347, 0, 0.860333, -0.509732, -0.707107, 0.360435, 0.608347, 1.3098, 0.754075, 1.30782)
-light_color = Color(0.67451, 0.67451, 0.67451, 1)
+light_color = Color(0.992157, 0.788235, 0.564706, 1)
 light_energy = 10.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
@@ -205,7 +409,7 @@ spot_angle = 44.12
 
 [node name="MainSpotLight4" type="SpotLight3D" parent="Stage"]
 transform = Transform3D(0.707107, -0.360435, -0.608347, 0, 0.860333, -0.509732, 0.707107, 0.360435, 0.608347, -1.11065, 0.754075, 1.30782)
-light_color = Color(0.67451, 0.67451, 0.67451, 1)
+light_color = Color(0.992157, 0.788235, 0.564706, 1)
 light_energy = 10.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
@@ -264,3 +468,5 @@ script = ExtResource("6_oa1a8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.422966, -1.83624)
 
 [editable path="Stage"]
+[editable path="Stage/Comedian"]
+[editable path="Stage/Comedian/jerry_animated"]
