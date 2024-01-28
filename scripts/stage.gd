@@ -7,6 +7,7 @@ const TARGET_OFFSET = Vector3(0, 10, 0)
 const THROW_VELOCITY = 10.0
 const THROW_X_RANDOMNESS = 1.0
 const CHANCE_OF_GOOD_ITEMS = 0.4
+const ROUND_TIME = 10.0
 
 @export_node_path var player_path
 @export_node_path var throw_point1_path
@@ -22,7 +23,7 @@ const CHANCE_OF_GOOD_ITEMS = 0.4
 
 
 func start_throwing(count_of_items: int):
-	var timeout = count_of_items / 10.0
+	var timeout = ROUND_TIME / count_of_items
 	for i in range(count_of_items):
 		await get_tree().create_timer(timeout).timeout
 		throw_item()
