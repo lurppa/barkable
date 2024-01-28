@@ -4,7 +4,7 @@ var going_forward
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	going_forward = true
-	$PhantomCamera3D.set_camera_fov(60)
+	$PhantomCamera3D.set_camera_fov(25)
 
 func _process(_delta):
 	if $"..".progress_ratio>0.98:

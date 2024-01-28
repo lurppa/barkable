@@ -104,7 +104,7 @@ func anim_play(animation_name,backwards = false):
 
 func hurt():
 	if voice_id != null:
-		var line = ["oof", "ahhh", "aa", "uuu", "aiaiaia", "oioioioi", "ow", "uwu"].pick_random()
+		var line = ["oof", "gah", "aa", "ai", "ugh", "argh","eek","Aargh" ].pick_random()
 		DisplayServer.tts_speak(line, voice_id, 100, 0.2, randf_range(0.8, 1.4))
 	else:
 		$Hurt.play()
