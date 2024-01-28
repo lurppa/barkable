@@ -6,7 +6,7 @@ var chosen_joke
 var typing_speed = 0.04
 var read_time = 0.03
 
-var odds_to_get_good = 0.4
+var odds_to_get_good = 0.0
 
 var current_message = 0
 var display = ""
