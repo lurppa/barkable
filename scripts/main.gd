@@ -3,7 +3,8 @@ extends Node3D
 
 @export var STARTING_COMEDY_SCORE = 1.0
 # Amount of items to throw more each round
-const DIFFICULTY_RAMPUP = 3
+const DIFFICULTY_RAMPUP = 4
+var current_level = 1
 
 @export_node_path var stage_path
 @export_node_path var dialog_path
@@ -33,7 +34,7 @@ func _ready():
 	score = 0
 	dialog.connect("dialog_chosen", _on_dialog_chosen)
 	stage.connect("item_hit_player", _on_item_hit_player)
-	comedian.connect("death", _on_game_lost)
+	comedian.connect("death", fell_off_stage)
 	$Menu/StartGame/StartButton.connect("pressed", _start_game)
 	$Menu/GameOver/RetryButton.connect("pressed", _reset_game)
 	$Menu/GameOver/FinalScoreLabel.visible = false
@@ -41,6 +42,7 @@ func _ready():
 
 
 func _start_game():
+	$Menu/GameOver/FinalScoreLabel/FellOffStageText.visible = false
 	stage.lock_player(2.0)
 	$Menu/StartGame/StartButton.connect("pressed", $Menu/Click.play)
 	$Menu/StartGame.visible = false
@@ -76,7 +78,10 @@ func _on_dialog_chosen(_val):
 	difficulty += DIFFICULTY_RAMPUP
 	#dialog.change_headlight_state(1 if val < 0 else 2)
 	await stage.throwing_stopped
-	await get_tree().create_timer(2.0).timeout
+	if not game_over:
+		score += current_level
+		current_level +=1
+	await get_tree().create_timer(1.0).timeout
 	_show_dialog()
 
 
@@ -88,6 +93,9 @@ func _on_item_hit_player(item):
 		score += 1
 		comedian.get_node("Pickup").play()
 
+func fell_off_stage():
+	$Menu/GameOver/FinalScoreLabel/FellOffStageText.visible = true
+	_on_game_lost()
 
 func _on_game_lost():
 	if game_over:
