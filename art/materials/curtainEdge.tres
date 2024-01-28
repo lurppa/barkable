@@ -5,4 +5,9 @@
 [resource]
 transparency = 1
 cull_mode = 2
+no_depth_test = true
 albedo_texture = ExtResource("1_efbus")
+emission = Color(0.67451, 0, 0, 1)
+emission_energy_multiplier = 0.2
+backlight_enabled = true
+backlight = Color(0.960784, 0.960784, 0.960784, 1)
