@@ -10,6 +10,7 @@ extends Node3D
 @onready var stage = get_node(stage_path)
 @onready var dialog = get_node(dialog_path)
 @onready var curtains = get_node(curtains_path)
+@onready var comedian = stage.get_node("Comedian")
 
 var game_over = false
 var comedy_score:
@@ -30,12 +31,9 @@ func _ready():
 	score = 0
 	dialog.connect("dialog_chosen", _on_dialog_chosen)
 	stage.connect("item_hit_player", _on_item_hit_player)
+	comedian.connect("death", _on_game_lost)
 	$Menu/StartGame/GoodDialogButton.connect("pressed", _start_game)
-	
 	$Menu/GameOver/GoodDialogButton.connect("pressed", _reset_game)
-	
-	
-	
 
 
 func _start_game():
@@ -62,7 +60,9 @@ func _show_dialog():
 
 func _on_dialog_chosen(_val):
 	stage.unlock_player()
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(0.5).timeout
+	stage.get_node("Budumtss").play()
+	await get_tree().create_timer(1.5).timeout
 	$Audience/Negative.play()
 	await get_tree().create_timer(1.0).timeout
 	$Audience/Booing.play()
@@ -85,6 +85,7 @@ func _on_game_lost():
 	if game_over:
 		return
 	game_over = true
+	$Audience/Laughter.play()
 	$Menu/GameOver.visible = true
 	stage.player._pass_out()
 	await get_tree().create_timer(2.0).timeout
