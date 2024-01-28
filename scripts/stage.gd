@@ -22,8 +22,9 @@ const CHANCE_OF_GOOD_ITEMS = 0.4
 
 
 func start_throwing(count_of_items: int):
+	var timeout = count_of_items / 10.0
 	for i in range(count_of_items):
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(timeout).timeout
 		throw_item()
 	emit_signal("throwing_stopped")
 

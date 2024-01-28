@@ -2,6 +2,8 @@ extends Node3D
 # Handles game loop and orchestrates other objects to work in correct order.
 
 @export var STARTING_COMEDY_SCORE = 1.0
+# Amount of items to throw more each round
+const DIFFICULTY_RAMPUP = 3
 
 @export_node_path var stage_path
 @export_node_path var dialog_path
@@ -24,6 +26,7 @@ var score:
 		score = val
 		# TODO: Connect to UI
 		# Something like: dialog.set_score(score)
+var difficulty = 7
 
 
 func _ready():
@@ -67,7 +70,8 @@ func _on_dialog_chosen(_val):
 	$Audience/Negative.play()
 	await get_tree().create_timer(1.0).timeout
 	$Audience/Booing.play()
-	stage.start_throwing(7)
+	stage.start_throwing(difficulty)
+	difficulty += DIFFICULTY_RAMPUP
 	#dialog.change_headlight_state(1 if val < 0 else 2)
 	await stage.throwing_stopped
 	await get_tree().create_timer(2.0).timeout
