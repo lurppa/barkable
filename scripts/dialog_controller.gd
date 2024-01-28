@@ -123,9 +123,13 @@ func _ready():
 	var voices = DisplayServer.tts_get_voices_for_language("en")
 	voice_id = voices[0]
 	$ButtonHolder/FirstButton.pressed.connect(first_button_pressed)
+	$ButtonHolder/FirstButton.button_down.connect($Click.play)
 	$ButtonHolder/SecondButton.pressed.connect(second_button_pressed)
+	$ButtonHolder/SecondButton.button_down.connect($Click.play)
 	$ButtonHolder/ThirdButton.pressed.connect(third_button_pressed)
+	$ButtonHolder/ThirdButton.button_down.connect($Click.play)
 	$ButtonHolder/FourthButton.pressed.connect(fourth_button_pressed)
+	$ButtonHolder/FourthButton.button_down.connect($Click.play)
 	$ButtonHolder.visible = false
 	change_headlight_state(STAGELIGHTS_OFF)
 
@@ -149,16 +153,14 @@ func first_button_pressed():
 	chosen_joke = current_jokes.pop_at(0)
 	display_joke_text(chosen_joke['content'])
 	$ButtonHolder.visible = false
-	$Click.play()
 	for joke in current_jokes:
 		jokes_array.append(joke)
+
 
 func second_button_pressed():
 	chosen_joke = current_jokes.pop_at(1)
 	display_joke_text(chosen_joke['content'])
 	$ButtonHolder.visible = false
-	$Click.play()
-
 	for joke in current_jokes:
 		jokes_array.append(joke)
 
@@ -167,17 +169,14 @@ func third_button_pressed():
 	chosen_joke = current_jokes.pop_at(2)
 	display_joke_text(chosen_joke['content'])
 	$ButtonHolder.visible = false
-	$Click.play()
-
 	for joke in current_jokes:
 		jokes_array.append(joke)
 		
+
 func fourth_button_pressed():
 	chosen_joke = current_jokes.pop_at(3)
 	display_joke_text(chosen_joke['content'])
 	$ButtonHolder.visible = false
-	$Click.play()
-
 	for joke in current_jokes:
 		jokes_array.append(joke)
 
