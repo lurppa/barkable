@@ -66,7 +66,8 @@ func _pass_out():
 	if not _sanity():
 		return
 	ragdoll_skeleton.physical_bones_start_simulation()
-	capsule_collider.disabled = true
+	get_tree().create_timer(10).timeout.connect(self.hide)
+	#capsule_collider.disabled = true
 	dead = true
 	
 
