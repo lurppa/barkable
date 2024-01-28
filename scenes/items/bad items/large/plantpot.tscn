@@ -11,7 +11,7 @@ gravity_scale = 0.4
 max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("1_baefw")
-score_affect = -10.0
+score_affect = -30.0
 throw_speed_modifier = 0.6
 
 [node name="chair" parent="." instance=ExtResource("2_ku8kh")]

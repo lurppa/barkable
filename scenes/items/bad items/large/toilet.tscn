@@ -11,7 +11,7 @@ gravity_scale = 0.4
 max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("1_eswgm")
-score_affect = -10.0
+score_affect = -40.0
 throw_speed_modifier = 0.6
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
