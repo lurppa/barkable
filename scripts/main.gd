@@ -12,18 +12,22 @@ extends Node3D
 @onready var curtains = get_node(curtains_path)
 
 var game_over = false
-
-
 var comedy_score:
 	set(val):
 		comedy_score = val
 		if comedy_score <= 0.0:
 			_on_game_lost()
 		dialog.set_comedy_level(comedy_score)
+var score:
+	set(val):
+		score = val
+		# TODO: Connect to UI
+		# Something like: dialog.set_score(score)
 
 
 func _ready():
 	comedy_score = STARTING_COMEDY_SCORE
+	score = 0
 	dialog.connect("dialog_chosen", _on_dialog_chosen)
 	stage.connect("item_hit_player", _on_item_hit_player)
 	$Menu/StartGame/GoodDialogButton.connect("pressed", _start_game)
@@ -72,6 +76,8 @@ func _on_item_hit_player(item):
 	comedy_score += item.score_affect
 	if item.score_affect < 0.0:
 		stage.get_node("Comedian").hurt()
+	else:
+		score += 1
 
 
 func _on_game_lost():
