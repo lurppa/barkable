@@ -22,10 +22,10 @@ var disable_movement = false
 func _ready():
 	print(get_node(dialog_path))
 	get_node(dialog_path).connect("dialog_begin", anim_dialog_begin)
-# 	var helper = func(body):
-# 		if body == self:
-# 			_fall_trigger_entered()
-# 	fall_trigger.connect("body_entered", helper)
+	var helper = func(body):
+		if body == self:
+			_fall_trigger_entered()
+	fall_trigger.connect("body_entered", helper)
 
 
 func _physics_process(delta):
@@ -58,7 +58,6 @@ func _physics_process(delta):
 
 
 func _fall_trigger_entered():
-	print("Fall trigger triggered :)")
 	_pass_out()
 	
 
