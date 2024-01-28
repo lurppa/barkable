@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cim56joi3l1eq"
+path="res://.godot/imported/auch 4.wav-f5d0cba800e1e2c75d2e0c7a83d13e93.sample"
+
+[deps]
+
+source_file="res://sounds/player/auch 4.wav"
+dest_files=["res://.godot/imported/auch 4.wav-f5d0cba800e1e2c75d2e0c7a83d13e93.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

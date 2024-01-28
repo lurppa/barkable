@@ -141,6 +141,7 @@ func first_button_pressed():
 	chosen_joke = current_jokes.pop_at(0)
 	display_joke_text(chosen_joke['content'])
 	$ButtonHolder.visible = false
+	$Click.play()
 	for joke in current_jokes:
 		jokes_array.append(joke)
 
@@ -148,6 +149,8 @@ func second_button_pressed():
 	chosen_joke = current_jokes.pop_at(1)
 	display_joke_text(chosen_joke['content'])
 	$ButtonHolder.visible = false
+	$Click.play()
+
 	for joke in current_jokes:
 		jokes_array.append(joke)
 
@@ -156,6 +159,8 @@ func third_button_pressed():
 	chosen_joke = current_jokes.pop_at(2)
 	display_joke_text(chosen_joke['content'])
 	$ButtonHolder.visible = false
+	$Click.play()
+
 	for joke in current_jokes:
 		jokes_array.append(joke)
 		
@@ -163,9 +168,12 @@ func fourth_button_pressed():
 	chosen_joke = current_jokes.pop_at(3)
 	display_joke_text(chosen_joke['content'])
 	$ButtonHolder.visible = false
+	$Click.play()
+
 	for joke in current_jokes:
 		jokes_array.append(joke)
-		
+
+
 func fetch_random_joke():
 	jokes_array.shuffle()
 	return jokes_array.pop_front()

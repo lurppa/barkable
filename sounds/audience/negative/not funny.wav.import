@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dj723tulvm0fk"
+path="res://.godot/imported/not funny.wav-ec2e54c108df6bd3dc358c8e3bf3cfab.sample"
+
+[deps]
+
+source_file="res://sounds/audience/negative/not funny.wav"
+dest_files=["res://.godot/imported/not funny.wav-ec2e54c108df6bd3dc358c8e3bf3cfab.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

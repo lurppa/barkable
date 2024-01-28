@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cebm4d3qar0nq"]
+[gd_scene load_steps=6 format=3 uid="uid://cebm4d3qar0nq"]
 
 [ext_resource type="Material" uid="uid://rxwvnp1r6vaq" path="res://art/materials/curtainBillboard.tres" id="1_336vi"]
 [ext_resource type="Script" path="res://scripts/curtains.gd" id="1_eyiji"]
 [ext_resource type="Material" uid="uid://bl1aem8gvrdo6" path="res://art/materials/curtainEdge.tres" id="3_3yayn"]
+[ext_resource type="AudioStream" uid="uid://rfdxdxhjpjmg" path="res://sounds/curtains.wav" id="4_m1bpg"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_er3e1"]
 lightmap_size_hint = Vector2i(7, 7)
@@ -76,3 +77,6 @@ transform = Transform3D(1, 0, 0, 0, 3.5, 0, 0, 0, 1, 0.33452, 1.78582, 0.029609)
 material_override = ExtResource("1_336vi")
 mesh = SubResource("QuadMesh_er3e1")
 skeleton = NodePath("../..")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_m1bpg")

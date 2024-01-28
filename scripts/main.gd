@@ -24,9 +24,12 @@ func _ready():
 	dialog.connect("dialog_chosen", _on_dialog_chosen)
 	stage.connect("item_hit_player", _on_item_hit_player)
 	$Menu/StartGame/GoodDialogButton.connect("pressed", _start_game)
+	$Menu/StartGame/GoodDialogButton.connect("pressed", $Menu/Click.play)
 	$Menu/GameOver/GoodDialogButton.connect("pressed", _reset_game)
+	$Menu/GameOver/GoodDialogButton.connect("pressed", $Menu/Click.play)
 	stage.lock_player()
 	stage.player.anim_play("idle")
+
 
 func _start_game():
 	$Menu/StartGame.visible = false
@@ -49,6 +52,10 @@ func _show_dialog():
 
 func _on_dialog_chosen(val):
 	comedy_score += val
+	await get_tree().create_timer(1.0).timeout
+	$Audience/Negative.play()
+	await get_tree().create_timer(1.0).timeout
+	$Audience/Booing.play()
 	stage.throw_multiple_items(val < 0.0)
 	stage.unlock_player()
 	dialog.change_headlight_state(1 if val < 0 else 2)
@@ -58,6 +65,8 @@ func _on_dialog_chosen(val):
 
 func _on_item_hit_player(item):
 	comedy_score += item.score_affect
+	if item.score_affect < 0.0:
+		stage.get_node("Comedian").hurt()
 
 
 func _on_game_lost():

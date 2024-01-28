@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_b1maf"]
 [ext_resource type="PackedScene" uid="uid://d2mrod3qas5ag" path="res://scenes/stage/stage.tscn" id="2_vo661"]
+[ext_resource type="AudioStream" uid="uid://cang8mtxhcavx" path="res://sounds/dialog click.wav" id="2_vufv1"]
 [ext_resource type="Texture2D" uid="uid://kcapb53jlbeh" path="res://art/Textures/CurtainBackground.png" id="3_a7hrh"]
 [ext_resource type="PackedScene" uid="uid://dho75wjw3lpdb" path="res://scenes/items/bad items/small/badegg.tscn" id="3_ig4ll"]
 [ext_resource type="PackedScene" uid="uid://bsegc7ynhiuw3" path="res://scenes/items/bad items/small/bottle.tscn" id="4_c4yai"]
@@ -157,6 +158,9 @@ label_settings = SubResource("LabelSettings_i6pg1")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="Click" type="AudioStreamPlayer" parent="Menu"]
+stream = ExtResource("2_vufv1")
 
 [node name="Stage" parent="." instance=ExtResource("2_vo661")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.97054)
@@ -454,7 +458,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6.73233)
 
 [node name="Dialog" parent="." instance=ExtResource("6_gm7m2")]
 
-[node name="audience" parent="." instance=ExtResource("5_tr2a0")]
+[node name="Audience" parent="." instance=ExtResource("5_tr2a0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.112713)
 
 [node name="MetaControllerComponent" type="Node" parent="."]

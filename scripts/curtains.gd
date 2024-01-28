@@ -16,6 +16,7 @@ func _ready():
 		initial_positions[curtain] = get_node(curtain).transform
 
 func open():
+	$AudioStreamPlayer3D.play()
 	for curtain in left_curtains:
 		create_tween().tween_property(get_node(curtain), "transform", get_node(left_curtain).transform, ANIMATION_DURATION) \
 				.set_ease(Tween.EASE_IN_OUT) \
@@ -26,6 +27,7 @@ func open():
 				.set_trans(Tween.TRANS_CUBIC)
 
 func close():
+	$AudioStreamPlayer3D.play()
 	for i in range(len(initial_positions)):
 		var curtain = (left_curtains + right_curtains)[i]
 		var initial_position = initial_positions[curtain]
