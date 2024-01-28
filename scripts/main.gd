@@ -83,9 +83,10 @@ func _on_dialog_chosen(_val):
 func _on_item_hit_player(item):
 	comedy_score += item.score_affect
 	if item.score_affect < 0.0:
-		stage.get_node("Comedian").hurt()
+		comedian.hurt()
 	else:
 		score += 1
+		comedian.get_node("Pickup").play()
 
 
 func _on_game_lost():
