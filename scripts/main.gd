@@ -43,12 +43,12 @@ func _ready():
 
 func _start_game():
 	$Menu/GameOver/FinalScoreLabel/FellOffStageText.visible = false
-	stage.lock_player(2.0)
+	stage.lock_player()
 	$Menu/StartGame/StartButton.connect("pressed", $Menu/Click.play)
 	$Menu/StartGame.visible = false
 	$Menu/ScoreDisplay.visible = true
 	curtains.open()
-	stage.player.anim_play("idle")
+	# stage.player.anim_play("idle")
 	_show_dialog()
 
 

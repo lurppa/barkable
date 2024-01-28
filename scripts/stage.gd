@@ -51,8 +51,10 @@ func throw_item():
 
 
 # Locks player and moves them to the front of the stage
-func lock_player(move_speed = 1):
+func lock_player():
+	var move_speed = player.position.distance_to(front_of_stage.position) / 2
 	player.disable_movement = true
+	player.anim_play("walk")
 	get_tree().create_tween() \
 			.tween_property(player, "transform", front_of_stage.transform, move_speed) \
 			.set_ease(Tween.EASE_IN_OUT) \
