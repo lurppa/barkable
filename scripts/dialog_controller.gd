@@ -31,12 +31,12 @@ var jokes_array = [
 		"content": "What did the monkey say after it ate a banana? \n\nThat was ape-peeling!",
 		},{
 		"topic": "Zebra", 
-		"content": "Why did the zebra get a speeding ticket?\n\n Because he was horse-power crazy!"
+		"content": "Why did the zebra get a speeding ticket?\n\nBecause he was horse-power crazy!"
 		},{
 		"topic":"Gaming", "content": "What do you call a gamer who is really good at finding Easter eggs? \n\nAn egg-cellent gamer."
 		},{
 			"topic":"Gamer",
-			"content" :"Why did the gamer get kicked out of the library?\n\n Because he kept checking out the books to read the cheat codes."
+			"content" :"Why did the gamer get kicked out of the library?\n\nBecause he kept checking out the books to read the cheat codes."
 		},{
 			"topic":"Lottery",
 			"content" :"What did the lottery ticket say to the winning ticket? \n\nYou're one in a million!"
@@ -48,10 +48,10 @@ var jokes_array = [
 			"content" :"What's a YouTuber's favorite kind of sandwich? \n\nA sub-scription"
 		},{
 			"topic":"University student",
-			"content" :"What's the difference between a university student and a pizza?\n\n A pizza can feed a family of four."
+			"content" :"What's the difference between a university student and a pizza?\n\nA pizza can feed a family of four."
 		},{
 			"topic":"Homework",
-			"content" :"Why did the university student eat his homework?\n\n Because the teacher told him it was a piece of cake!"
+			"content" :"Why did the university student eat his homework?\n\nBecause the teacher told him it was a piece of cake!"
 		},{
 			"topic":"Computer",
 			"content" :"Why was the computer cold? \n\nBecause it left its Windows open!"
@@ -78,10 +78,10 @@ var jokes_array = [
 			"content" :"What did the astronaut say when he crashed into the moon? \n\nI Apollo-gize!"
 		},{
 			"topic":"Robot",
-			"content" :"Why did the robot cross the road?\n\n To get to the other circuit board"
+			"content" :"Why did the robot cross the road?\n\nTo get to the other circuit board"
 		},{
 			"topic":"Penguin",
-			"content" :"What did the penguin say when he stubbed his toe?\n\n Ow, my flipper!"
+			"content" :"What did the penguin say when he stubbed his toe?\n\nOw, my flipper!"
 		},{
 			"topic":"Unicorn",
 			"content" :"Why did the unicorn join the track team? \n\nBecause it wanted to run for a horn of gold! "
@@ -99,13 +99,13 @@ var jokes_array = [
 			"content" :"What did the coffee say to the teabag? \n\nLet's leaf each other alone!"
 		},{
 			"topic":"Ninja",
-			"content" : "What\'s a ninja\'s favorite food? \n\n Shuri-kens"
+			"content" : "What\'s a ninja\'s favorite food? \n\nShuri-kens"
 		},{
 			"topic":"T-Rex",
 			"content" :"Why was the T-rex so good at hide and seek? \n\nBecause it could always blend in with the fossils!"
 		},{
 			"topic":"Llama",
-			"content" :"What did the llama say before leaving to work? \n\n Alpaca lunch!"
+			"content" :"What did the llama say before leaving to work? \n\nAlpaca lunch!"
 		},{
 			"topic":"Rainbow",
 			"content" :"Why did the rainbow cross the road? \n\nTo get to the pot of gold!"
