@@ -130,6 +130,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="ThirdButton" type="Button" parent="ButtonHolder"]
+layout_mode = 0
 offset_left = 575.0
 offset_top = 441.0
 offset_right = 984.0
@@ -157,6 +158,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="FourthButton" type="Button" parent="ButtonHolder"]
+layout_mode = 0
 offset_left = 132.0
 offset_top = 441.0
 offset_right = 541.0

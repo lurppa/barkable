@@ -1,9 +1,12 @@
 extends Node
 
-var jokes = []
+var current_jokes = []
+var chosen_joke
 
 var typing_speed = 0.04
 var read_time = 0.03
+
+var odds_to_get_good = 0.4
 
 var current_message = 0
 var display = ""
@@ -17,6 +20,7 @@ const STAGELIGHTS_RED = 2
 @export var stagelight_applause : TextureRect
 @export var stagelight_attack: TextureRect
 
+# Remove already seen jokes and dont display the same joke multiple times
 var jokes_array = [
 		{
 		"topic": "Monkey", 
@@ -118,15 +122,14 @@ func _ready():
 	change_headlight_state(STAGELIGHTS_OFF)
 
 func show_dialog(val: bool):
-	jokes = []
+	current_jokes = []
 	for i in range(4):
 		var joke = fetch_random_joke()
-		jokes.append(joke) 
-		print(joke)
-	$ButtonHolder/FirstButton/ButtonText.text = str(jokes[0]['topic'])
-	$ButtonHolder/SecondButton/ButtonText.text = str(jokes[1]['topic'])
-	$ButtonHolder/ThirdButton/ButtonText.text = str(jokes[2]['topic'])
-	$ButtonHolder/FourthButton/ButtonText.text = str(jokes[3]['topic'])
+		current_jokes.append(joke) 
+	$ButtonHolder/FirstButton/ButtonText.text = str(current_jokes[0]['topic'])
+	$ButtonHolder/SecondButton/ButtonText.text = str(current_jokes[1]['topic'])
+	$ButtonHolder/ThirdButton/ButtonText.text = str(current_jokes[2]['topic'])
+	$ButtonHolder/FourthButton/ButtonText.text = str(current_jokes[3]['topic'])
 	$ButtonHolder.visible = val
 
 
@@ -135,23 +138,37 @@ func set_comedy_level(val):
 
 
 func first_button_pressed():
-	display_joke_text(jokes[0]['content'])
+	chosen_joke = current_jokes.pop_at(0)
+	display_joke_text(chosen_joke['content'])
 	$ButtonHolder.visible = false
+	for joke in current_jokes:
+		jokes_array.append(joke)
 
 func second_button_pressed():
-	display_joke_text(jokes[1]['content'])
+	chosen_joke = current_jokes.pop_at(1)
+	display_joke_text(chosen_joke['content'])
 	$ButtonHolder.visible = false
+	for joke in current_jokes:
+		jokes_array.append(joke)
+
 	
 func third_button_pressed():
-	display_joke_text(jokes[2]['content'])
+	chosen_joke = current_jokes.pop_at(2)
+	display_joke_text(chosen_joke['content'])
 	$ButtonHolder.visible = false
-	
+	for joke in current_jokes:
+		jokes_array.append(joke)
+		
 func fourth_button_pressed():
-	display_joke_text(jokes[3]['content'])
+	chosen_joke = current_jokes.pop_at(3)
+	display_joke_text(chosen_joke['content'])
 	$ButtonHolder.visible = false
-	
+	for joke in current_jokes:
+		jokes_array.append(joke)
+		
 func fetch_random_joke():
-	return jokes_array.pick_random()
+	jokes_array.shuffle()
+	return jokes_array.pop_front()
 	
 func display_joke_text(joke_content : String):
 	$JokeSetup.visible = true
@@ -179,8 +196,6 @@ func show_text_slowly(joke_content):
 		print('after while')
 		#get_tree().create_timer(4).connect("timeout",hide_joke_text)
 	
-	#TODO: Change the logic to give points based on answer
-		emit_signal("dialog_chosen", -1.0)
 
 func increase_setup_visible_ratio():
 	$JokeSetup.visible_ratio+=typing_speed
@@ -198,7 +213,12 @@ func show_punchline():
 		increase_punchline_visible_ratio()
 	print('finished')
 	get_tree().create_timer(4).connect("timeout",hide_joke_text)
-	emit_signal("dialog_chosen", -1.0)
+	var randnum = randf_range(0, 1)
+	print(randnum)
+	if odds_to_get_good < randnum:
+		emit_signal("dialog_chosen", 1.0)
+	else:
+		emit_signal("dialog_chosen", -1.0)
 
 func increase_punchline_visible_ratio():
 	$JokePunchline.visible_ratio+=typing_speed
