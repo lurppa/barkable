@@ -40,6 +40,7 @@ func _reset_game():
 
 func _show_dialog():
 	await get_tree().create_timer(3.0).timeout
+	dialog.change_headlight_state(0)
 	if not $Menu/GameOver.visible:
 		stage.lock_player()
 		stage.player.anim_play("idle")

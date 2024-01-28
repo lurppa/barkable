@@ -245,6 +245,7 @@ expand_mode = 3
 stretch_mode = 4
 
 [node name="ComedyLevel" type="ProgressBar" parent="."]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
