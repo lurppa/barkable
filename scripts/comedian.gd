@@ -71,19 +71,26 @@ func _pass_out():
 
 func _sanity() -> bool:
 	return !dead
-	
+
+
 func anim_dialog_begin():
 	anim_play("talk")
-	
+
+
 func anim_panic(walkspeed):
 	if walkspeed != 0:
 		anim_play("panic_run", walkspeed<0)
 	else:
 		anim_play("panic")
-	
-func anim_play(name,backwards = false):
-	if (animation_player.current_animation != name):
+
+
+func anim_play(animation_name,backwards = false):
+	if (animation_player.current_animation != animation_name):
 		if (backwards):
-			animation_player.play(name)
+			animation_player.play(animation_name)
 		else:
-			animation_player.play_backwards(name)
+			animation_player.play_backwards(animation_name)
+
+
+func hurt():
+	$Hurt.play()

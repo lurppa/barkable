@@ -28,6 +28,7 @@ func _ready():
 	stage.lock_player()
 	stage.player.anim_play("idle")
 
+
 func _start_game():
 	$Menu/StartGame.visible = false
 	curtains.open()
@@ -60,6 +61,8 @@ func _on_dialog_chosen(val):
 
 func _on_item_hit_player(item):
 	comedy_score += item.score_affect
+	if item.score_affect < 0.0:
+		stage.get_node("Comedian").hurt()
 
 
 func _on_game_lost():
