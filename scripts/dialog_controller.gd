@@ -12,6 +12,14 @@ var current_message = 0
 var display = ""
 var current_char = 0
 
+# LIGHTS STATE
+const STAGELIGHTS_OFF = 0
+const STAGELIGHTS_GREEN = 1
+const STAGELIGHTS_RED = 2 
+
+@export var stagelight_applause : TextureRect
+@export var stagelight_attack: TextureRect
+
 var jokes_array = [
 		{
 		"topic": "Monkey", 
@@ -60,7 +68,7 @@ func _ready():
 	$ButtonHolder/GoodDialogButton.pressed.connect(good_button_pressed)
 	$ButtonHolder/BadDialogButton.pressed.connect(bad_button_pressed)
 	$ButtonHolder.visible = false
-
+	change_headlight_state(STAGELIGHTS_OFF)
 
 func show_dialog(val: bool):
 	joke1 = fetch_random_joke()
@@ -139,5 +147,7 @@ func show_punchline():
 
 func increase_punchline_visible_ratio():
 	$JokePunchline.visible_ratio+=typing_speed
-	
-	
+
+func change_headlight_state(val:int):
+	stagelight_applause.visible = val == STAGELIGHTS_GREEN
+	stagelight_attack.visible = val == STAGELIGHTS_RED
