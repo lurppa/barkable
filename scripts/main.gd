@@ -33,7 +33,7 @@ func _ready():
 	score = 0
 	dialog.connect("dialog_chosen", _on_dialog_chosen)
 	stage.connect("item_hit_player", _on_item_hit_player)
-	comedian.connect("death", _on_game_lost)
+	comedian.connect("death", fell_off_stage)
 	$Menu/StartGame/StartButton.connect("pressed", _start_game)
 	$Menu/GameOver/RetryButton.connect("pressed", _reset_game)
 	$Menu/GameOver/FinalScoreLabel.visible = false
@@ -41,6 +41,7 @@ func _ready():
 
 
 func _start_game():
+	$Menu/GameOver/FinalScoreLabel/FellOffStageText.visible = false
 	stage.lock_player(2.0)
 	$Menu/StartGame/StartButton.connect("pressed", $Menu/Click.play)
 	$Menu/StartGame.visible = false
@@ -88,6 +89,9 @@ func _on_item_hit_player(item):
 		score += 1
 		comedian.get_node("Pickup").play()
 
+func fell_off_stage():
+	$Menu/GameOver/FinalScoreLabel/FellOffStageText.visible = true
+	_on_game_lost()
 
 func _on_game_lost():
 	if game_over:
