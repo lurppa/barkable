@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bqmwo30x358hn"]
+[gd_scene load_steps=20 format=3 uid="uid://bqmwo30x358hn"]
 
 [ext_resource type="PackedScene" uid="uid://cq5pnpmd3w74o" path="res://scenes/audience/audience_row.tscn" id="1_14c86"]
 [ext_resource type="PackedScene" uid="uid://k43t3niqnln4" path="res://scenes/random_sound_player.tscn" id="2_22lm7"]
@@ -18,19 +18,20 @@
 [ext_resource type="AudioStream" uid="uid://ct08fp4isumto" path="res://sounds/audience/negative/audience shouting 4.wav" id="13_dma8q"]
 [ext_resource type="AudioStream" uid="uid://cgm0m2akm42ma" path="res://sounds/audience/booing/boo 4.wav" id="13_v5sjm"]
 [ext_resource type="AudioStream" uid="uid://dqsdgw1lcijm4" path="res://sounds/audience/negative/audience shouting 5.wav" id="14_mt1xt"]
+[ext_resource type="AudioStream" uid="uid://1sib5kbd4wki" path="res://sounds/audience/laughter.wav" id="19_l00p3"]
 
 [node name="Audience" type="Node3D"]
 
-[node name="audience_row" parent="." instance=ExtResource("1_14c86")]
+[node name="Audience_row" parent="." instance=ExtResource("1_14c86")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 2.30697, 0, -0.880114)
 
-[node name="audience_row2" parent="." instance=ExtResource("1_14c86")]
+[node name="Audience_row2" parent="." instance=ExtResource("1_14c86")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.17806, 0, -0.880114)
 
-[node name="audience_row3" parent="." instance=ExtResource("1_14c86")]
+[node name="Audience_row3" parent="." instance=ExtResource("1_14c86")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38951, 0, -0.290933)
 
-[node name="audience_row4" parent="." instance=ExtResource("1_14c86")]
+[node name="Audience_row4" parent="." instance=ExtResource("1_14c86")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 2.51238, 0, -0.290933)
 
 [node name="Negative" parent="." instance=ExtResource("2_22lm7")]
@@ -84,3 +85,6 @@ stream = ExtResource("12_swqk8")
 
 [node name="AudioStreamPlayer3D4" type="AudioStreamPlayer3D" parent="Booing"]
 stream = ExtResource("13_v5sjm")
+
+[node name="Laughter" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("19_l00p3")

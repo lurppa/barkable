@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+signal death
+
 @export var moveSpeed : float = 2
 @export var rotationSpeed : float = 3 
 
@@ -59,6 +61,9 @@ func _physics_process(delta):
 
 func _fall_trigger_entered():
 	_pass_out()
+	await get_tree().create_timer(1.0).timeout
+	emit_signal("death")
+
 	
 
 func _pass_out():
