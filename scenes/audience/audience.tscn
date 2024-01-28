@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://bqmwo30x358hn"]
 
 [ext_resource type="PackedScene" uid="uid://cq5pnpmd3w74o" path="res://scenes/audience/audience_row.tscn" id="1_14c86"]
-[ext_resource type="PackedScene" path="res://scenes/random_sound_player.tscn" id="2_22lm7"]
+[ext_resource type="PackedScene" uid="uid://k43t3niqnln4" path="res://scenes/random_sound_player.tscn" id="2_22lm7"]
 [ext_resource type="AudioStream" uid="uid://krh3v12a3f4g" path="res://sounds/audience/negative/boo.wav" id="3_pegm2"]
 [ext_resource type="AudioStream" uid="uid://bruf8gr4k7uog" path="res://sounds/audience/negative/couching.wav" id="4_e25h7"]
 [ext_resource type="AudioStream" uid="uid://b1uojy1710w6u" path="res://sounds/audience/negative/cough 2.wav" id="5_poj1g"]
