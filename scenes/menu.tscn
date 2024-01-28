@@ -78,6 +78,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="GameOver" type="ColorRect" parent="."]
+visible = false
 self_modulate = Color(0.772549, 0.0745098, 0.0980392, 0.321569)
 anchors_preset = 8
 anchor_left = 0.5
