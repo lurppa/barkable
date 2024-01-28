@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dc8411dbc438i"]
+[gd_scene load_steps=11 format=3 uid="uid://dc8411dbc438i"]
 
 [ext_resource type="Script" path="res://scripts/dialog_controller.gd" id="1_na6wk"]
 [ext_resource type="Texture2D" uid="uid://xmsol1js8q03" path="res://art/Textures/Sign2.png" id="2_2r2kf"]
 [ext_resource type="LabelSettings" uid="uid://b2x0t1372bbfe" path="res://other/custom_font.tres" id="2_64eqk"]
 [ext_resource type="Texture2D" uid="uid://dlrm8ei2o4ten" path="res://art/Textures/Sign1.png" id="2_k2ty2"]
+[ext_resource type="LabelSettings" uid="uid://njm0rlylah1r" path="res://other/instruction_text.tres" id="3_h31q0"]
 [ext_resource type="Texture2D" uid="uid://cv43aty3neyp3" path="res://art/Textures/Sign1on.png" id="3_i0uoe"]
 [ext_resource type="Texture2D" uid="uid://ccqa3k6i7ic7o" path="res://art/Textures/Sign2on.png" id="3_pum1e"]
 [ext_resource type="AudioStream" uid="uid://cang8mtxhcavx" path="res://sounds/dialog click.wav" id="6_a23vq"]
@@ -158,6 +159,40 @@ text = "Tell a joke about..."
 label_settings = ExtResource("2_64eqk")
 horizontal_alignment = 1
 
+[node name="WasdInstructions" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -267.0
+offset_top = -324.0
+offset_right = 234.0
+offset_bottom = -271.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Use WASD to move around"
+label_settings = ExtResource("3_h31q0")
+horizontal_alignment = 1
+
+[node name="ObjectiveInstructions" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -267.0
+offset_top = -269.0
+offset_right = 234.0
+offset_bottom = -216.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Avoid anything but green balls"
+label_settings = ExtResource("3_h31q0")
+horizontal_alignment = 1
+
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
@@ -264,9 +299,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -301.0
-offset_top = -85.0
+offset_top = -57.0
 offset_right = 316.0
-offset_bottom = 115.0
+offset_bottom = 143.0
 grow_horizontal = 2
 grow_vertical = 2
 label_settings = ExtResource("8_56c2o")

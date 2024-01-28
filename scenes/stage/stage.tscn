@@ -48,7 +48,7 @@ shape = SubResource("BoxShape3D_ui3wm")
 [node name="Walls" type="Node3D" parent="Platform"]
 
 [node name="FallTrigger" type="Area3D" parent="Platform/Walls"]
-transform = Transform3D(1, 0, 0, 0, -0.00371758, -0.999993, 0, 0.999993, -0.00371758, 0, -0.91281, 1.07047)
+transform = Transform3D(1, 0, 0, 0, -0.00371758, -0.999993, 0, 0.999993, -0.00371758, 0, -0.91281, 1.76174)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platform/Walls/FallTrigger"]
 transform = Transform3D(1, 0, 0, 0, -0.0034732, 0.999994, 0, -0.999994, -0.0034732, 0.0246758, 1.78435, -2.19212)
