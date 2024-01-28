@@ -65,7 +65,7 @@ func _on_dialog_chosen(val):
 	$Audience/Negative.play()
 	await get_tree().create_timer(1.0).timeout
 	$Audience/Booing.play()
-	stage.start_throwing(15)
+	stage.start_throwing(7)
 	#dialog.change_headlight_state(1 if val < 0 else 2)
 	await stage.throwing_stopped
 	await get_tree().create_timer(2.0).timeout

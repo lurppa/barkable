@@ -2,15 +2,19 @@ extends Node
 
 var current_jokes = []
 var chosen_joke
+var joke_parts
 
-var typing_speed = 0.04
-var read_time = 0.03
+var typing_speed = 0.025
+var setup_read_time = 0.04
+var punchline_read_time = 0.02
 
 var odds_to_get_good = 0.0
 
 var current_message = 0
 var display = ""
 var current_char = 0
+var voice_id
+
 
 # LIGHTS STATE
 const STAGELIGHTS_OFF = 0
@@ -114,6 +118,8 @@ signal dialog_chosen(score)
 signal dialog_begin()
 
 func _ready():
+	var voices = DisplayServer.tts_get_voices_for_language("en")
+	voice_id = voices[0]
 	$ButtonHolder/FirstButton.pressed.connect(first_button_pressed)
 	$ButtonHolder/SecondButton.pressed.connect(second_button_pressed)
 	$ButtonHolder/ThirdButton.pressed.connect(third_button_pressed)
@@ -190,15 +196,18 @@ func hide_joke_text():
 	$JokePunchline.visible = false
 	
 func show_text_slowly(joke_content):
-	var joke_parts = joke_content.split("\n\n")
+	joke_parts = joke_content.split("\n\n")
 	$JokeSetup.text = joke_parts[0]
+	if voice_id:
+		DisplayServer.tts_speak(joke_parts[0], voice_id, 100, 0.2, 1.2)
 	emit_signal("dialog_begin")
 	if joke_parts.size() > 1:
+		
 		$JokePunchline.text = joke_parts[1]
 		show_setup()
 	else:
 		while $JokeSetup.visible_ratio <1.0:
-			await get_tree().create_timer(read_time).timeout
+			await get_tree().create_timer(setup_read_time).timeout
 			#print("in while"+ str($JokeContent.visible_ratio))
 			increase_setup_visible_ratio()
 		print('after while')
@@ -211,22 +220,19 @@ func increase_setup_visible_ratio():
 		
 func show_setup():
 	while $JokeSetup.visible_ratio < 1.0:
-		await get_tree().create_timer(read_time).timeout
+		await get_tree().create_timer(setup_read_time).timeout
 		increase_setup_visible_ratio()
 	get_tree().create_timer(1).connect("timeout", show_punchline)
 	
 func show_punchline():
+	if voice_id:
+		DisplayServer.tts_speak(joke_parts[1], voice_id, 100, 0.2, 1.2)
 	while $JokePunchline.visible_ratio < 1.0:
-		await get_tree().create_timer(read_time).timeout
+		await get_tree().create_timer(punchline_read_time).timeout
 		increase_punchline_visible_ratio()
 	print('finished')
 	get_tree().create_timer(4).connect("timeout",hide_joke_text)
-	var randnum = randf_range(0, 1)
-	print(randnum)
-	if odds_to_get_good < randnum:
-		emit_signal("dialog_chosen", 1.0)
-	else:
-		emit_signal("dialog_chosen", -1.0)
+	emit_signal("dialog_chosen", 1.0)
 
 func increase_punchline_visible_ratio():
 	$JokePunchline.visible_ratio+=typing_speed
