@@ -8,6 +8,7 @@
 [sub_resource type="QuadMesh" id="QuadMesh_er3e1"]
 lightmap_size_hint = Vector2i(7, 7)
 material = ExtResource("3_3yayn")
+flip_faces = true
 
 [node name="Curtains" type="Node3D"]
 script = ExtResource("1_eyiji")

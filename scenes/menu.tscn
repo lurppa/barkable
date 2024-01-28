@@ -1,0 +1,173 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxptd8b3nb8u4"]
+
+[ext_resource type="Texture2D" uid="uid://c4kospg3c6ug5" path="res://art/INTRO LOGO.png" id="1_c7d6n"]
+[ext_resource type="LabelSettings" uid="uid://b2x0t1372bbfe" path="res://other/custom_font.tres" id="1_dsens"]
+[ext_resource type="LabelSettings" uid="uid://dmf1vqg5eaqsh" path="res://other/joke_font.tres" id="2_uslue"]
+[ext_resource type="LabelSettings" uid="uid://qche446rkgdp" path="res://other/score_font.tres" id="3_jdkmh"]
+[ext_resource type="AudioStream" uid="uid://cang8mtxhcavx" path="res://sounds/dialog click.wav" id="4_2wsr1"]
+[ext_resource type="Texture2D" uid="uid://bs1hxsr1fnyo6" path="res://art/FIN.png" id="5_yngnk"]
+
+[node name="Menu" type="CanvasLayer"]
+
+[node name="StartGame" type="ColorRect" parent="."]
+self_modulate = Color(0.215686, 0.215686, 0.215686, 0.196078)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -581.0
+offset_top = -330.0
+offset_right = 587.0
+offset_bottom = 333.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="StartGame"]
+layout_mode = 0
+offset_left = 367.0
+offset_top = 30.0
+offset_right = 787.0
+offset_bottom = 450.0
+texture = ExtResource("1_c7d6n")
+expand_mode = 3
+
+[node name="StartButton" type="Button" parent="StartGame"]
+layout_mode = 0
+offset_left = 382.0
+offset_top = 468.0
+offset_right = 791.0
+offset_bottom = 622.0
+metadata/_edit_group_ = true
+
+[node name="ButtonText" type="Label" parent="StartGame/StartButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -246.5
+offset_top = -78.5
+offset_right = 246.5
+offset_bottom = 78.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Go on stage!"
+label_settings = ExtResource("1_dsens")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="StartText" type="Label" parent="StartGame"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -365.0
+offset_top = 69.5
+offset_right = 383.0
+offset_bottom = 140.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Your comedy debut is about to start! "
+label_settings = ExtResource("2_uslue")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOver" type="ColorRect" parent="."]
+visible = false
+self_modulate = Color(0.772549, 0.0745098, 0.0980392, 0.321569)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -581.0
+offset_top = -330.0
+offset_right = 587.0
+offset_bottom = 333.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="RetryButton" type="Button" parent="GameOver"]
+layout_mode = 0
+offset_left = 373.0
+offset_top = 450.0
+offset_right = 782.0
+offset_bottom = 604.0
+metadata/_edit_group_ = true
+
+[node name="ButtonText" type="Label" parent="GameOver/RetryButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -246.5
+offset_top = -78.5
+offset_right = 246.5
+offset_bottom = 78.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Retry"
+label_settings = ExtResource("1_dsens")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="FinalScoreLabel" type="Label" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = 7.5
+offset_right = 214.0
+offset_bottom = 76.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "XXX"
+label_settings = ExtResource("3_jdkmh")
+horizontal_alignment = 1
+
+[node name="FellOffStageText" type="Label" parent="GameOver/FinalScoreLabel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -208.0
+offset_top = 69.0
+offset_right = 197.0
+offset_bottom = 122.0
+grow_horizontal = 2
+text = "The crowd ate you up!"
+label_settings = ExtResource("1_dsens")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Fin" type="TextureRect" parent="GameOver"]
+offset_left = 431.0
+offset_top = 60.0
+offset_right = 731.0
+offset_bottom = 360.0
+texture = ExtResource("5_yngnk")
+expand_mode = 3
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2wsr1")
+
+[node name="ScoreDisplay" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -46.0
+offset_bottom = 37.0
+grow_horizontal = 0
+label_settings = ExtResource("3_jdkmh")

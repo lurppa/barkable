@@ -104,7 +104,7 @@ func _on_game_lost():
 	$Audience/Laughter.play()
 	$Menu/GameOver.visible = true
 	$Menu/GameOver/FinalScoreLabel.visible = true
-	$Menu/GameOver/FinalScoreLabel.text = "Final score: " + str(score)
+	$Menu/GameOver/FinalScoreLabel.text = "Jokes landed: " + str(score)
 	$Menu/ScoreDisplay.visible = false
 	$Dialog.visible = false
 	stage.player._pass_out()
