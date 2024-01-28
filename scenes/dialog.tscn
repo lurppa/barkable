@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://dc8411dbc438i"]
 
 [ext_resource type="Script" path="res://scripts/dialog_controller.gd" id="1_na6wk"]
-[ext_resource type="Texture2D" uid="uid://xmsol1js8q03" path="res://art/Textures/Sign2.png" id="2_2r2kf"]
-[ext_resource type="Texture2D" uid="uid://dlrm8ei2o4ten" path="res://art/Textures/Sign1.png" id="2_k2ty2"]
-[ext_resource type="Texture2D" uid="uid://cv43aty3neyp3" path="res://art/Textures/Sign1on.png" id="3_i0uoe"]
-[ext_resource type="Texture2D" uid="uid://ccqa3k6i7ic7o" path="res://art/Textures/Sign2on.png" id="3_pum1e"]
+[ext_resource type="Texture2D" path="res://art/Textures/Sign2.png" id="2_2r2kf"]
+[ext_resource type="Texture2D" path="res://art/Textures/Sign1.png" id="2_k2ty2"]
+[ext_resource type="Texture2D" path="res://art/Textures/Sign1on.png" id="3_i0uoe"]
+[ext_resource type="Texture2D" path="res://art/Textures/Sign2on.png" id="3_pum1e"]
 
 [sub_resource type="FontFile" id="FontFile_bx7qq"]
 subpixel_positioning = 0
