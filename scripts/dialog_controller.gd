@@ -121,7 +121,7 @@ signal dialog_begin()
 func _ready():
 	show_wasd = true
 	var voices = DisplayServer.tts_get_voices_for_language("en")
-	voice_id = voices[0]
+	voice_id = null if len(voices) == 0 else voices[0]
 	$ButtonHolder/FirstButton.pressed.connect(first_button_pressed)
 	$ButtonHolder/FirstButton.button_down.connect($Click.play)
 	$ButtonHolder/SecondButton.pressed.connect(second_button_pressed)
