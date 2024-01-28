@@ -37,8 +37,11 @@ shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(1, 6.18)
 
 [sub_resource type="LabelSettings" id="LabelSettings_d85ix"]
-font_size = 26
+font_size = 48
+outline_size = 4
 outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 0.615686)
+shadow_offset = Vector2(3.115, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_wluyb"]
 font_size = 38
@@ -190,9 +193,18 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="TellAJoke" type="Label" parent="ButtonHolder"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -190.0
+offset_right = 193.001
+offset_bottom = -123.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Tell a joke about..."
 label_settings = SubResource("LabelSettings_d85ix")
 
