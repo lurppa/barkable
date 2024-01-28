@@ -59,6 +59,7 @@ func _show_dialog():
 
 
 func _on_dialog_chosen(_val):
+	comedy_score = STARTING_COMEDY_SCORE
 	stage.unlock_player()
 	await get_tree().create_timer(0.5).timeout
 	stage.get_node("Budumtss").play()
