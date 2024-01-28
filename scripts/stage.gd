@@ -1,10 +1,12 @@
 extends Node3D
 
 signal item_hit_player(item)
+signal throwing_stopped
 
 const TARGET_OFFSET = Vector3(0, 10, 0)
 const THROW_VELOCITY = 10.0
 const THROW_X_RANDOMNESS = 1.0
+const CHANCE_OF_GOOD_ITEMS = 0.4
 
 @export_node_path var player_path
 @export_node_path var throw_point1_path
@@ -19,15 +21,11 @@ const THROW_X_RANDOMNESS = 1.0
 @onready var front_of_stage = get_node(front_of_stage_path)
 
 
-func throw_multiple_items( good:bool):
-	start_throwing(5,good)
-
-var good_items:bool = false;
-
-func start_throwing(count_of_items: int, good:bool):
-	good_items = good;
+func start_throwing(count_of_items: int):
 	for i in range(count_of_items):
-		get_tree().create_timer(i/2.0).connect("timeout", throw_item)
+		await get_tree().create_timer(0.5).timeout
+		throw_item()
+	emit_signal("throwing_stopped")
 
 
 func throw_item():
@@ -38,12 +36,14 @@ func throw_item():
 	var horizontal_offset = Vector3(THROW_X_RANDOMNESS * 2 * randf() - THROW_X_RANDOMNESS, 0, 0)
 	var dir_to_player = (player.position + horizontal_offset + TARGET_OFFSET - throw_point).normalized()
 
-	var array = throwable_goods if good_items else throwable_bads;
+	var throw_good_item = randf() <= CHANCE_OF_GOOD_ITEMS
+	var array = throwable_goods if throw_good_item else throwable_bads
+
 	# Instantiate a random item with values calculated earlier
 	var item = array[randf() * len(array)].instantiate()
 	item.position = throw_point
 	item.linear_velocity = dir_to_player * THROW_VELOCITY * item.throw_speed_modifier
-	item.rotation_degrees = Vector3(randf() * 1000,randf()*1000,randf()*1000)
+	item.rotation_degrees = Vector3(randf() * 1000, randf() * 1000, randf() * 1000)
 	item.connect("hit_player", func(item2): emit_signal("item_hit_player", item2))
 	add_child(item)
 
@@ -57,5 +57,6 @@ func lock_player():
 			.set_trans(Tween.TRANS_CUBIC)
 
 
+# Unlocks player movement
 func unlock_player():
 	player.disable_movement = false
