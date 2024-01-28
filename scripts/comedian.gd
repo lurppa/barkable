@@ -17,6 +17,7 @@ const SPEED = 3.0
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var dead = false;
 var disable_movement = false
+var voice_id
 
 @onready var fall_trigger = get_node(fall_trigger_path)
 
@@ -28,6 +29,9 @@ func _ready():
 		if body == self:
 			_fall_trigger_entered()
 	fall_trigger.connect("body_entered", helper)
+
+	var voices = DisplayServer.tts_get_voices_for_language("en")
+	voice_id = null if len(voices) == 0 else voices[0]
 
 
 func _physics_process(delta):
@@ -99,4 +103,8 @@ func anim_play(animation_name,backwards = false):
 
 
 func hurt():
-	$Hurt.play()
+	if voice_id != null:
+		var line = ["oof", "ahhh", "aa", "uuu", "aiaiaia", "oioioioi", "ow", "uwu"].pick_random()
+		DisplayServer.tts_speak(line, voice_id, 100, 0.2, randf_range(0.8, 1.4))
+	else:
+		$Hurt.play()
