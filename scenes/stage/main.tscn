@@ -421,8 +421,8 @@ spot_range = 5.791
 spot_angle = 44.12
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.820175, -0.0612427, 0.568826, 0, 0.994254, 0.107046, -0.572113, -0.0877968, 0.815462, 0.119532, 2.0642, 1.23574)
-fov = 52.7
+transform = Transform3D(0.999619, -0.00787358, 0.026455, 0, 0.958451, 0.285256, -0.0276018, -0.285147, 0.958086, 0.119532, 2.26536, 1.4791)
+fov = 67.0
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("12_w8i1b")
@@ -432,13 +432,28 @@ transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 1, 0, -0.129354, 0)
 mesh = SubResource("PlaneMesh_tgd07")
 surface_material_override/0 = SubResource("StandardMaterial3D_0b7tw")
 
+[node name="Floor2" type="MeshInstance3D" parent="."]
+transform = Transform3D(281.5, 0, 0, 0, -1.23048e-05, -2.815, 0, 281.5, -1.23048e-07, 0, -0.129354, -9.56177)
+mesh = SubResource("PlaneMesh_tgd07")
+surface_material_override/0 = SubResource("StandardMaterial3D_0b7tw")
+
 [node name="BGcurt1" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, -5.74997, 1.77124, -5.26544)
 mesh = SubResource("PlaneMesh_mxlwu")
 surface_material_override/0 = SubResource("StandardMaterial3D_cgfe7")
 
+[node name="BGcurt4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, -10.6532, 1.77124, -5.26544)
+mesh = SubResource("PlaneMesh_mxlwu")
+surface_material_override/0 = SubResource("StandardMaterial3D_cgfe7")
+
 [node name="BGcurt2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 5.691, 1.77124, -5.26544)
+mesh = SubResource("PlaneMesh_mxlwu")
+surface_material_override/0 = SubResource("StandardMaterial3D_cgfe7")
+
+[node name="BGcurt5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 10.6496, 1.77124, -5.26544)
 mesh = SubResource("PlaneMesh_mxlwu")
 surface_material_override/0 = SubResource("StandardMaterial3D_cgfe7")
 
@@ -473,10 +488,10 @@ script = ExtResource("6_oa1a8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.422966, -1.83624)
 
 [node name="CameraHolder" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.119532, 2.0642, 1.23574)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.119532, 2.26536, 1.4791)
 
 [node name="PhantomCamera3D" type="Node3D" parent="CameraHolder"]
-transform = Transform3D(0.820175, -0.0612427, 0.568826, 0, 0.994254, 0.107046, -0.572113, -0.0877968, 0.815462, 0, 0, 0)
+transform = Transform3D(0.999619, -0.00787358, 0.026455, 0, 0.958451, 0.285256, -0.0276018, -0.285147, 0.958086, 0, 0, 0)
 script = ExtResource("19_wpgn2")
 priority_override = false
 priority = 0
@@ -485,10 +500,10 @@ follow_target = NodePath("")
 follow_parameters/target_offset = Vector3(0, 0, 0)
 follow_parameters/damping = false
 look_at_mode = 2
-look_at_target = NodePath("../../Stage/Comedian")
-look_at_parameters/look_at_target_offset = Vector3(0, 0, 0)
+look_at_target = NodePath("../../BGcurt3")
+look_at_parameters/look_at_target_offset = Vector3(0, -2.285, 0)
 tween_parameters = null
-tween_on_load = true
+tween_on_load = false
 inactive_update_mode = 0
 camera_3D_resource = null
 
