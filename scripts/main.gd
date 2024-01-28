@@ -22,8 +22,7 @@ var comedy_score:
 var score:
 	set(val):
 		score = val
-		# TODO: Connect to UI
-		# Something like: dialog.set_score(score)
+		dialog.set_score(score)
 
 
 func _ready():
@@ -32,14 +31,17 @@ func _ready():
 	dialog.connect("dialog_chosen", _on_dialog_chosen)
 	stage.connect("item_hit_player", _on_item_hit_player)
 	comedian.connect("death", _on_game_lost)
-	$Menu/StartGame/GoodDialogButton.connect("pressed", _start_game)
-	$Menu/GameOver/GoodDialogButton.connect("pressed", _reset_game)
+	$Menu/StartGame/StartButton.connect("pressed", _start_game)
+	$Menu/GameOver/RetryButton.connect("pressed", _reset_game)
+	$Menu/GameOver/FinalScoreLabel.visible = false
+	$Menu/ScoreDisplay.visible = false
 
 
 func _start_game():
-	stage.lock_player()
-	$Menu/StartGame/GoodDialogButton.connect("pressed", $Menu/Click.play)
+	stage.lock_player(2.0)
+	$Menu/StartGame/StartButton.connect("pressed", $Menu/Click.play)
 	$Menu/StartGame.visible = false
+	$Menu/ScoreDisplay.visible = true
 	curtains.open()
 	stage.player.anim_play("idle")
 	_show_dialog()
@@ -87,6 +89,10 @@ func _on_game_lost():
 	game_over = true
 	$Audience/Laughter.play()
 	$Menu/GameOver.visible = true
+	$Menu/GameOver/FinalScoreLabel.visible = true
+	$Menu/GameOver/FinalScoreLabel.text = "Final score: " + str(score)
+	$Menu/ScoreDisplay.visible = false
+	$Dialog.visible = false
 	stage.player._pass_out()
 	await get_tree().create_timer(2.0).timeout
 	curtains.close()
