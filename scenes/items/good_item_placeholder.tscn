@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bo2vqtg0xnepl"]
+[gd_scene load_steps=9 format=3 uid="uid://bo2vqtg0xnepl"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://bv13rm7j3rth6" path="res://scenes/items/item_physics_material.tres" id="1_nd2x4"]
 [ext_resource type="Script" path="res://scripts/thrown_item.gd" id="1_t7qg5"]
@@ -12,6 +12,18 @@ albedo_color = Color(0, 0.545098, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y0exd"]
 albedo_color = Color(0.686275, 0.101961, 0.298039, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jt1wd"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 1, 0, 0.0470588)
+
+[sub_resource type="SphereMesh" id="SphereMesh_g6jh0"]
+material = SubResource("StandardMaterial3D_jt1wd")
+flip_faces = true
+radius = 0.3
+height = 0.6
+radial_segments = 20
 
 [node name="ThrownItem2" type="RigidBody3D"]
 mass = 0.1
@@ -33,5 +45,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_1nk34")
 [node name="Torus" parent="rose" index="1"]
 transform = Transform3D(0.923312, 0, 0, 0, 0.923312, 0, 0, 0, 0.923312, -5.17668, 4.54508, -0.410456)
 surface_material_override/0 = SubResource("StandardMaterial3D_y0exd")
+
+[node name="Highlight" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_g6jh0")
 
 [editable path="rose"]
