@@ -24,7 +24,9 @@ func _ready():
 	dialog.connect("dialog_chosen", _on_dialog_chosen)
 	stage.connect("item_hit_player", _on_item_hit_player)
 	$Menu/StartGame/GoodDialogButton.connect("pressed", _start_game)
+	$Menu/StartGame/GoodDialogButton.connect("pressed", $Menu/Click.play)
 	$Menu/GameOver/GoodDialogButton.connect("pressed", _reset_game)
+	$Menu/GameOver/GoodDialogButton.connect("pressed", $Menu/Click.play)
 	stage.lock_player()
 	stage.player.anim_play("idle")
 

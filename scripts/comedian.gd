@@ -20,6 +20,7 @@ var disable_movement = false
 
 
 func _ready():
+	print(get_node(dialog_path))
 	get_node(dialog_path).connect("dialog_begin", anim_dialog_begin)
 # 	var helper = func(body):
 # 		if body == self:

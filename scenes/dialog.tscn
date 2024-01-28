@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dc8411dbc438i"]
+[gd_scene load_steps=7 format=3 uid="uid://dc8411dbc438i"]
 
 [ext_resource type="Script" path="res://scripts/dialog_controller.gd" id="1_na6wk"]
+[ext_resource type="AudioStream" uid="uid://cang8mtxhcavx" path="res://sounds/dialog click.wav" id="2_hiomw"]
 
 [sub_resource type="FontFile" id="FontFile_bx7qq"]
 subpixel_positioning = 0
@@ -124,6 +125,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="ThirdButton" type="Button" parent="ButtonHolder"]
+layout_mode = 0
 offset_left = 575.0
 offset_top = 441.0
 offset_right = 984.0
@@ -151,6 +153,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="FourthButton" type="Button" parent="ButtonHolder"]
+layout_mode = 0
 offset_left = 132.0
 offset_top = 441.0
 offset_right = 541.0
@@ -233,5 +236,8 @@ grow_vertical = 2
 label_settings = SubResource("LabelSettings_t43pe")
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_hiomw")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

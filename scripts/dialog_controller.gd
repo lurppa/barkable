@@ -129,19 +129,23 @@ func set_comedy_level(val):
 func first_button_pressed():
 	display_joke_text(jokes[0]['content'])
 	$ButtonHolder.visible = false
+	$Click.play()
 
 func second_button_pressed():
 	display_joke_text(jokes[1]['content'])
 	$ButtonHolder.visible = false
-	
+	$Click.play()
+
 func third_button_pressed():
 	display_joke_text(jokes[2]['content'])
 	$ButtonHolder.visible = false
-	
+	$Click.play()
+
 func fourth_button_pressed():
 	display_joke_text(jokes[3]['content'])
 	$ButtonHolder.visible = false
-	
+	$Click.play()
+
 func fetch_random_joke():
 	return jokes_array.pick_random()
 	
