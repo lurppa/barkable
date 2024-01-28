@@ -15,6 +15,7 @@ var display = ""
 var current_char = 0
 var voice_id
 
+var show_wasd
 
 # LIGHTS STATE
 const STAGELIGHTS_OFF = 0
@@ -118,6 +119,7 @@ signal dialog_chosen(score)
 signal dialog_begin()
 
 func _ready():
+	show_wasd = true
 	var voices = DisplayServer.tts_get_voices_for_language("en")
 	voice_id = voices[0]
 	$ButtonHolder/FirstButton.pressed.connect(first_button_pressed)
@@ -194,6 +196,12 @@ func display_joke_text(joke_content : String):
 func hide_joke_text():
 	$JokeSetup.visible = false
 	$JokePunchline.visible = false
+	if show_wasd:
+		$WasdInstructions.visible = true
+		show_wasd = false
+		get_tree().create_timer(2).connect('timeout', $ObjectiveInstructions.show)
+		get_tree().create_timer(3).connect('timeout', $WasdInstructions.hide)
+		get_tree().create_timer(5).connect('timeout', $ObjectiveInstructions.hide)
 	
 func show_text_slowly(joke_content):
 	joke_parts = joke_content.split("\n\n")
@@ -210,7 +218,6 @@ func show_text_slowly(joke_content):
 			await get_tree().create_timer(setup_read_time).timeout
 			#print("in while"+ str($JokeContent.visible_ratio))
 			increase_setup_visible_ratio()
-		print('after while')
 		#get_tree().create_timer(4).connect("timeout",hide_joke_text)
 	
 
@@ -231,7 +238,7 @@ func show_punchline():
 		await get_tree().create_timer(punchline_read_time).timeout
 		increase_punchline_visible_ratio()
 	print('finished')
-	get_tree().create_timer(4).connect("timeout",hide_joke_text)
+	get_tree().create_timer(2).connect("timeout",hide_joke_text)
 	emit_signal("dialog_chosen", 1.0)
 
 func increase_punchline_visible_ratio():
@@ -242,4 +249,5 @@ func change_headlight_state(val:int):
 	stagelight_attack.visible = val == STAGELIGHTS_RED
 	
 func set_score(val):
-	$"../Menu/ScoreDisplay".text = "score: " + str(val)
+	if val > 0 :
+		$"../Menu/ScoreDisplay".text = str(val)
