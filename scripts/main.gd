@@ -34,11 +34,12 @@ func _ready():
 	
 	$Menu/GameOver/GoodDialogButton.connect("pressed", _reset_game)
 	
-	stage.lock_player()
+	
 	
 
 
 func _start_game():
+	stage.lock_player()
 	$Menu/StartGame/GoodDialogButton.connect("pressed", $Menu/Click.play)
 	$Menu/StartGame.visible = false
 	curtains.open()

@@ -52,7 +52,7 @@ func throw_item():
 func lock_player():
 	player.disable_movement = true
 	get_tree().create_tween() \
-			.tween_property(player, "transform", front_of_stage.transform, 1.0) \
+			.tween_property(player, "transform", front_of_stage.transform, 2.0) \
 			.set_ease(Tween.EASE_IN_OUT) \
 			.set_trans(Tween.TRANS_CUBIC)
 
